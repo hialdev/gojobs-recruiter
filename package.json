@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.0.0",
-    "flowbite": "^2.1.1",
-    "flowbite-vue": "^0.1.0"
+    "swiper": "^11.0.4"
   }
 }

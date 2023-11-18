@@ -6,3 +6,19 @@
 *{
     font-family: 'Poppins', sans-serif;
 }
+
+svg, img{
+    pointer-events: none !important;
+}
+
+*::-webkit-scrollbar {
+    width: 3px;
+}
+   
+*::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+}
+   
+*::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-2xl;
+}
