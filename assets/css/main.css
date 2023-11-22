@@ -22,3 +22,12 @@ svg, img{
 *::-webkit-scrollbar-thumb {
     @apply bg-primary rounded-2xl;
 }
+h5{
+    @apply mb-3;
+}
+ul, ol{
+    @apply mb-4;
+}
+li{
+    @apply mb-2;
+}

@@ -4,7 +4,7 @@
             <NuxtImg
                 :src="imgBlended"
                 alt="Logo Gojobs"
-                class="h-[25px] cursor-pointer"
+                :class="['h-[25px] cursor-pointer', customClass]"
             />
         </NuxtLink>
     </div>
@@ -17,12 +17,16 @@ export default {
             type: Boolean,
             default: false,
         },
+        customClass: {
+            type: String,
+            default: ''
+        }
     },
     computed: {
         imgBlended() {
             return this.isBlended
-            ? "/image/gojobs-logo-text-white.svg"
-            : "/image/gojobs-logo.svg";
+            ? "/image/placehold-logo-white.svg"
+            : "/image/placehold-logo-black.svg";
         },
     },
 };

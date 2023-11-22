@@ -267,6 +267,7 @@ export default {
 
 <template>
     <div>
+        <AuthLogin />
         <section class="bg-cover min-h-screen" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), url('/image/hero.png'), lightgray 0px -117px / 100% 117.676% no-repeat; background-size:cover; background-repeat: no-repeat;">
             <div class="container mx-auto h-screen px-5">
                 <div class="grid grid-cols-12 items-center h-full">
@@ -282,7 +283,7 @@ export default {
                 </div>
             </div>
         </section>
-        <section class="py-[4em] bg-slate-100">
+        <section class="py-[4em] bg-slate-200">
             <div class="container mx-auto px-5">
                 <div class="grid grid-cols-12 gap-8">
                     <div class="col-span-12">
@@ -290,8 +291,8 @@ export default {
                     </div>
                     <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 md:col-span-6 lg:col-span-4">
                         <NuxtLink :to="industry.to">
-                            <div class="w-[6em] h-[6em] bg-primary rounded-[99px] mb-[-3em] relative z-10 ms-[2em]">
-                                <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" />
+                            <div class="relative z-10 w-full">
+                                <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="mx-auto w-[6em] h-[6em] rounded-[99px] mb-[-3em]" />
                             </div>
                             <div class="p-6 px-8 pt-[4em] bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
                                 <h3 class="text-xl mb-2">{{industry.title}}</h3>
@@ -348,7 +349,7 @@ export default {
                         <p class="text-slate-500 mb-6">Mendapatkan pekerjaan dapat melibatkan beberapa langkah penting, berikut beberapa tip umum yang dapat membantu Anda dalam pekerjaan Anda.</p>
                         
                         <ol class="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400 ms-4">                  
-                            <li v-for="alur in recruitmentProcess" :key="alur.number" class="mb-10 ms-6">            
+                            <li v-for="alur in recruitmentProcess" :key="alur.number" class="mb-7 ms-6">            
                                 <span class="absolute flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full -start-5 ring-4 ring-orange-300/40">
                                     {{alur?.number}}
                                 </span>
@@ -365,7 +366,7 @@ export default {
             </div>
         </section>
 
-        <section class="bg-slate-100 py-[7em]">
+        <section class="bg-slate-100 py-[7em] rounded-t-[3em] md:rounded-t-[5em]">
             <div class="container mx-auto px-5">
                 <div class="text-center max-w-[40em] mx-auto mb-[4em]">
                     <h2 class="text-2xl mb-3">Testimoni</h2>
@@ -418,11 +419,11 @@ export default {
         </section>
 
         <footer class="bg-slate-100">
-            <div class="bg-[#182430] rounded-tl-[50px] lg:rounded-tl-[150px]">
+            <div class="bg-[#182430] rounded-t-[3em] md:rounded-t-[5em]">
                 <div class="container mx-auto">
                     <div class="grid grid-cols-12 py-[4em] lg:py-[6em] px-5 lg:gap-12">
                         <div class="col-span-12 lg:col-span-3 mb-12 lg:mb-0">
-                            <NuxtImg src="/image/gojobs-logo-full-whte.svg" class="max-h-[2em] mb-6" />
+                            <NuxtImg src="/image/gojobs-logo-full-whte.svg" class="h-[2em] mb-6" />
                             <p class="text-white mb-9">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             <div class="flex items-center gap-6">
                                 <NuxtLink to="" class="w-[50px] h-[50px] flex items-center justify-center border border-white rounded-[99px] p-2 hover:border-primary cursor-pointer"><NuxtImg class="hover:text-primary" src="/icon/fb.svg" /></NuxtLink>
@@ -478,7 +479,7 @@ export default {
                 </div>
             </div>
             <div class="bg-[#182430]">
-                <div class="bg-gray-900 p-8 text-center text-white rounded-tr-[50px] lg:rounded-tr-[150px]">
+                <div class="bg-gray-900 p-8 text-center text-white">
                     &copy; Made with love by Infomedia Solusi Humanika - 2023
                 </div>
             </div>
