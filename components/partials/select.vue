@@ -3,11 +3,12 @@
         <div class="relative">
             <div class="cursor-pointer bg-white p-3 px-5 rounded-4xl flex justify-between items-center gap-3 text-gray-800 rounded-3xl"
                 @click="toggleModal"
+                ref="dropdownTrigger"
             >
                 <span class="">{{selectItem ? selectItem?.value : label}}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1024 1024"><path fill="currentColor" d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496z"/></svg>
             </div>
-            <div v-if="isModalOpen" class="modal absolute top-0 w-full mt-[3.5em]">
+            <div ref="modalElement" v-if="isModalOpen" class="modal absolute top-0 w-full mt-[3.5em]">
                 <ul 
                     class="p-3 bg-white rounded-xl max-h-[20em] overflow-auto"
                 >
@@ -51,12 +52,25 @@ export default {
     methods: {
         toggleModal() {
             this.isModalOpen = !this.isModalOpen;
+            if (this.isModalOpen) {
+                document.addEventListener("click", this.handleDocumentClick);
+            } else {
+                document.removeEventListener("click", this.handleDocumentClick);
+            }
         },
         selectedItem(item){
             this.selectItem = item;
             this.isModalOpen = !this.isModalOpen;
             this.$emit('selected', this.selectItem);
-        }
+        },
+        handleDocumentClick(event) {
+            const dropdownTrigger = this.$refs.dropdownTrigger;
+            const modalElement = this.$refs.modalElement;
+            if (!dropdownTrigger.contains(event.target) && !modalElement.contains(event.target)) {
+                this.isModalOpen = false;
+                document.removeEventListener("click", this.handleDocumentClick);
+            }
+        },
     },
 };
 </script>
