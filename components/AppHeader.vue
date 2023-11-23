@@ -13,8 +13,8 @@
             </div>
         </div>
         <div class="col-span-6 lg:hidden">
-            <div class="flex items-center justify-end cursor-pointer">
-                <div class="flex items-center justify-center">
+            <div class="flex items-center justify-end">
+                <div class="flex items-center justify-center cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 16 16"><path fill="currentColor" d="M5 3.75A.75.75 0 0 1 5.75 3h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 5 3.75Zm-4 4A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75Zm8 4a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Z"/></svg>
                 </div>
             </div>

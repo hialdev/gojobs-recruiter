@@ -278,19 +278,20 @@ export default {
                             <PartialsSelect @selected="SelectedKategori" :options="industries" :label="'Kategori'" />
                             <PartialsSelect @selected="SelectedLokasi" :options="countries" :label="'Lokasi'" />
                         </div>
-                        <PartialsButton>Cari Pekerjaan</PartialsButton>
+                        <PartialsButton>Cari Lowongan</PartialsButton>
+                        <NuxtLink to="/lowongan" class="mt-8 text-normal lowercase text-white flex items-center gap-4">lihat semua lowongan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10.159 10.72a.75.75 0 1 0 1.06 1.06l3.25-3.25L15 8l-.53-.53l-3.25-3.25a.75.75 0 0 0-1.061 1.06l1.97 1.97H1.75a.75.75 0 1 0 0 1.5h10.379l-1.97 1.97Z" clip-rule="evenodd"/></svg></NuxtLink>
                     </div>
                 </div>
             </div>
         </section>
         <section class="py-[4em] bg-slate-200">
             <div class="container mx-auto px-5">
-                <div class="grid grid-cols-12 gap-8">
+                <div class="grid grid-cols-12 md:gap-8">
                     <div class="col-span-12">
                         <h2 class="text-2xl text-center my-9">Industri pekerjaan yang dibutuhkan</h2>
                     </div>
                     <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 md:col-span-6 lg:col-span-4">
-                        <NuxtLink :to="industry.to">
+                        <NuxtLink :to="industry.to" class="block w-full">
                             <div class="relative z-10 w-full">
                                 <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="mx-auto w-[6em] h-[6em] rounded-[99px] mb-[-3em]" />
                             </div>
