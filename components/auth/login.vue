@@ -1,8 +1,8 @@
 <template>
-    <div v-if="isOpen">
-        <div class="bg-black/60 flex items-center justify-center p-12 min-h-screen fixed top-0 w-full z-[99] max-h-screen">
+    <div v-if="isOpen === true">
+        <div class="bg-black/60 flex items-center justify-center p-5 lg:p-12 min-h-screen fixed top-0 w-full z-[99] max-h-screen">
             <div class="bg-white p-6 py-9 rounded-3xl w-full max-w-[30em] relative overflow-hidden">
-                <div class="cursor-pointer rounded-3xl absolute top-0 end-0" @click="() => { isOpen === false }">
+                <div class="cursor-pointer rounded-3xl absolute top-0 end-0" @click="closeLogin">
                     <div class="flex items-center rounded-bl-3xl bg-slate-50 text-slate-200 hover:text-orange-300 justify-center p-3">
                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.48954 5.63546C7.24073 5.40362 6.91165 5.27741 6.57162 5.28341C6.23159 5.28941 5.90717 5.42715 5.6667 5.66763C5.42623 5.9081 5.28848 6.23252 5.28248 6.57255C5.27648 6.91258 5.4027 7.24166 5.63454 7.49046L12.1445 14.0005L5.63454 20.5105C5.50558 20.6306 5.40216 20.7755 5.33042 20.9365C5.25868 21.0975 5.22011 21.2713 5.217 21.4476C5.21389 21.6238 5.24631 21.7988 5.31232 21.9623C5.37833 22.1257 5.47659 22.2741 5.60122 22.3988C5.72585 22.5234 5.87431 22.6217 6.03774 22.6877C6.20117 22.7537 6.37622 22.7861 6.55245 22.783C6.72868 22.7799 6.90248 22.7413 7.06348 22.6696C7.22448 22.5978 7.36938 22.4944 7.48954 22.3655L13.9995 15.8555L20.5095 22.3655C20.6297 22.4944 20.7746 22.5978 20.9356 22.6696C21.0966 22.7413 21.2704 22.7799 21.4466 22.783C21.6229 22.7861 21.7979 22.7537 21.9613 22.6877C22.1248 22.6217 22.2732 22.5234 22.3979 22.3988C22.5225 22.2741 22.6207 22.1257 22.6867 21.9623C22.7528 21.7988 22.7852 21.6238 22.7821 21.4476C22.779 21.2713 22.7404 21.0975 22.6687 20.9365C22.5969 20.7755 22.4935 20.6306 22.3645 20.5105L15.8545 14.0005L22.3645 7.49046C22.5964 7.24166 22.7226 6.91258 22.7166 6.57255C22.7106 6.23252 22.5728 5.9081 22.3324 5.66763C22.0919 5.42715 21.7675 5.28941 21.4274 5.28341C21.0874 5.27741 20.7583 5.40362 20.5095 5.63546L13.9995 12.1455L7.48954 5.63546Z" fill="currentColor"/>
@@ -54,9 +54,9 @@
                             <path d="M18.1712 8.36857H17.5V8.33398H10V11.6673H14.7096C14.3809 12.5908 13.7889 13.3978 13.0067 13.9886L13.0079 13.9877L15.5871 16.1702C15.4046 16.3361 18.3333 14.1673 18.3333 10.0007C18.3333 9.4419 18.2758 8.89648 18.1712 8.36857Z" fill="#1976D2"/>
                         </svg>
                     </div>
-                    <span class="text-white">Masuk dengan Google</span>
+                    <span class="text-white text-sm md:text-normal">Masuk dengan Google</span>
                 </button>
-                <div class="text-center text-gray-800 mt-6">
+                <div class="text-center text-sm md:text-normal text-gray-800 mt-6">
                     Belum mempunyai akun gojobs? <NuxtLink to="/auth/register" class="text-primary underline">Daftar</NuxtLink>
                 </div>
             </div>
@@ -70,6 +70,11 @@ export default {
         isOpen: {
             type: Boolean,
             default: false,
+        }
+    },
+    methods:{
+        closeLogin(){
+            this.$emit('close')
         }
     }
 }

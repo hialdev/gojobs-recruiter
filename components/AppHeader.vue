@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="navbar" :class="{'absolute lg:fixed top-0 start-0 end-0 bg-white text-black': !isBlended, 'absolute top-0 start-0 end-0 lg:fixed bg-transparent text-white': isBlended, 'lg:fixed lg:top-0 lg:w-full':isFixed }" class="z-50 grid grid-cols-12 items-center gap-3 px-5 md:px-7 py-3">
+        <div id="navbar" :class="{' bg-white text-black': !isBlended, 'absolute top-0 start-0 end-0 lg:fixed bg-transparent text-white': isBlended, 'lg:fixed lg:top-0 lg:w-full':isFixed }" class="z-50 grid grid-cols-12 items-center gap-3 px-5 md:px-7 py-3">
             <div class="col-span-6 lg:col-span-4">
                 <PartialsLogo :isBlended="isBlended" class="inline-block my-auto" />
             </div>
@@ -10,7 +10,7 @@
             <div class="col-span-6 lg:col-span-4">
                 <div class="flex items-center gap-2 justify-end">
                     <PartialsButton class="text-sm lg:text-normal whitespace-nowrap" :primary="false">Buat CV</PartialsButton>
-                    <PartialsButton class="text-sm lg:text-normal whitespace-nowrap" :primary="true">Login</PartialsButton>
+                    <PartialsButton @click="openLoginDialog" class="text-sm lg:text-normal whitespace-nowrap" :primary="true">Login</PartialsButton>
                 </div>
             </div>
         </div>
@@ -33,11 +33,18 @@
                 </NuxtLink>
             </div>
         </div>
+
+        <AuthLogin :isOpen="isOpen" @close="closeLoginDialog" />
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            isOpen: false,
+        };
+    },
     props:{
         isBlended:{
             type:Boolean,
@@ -46,9 +53,16 @@ export default {
         isFixed:{
             type:Boolean,
             default:false,
-        }
+        },
     },
-
+    methods:{
+        openLoginDialog() {
+            this.isOpen = true;
+        },
+        closeLoginDialog() {
+            this.isOpen = false;
+        },
+    }
 }
 </script>
 
