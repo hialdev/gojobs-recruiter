@@ -1,8 +1,8 @@
 <template>
     <div class="flex items-center justify-center gap-8">
-        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu" activeClass="active" to="/">Beranda</NuxtLink>
-        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu" activeClass="active" to="/lowongan">Lowongan Kerja</NuxtLink>
-        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu" activeClass="active" to="/perusahaan">Perusahaan</NuxtLink>
+        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/">Beranda</NuxtLink>
+        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/lowongan">Lowongan Kerja</NuxtLink>
+        <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/perusahaan">Perusahaan</NuxtLink>
     </div>
 </template>
   
