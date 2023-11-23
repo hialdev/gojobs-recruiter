@@ -272,7 +272,7 @@ export default {
             <div class="container mx-auto h-screen px-5">
                 <div class="grid grid-cols-12 items-center h-full">
                     <div class="col-span-12 lg:col-span-6">
-                        <h1 class="mb-8 text-white text-5xl font-semibold mb-4">Jelajahi Peluang Kerja Terbaik Bersama Kami</h1>
+                        <h1 class="mb-8 text-white text-4xl lg:text-5xl font-semibold mb-4">Jelajahi Peluang Kerja Terbaik Bersama Kami</h1>
                         <input type="text" placeholder="Cari Lowongan (Cth: Marketing, Product Manager...)" class="mb-4 w-full rounded-3xl focus:ring-2 focus:ring-primary focus:ring-opacity-70 text-slate-800 focus:border-white p-3 px-4 bg-white">
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <PartialsSelect @selected="SelectedKategori" :options="industries" :label="'Kategori'" />
@@ -295,7 +295,7 @@ export default {
                                 <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="mx-auto w-[6em] h-[6em] rounded-[99px] mb-[-3em]" />
                             </div>
                             <div class="p-6 px-8 pt-[4em] bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
-                                <h3 class="text-xl mb-2">{{industry.title}}</h3>
+                                <h3 class="text-normal lg:text-xl mb-2">{{industry.title}}</h3>
                                 <ol v-for="(job, index) in industry.listJobs" :key="index" class="list-disc ms-5">
                                     <li class="mb-1 text-sm text-slate-500">{{job}}</li>
                                 </ol>
@@ -324,7 +324,7 @@ export default {
                                 :width="value?.icon?.width"
                                 :height="value?.icon?.height"
                             />
-                            <h3 class="text-xl mb-2 lg:mb-3">{{value?.title}}</h3>
+                            <h3 class="text-normal md:text-xl mb-2 lg:mb-3">{{value?.title}}</h3>
                             <p class="line-clamp-5 text-slate-500 text-sm lg:text-normal">{{value?.description}}</p>
                         </div>
                     </div>

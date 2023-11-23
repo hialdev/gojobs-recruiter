@@ -1,6 +1,6 @@
 <template>
-    <div v-for="job in jobs" :key="job?.id" @click.prevent="selectJob(job)" >
-        <NuxtLink :to="`/lowongan/${job?.id}`" activeClass="ring-4 ring-orange-700/20 border-primary border" class="block mb-5 bg-white rounded-3xl p-6 hover:ring-4 hover:ring-orange-700/20 border border-white hover:border-primary">
+    <div v-for="job in jobs" :key="job?.id">
+        <NuxtLink :to="`/lowongan/${job.id}`" activeClass="ring-4 ring-orange-700/20 border-primary border" class="cursor-pointer block mb-5 bg-white rounded-3xl p-6 hover:ring-4 hover:ring-orange-700/20 border border-white hover:border-primary">
             <div class="flex items-center justify-between">
                 <NuxtImg :src="job?.logo" :alt="`Logo ${job?.company}`" class="h-[3em] mb-3" />
                 <div class="w-[24px] cursor-pointer text-orange-100 hover:text-orange-200">
@@ -13,9 +13,6 @@
             <p class="text-slate-500 text-sm mb-4">{{job?.company}}</p>
             <div class="font-medium">{{job?.location}}</div>
             <div class="font-medium">{{job?.salary}}</div>
-            <ul class="list-disc mt-4 ms-5 text-slate-500">
-                <li class="text-sm" v-for="(benefit, index) in job?.benefits" :key="index">{{benefit}}</li>
-            </ul>
             <div class="flex items-center gap-4 mt-4">
                 <div class="flex items-center gap-2">
                     <div class="text-slate-500 w-[20px]">
@@ -47,15 +44,11 @@ export default {
             
         }
     },
+    mounted() {
+        console.log('JobsListjob received jobs:', this.jobs);
+    },
     methods: {
-        selectJob(job) {
-            const scrollTop = window.scrollY || document.documentElement.scrollTop;
-            this.$emit('job-selected', job);
-
-            this.$nextTick(() => {
-                window.scrollTo(0, scrollTop);
-            });
-        }
+        
     },
 }
 </script>

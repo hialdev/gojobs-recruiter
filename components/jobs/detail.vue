@@ -10,10 +10,10 @@
         <div class="grid grid-cols-12 relative">
             <div class="col-span-8 px-5 border-e-2">
                 <div class="flex items-center gap-3 py-6">
-                    <NuxtImg :src="selectedJob.logo" :alt="`logo ${selectedJob.company}`" class="h-[3em]" />
+                    <NuxtImg :src="`${selectedJob?.logo}`" :alt="`logo ${selectedJob?.company}`" class="h-[3em]" />
                     <div>
-                        <h2 class="text-xl">{{selectedJob.title}}</h2>
-                        <p class="text-slate-500">{{selectedJob.company}}</p>
+                        <h2 class="text-xl">{{selectedJob?.title}}</h2>
+                        <p class="text-slate-500">{{selectedJob?.company}}</p>
                     </div>
                 </div>
                 <div class="py-6 border-t-2 px-5">
@@ -21,9 +21,9 @@
                         <span class="span px-3 p-1 text-primary bg-orange-100 rounded-3xl">Fulltime</span>
                     </div>
                     <h5 class="font-medium">Lokasi</h5>
-                    <p class="text-sm mb-4 text-slate-500">{{selectedJob.location}}</p>
+                    <p class="text-sm mb-4 text-slate-500">{{selectedJob?.location}}</p>
                     <h5 class="font-medium">Gaji</h5>
-                    <p class="text-sm mb-4 text-slate-500">{{selectedJob.salary}}</p>
+                    <p class="text-sm mb-4 text-slate-500">{{selectedJob?.salary}}</p>
 
                     <h5 class="font-medium">Deskripsi Pekerjaan</h5>
                     <div>
@@ -50,7 +50,7 @@
                         <h3 class="text-2xl mb-6">Informasi Tambahan</h3>
                         <div>
                             <h5 class="font-medium">Gaji</h5>
-                            <p class="text-sm mb-4 text-slate-500">{{selectedJob.salary}}</p>
+                            <p class="text-sm mb-4 text-slate-500">{{selectedJob?.salary}}</p>
                             <h5 class="font-medium">Pengalaman Kerja </h5>
                             <p class="text-sm mb-4 text-slate-500">1 tahun</p>
                             <h5 class="font-medium">Spesialisasi Pekerjaan</h5>
@@ -82,3 +82,17 @@ export default {
   props: ['selectedJob']
 }
 </script>
+
+<style scoped>
+.listjob::-webkit-scrollbar {
+    width: 0px;
+}
+   
+.listjob::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+   
+.listjob::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+}
+</style>
