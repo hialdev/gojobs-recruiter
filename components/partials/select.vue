@@ -12,7 +12,8 @@
                 <ul 
                     class="p-3 bg-white rounded-xl max-h-[20em] overflow-auto"
                 >
-                    <div v-for="(option, index) in options"
+                    <li class="mb-3"><PartialsSearch :label="'Cari '+label" :customClass="'ring-4 ring-slate-200'" @input="searchOptions" /></li>
+                    <div v-for="option in filteredOptions"
                         :key="option.key"
                         >
                         <li
@@ -47,6 +48,7 @@ export default {
         return {
             isModalOpen: false,
             selectItem: null,
+            searchQuery: "",
         };
     },
     methods: {
@@ -70,6 +72,17 @@ export default {
                 this.isModalOpen = false;
                 document.removeEventListener("click", this.handleDocumentClick);
             }
+        },
+        searchOptions(event) {
+            this.searchQuery = String(event.target?.value).toLowerCase();
+        },
+    },
+    computed: {
+        filteredOptions() {
+            const filtered = this.options.filter((option) =>
+                option.value.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+            return filtered;
         },
     },
 };

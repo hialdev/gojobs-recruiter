@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-    layout: 'lowongan',
+    layout: 'lowongan-detail',
 });
 
 const route = useRoute()
@@ -12,9 +12,8 @@ const jobs = [
         company: 'Cogency Marketing Indonesia',
         location: 'Jakarta Barat',
         salary: '4,8 - 6jt per bulan',
-        benefits: ['Fast paced', 'Hybrid working arrangement', 'Casual working environment'],
         datePosted: '3 hari yang lalu',
-        applicants: 15,
+        typeJob: 'full-time',
         logo: '/image/company/4.png',
     },
     {
@@ -23,9 +22,8 @@ const jobs = [
         company: 'Tech Solutions Inc.',
         location: 'Jakarta Selatan',
         salary: '8 - 10jt per bulan',
-        benefits: ['Flexible working hours', 'Health insurance coverage', 'Professional development opportunities'],
         datePosted: '5 hari yang lalu',
-        applicants: 20,
+        typeJob: 'part-time',
         logo: '/image/company/1.png',
     },
     {
@@ -34,9 +32,8 @@ const jobs = [
         company: 'Dynamic Marketing Agency',
         location: 'Tangerang',
         salary: '5 - 7jt per bulan',
-        benefits: ['Generous commission structure', 'Team building events', 'Career advancement opportunities'],
         datePosted: '1 minggu yang lalu',
-        applicants: 10,
+        typeJob: 'freelance',
         logo: '/image/company/2.png',
     },
     {
@@ -45,9 +42,8 @@ const jobs = [
         company: 'Creative Designs Studio',
         location: 'Depok',
         salary: '6 - 8jt per bulan',
-        benefits: ['Creative and collaborative work environment', 'Flexible work hours', 'Career growth opportunities'],
         datePosted: '2 minggu yang lalu',
-        applicants: 12,
+        typeJob: 'temporary',
         logo: '/image/company/3.png',
     },
     {
@@ -56,9 +52,8 @@ const jobs = [
         company: 'Supportive Solutions LLC',
         location: 'Bekasi',
         salary: '5 - 7jt per bulan',
-        benefits: ['Comprehensive training programs', 'Health and wellness programs', 'Opportunities for advancement'],
         datePosted: '2 minggu yang lalu',
-        applicants: 18,
+        typeJob: 'full-time',
         logo: '/image/company/4.png',
     },
     {
@@ -67,9 +62,8 @@ const jobs = [
         company: 'Numbers Crunch Inc.',
         location: 'Bogor',
         salary: '4,5 - 6,5jt per bulan',
-        benefits: ['Competitive salary', 'Professional development opportunities', 'Flexible work schedule'],
         datePosted: '3 minggu yang lalu',
-        applicants: 8,
+        typeJob:'remote',
         logo: '/image/company/2.png',
     },
     {
@@ -78,9 +72,8 @@ const jobs = [
         company: 'Sales Dynamics Ltd.',
         location: 'Cirebon',
         salary: '6 - 8jt per bulan',
-        benefits: ['Uncapped commission structure', 'Sales training programs', 'Opportunities for career growth'],
         datePosted: '1 bulan yang lalu',
-        applicants: 25,
+        typeJob: 'full-time',
         logo: '/image/company/1.png',
     },
     {
@@ -89,9 +82,8 @@ const jobs = [
         company: 'PeopleFirst Solutions',
         location: 'Serang',
         salary: '8 - 10jt per bulan',
-        benefits: ['Competitive compensation package', 'Employee wellness programs', 'Career development opportunities'],
         datePosted: '1 bulan yang lalu',
-        applicants: 14,
+        typeJob: 'part-time',
         logo: '/image/company/3.png',
     },
 ];

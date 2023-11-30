@@ -40,103 +40,137 @@ export default {
             ],
             industriesList : [
                 {
+                    title: "Penjualan",
+                    listJobs: [
+                        "Sales",
+                        "Sales Technical",
+                        "Merchandiser",
+                        "Promotor",
+                        "SPG/B Reguler & Event",
+                    ],
+                    to: "/lowongan?industri=penjualan",
+                    image: {
+                        src: "/icon/sales.svg",
+                        alt: "Icon Penjualan Industry",
+                        width: 100,
+                        height: 100,
+                    },
+                },
+                {
                     title: "Teknologi Informasi",
                     listJobs: [
-                        "Software Engineer",
-                        "Database Administrator",
-                        "Network Administrator",
-                        "IT Project Manager",
-                        "UI/UX Designer",
+                        "Software Developer",
+                        "Mobile Developer",
+                        "Frontend & Backend Engineer",
+                        "System Analyst",
+                        "IT Helpdesk Support",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan?industri=it",
                     image: {
                         src: "/icon/it.svg",
-                        alt: "Icon Teknologi Informasi Industry",
+                        alt: "Icon IT Industry",
                         width: 100,
                         height: 100,
                     },
                 },
                 {
-                    title: "Keuangan dan Bisnis",
+                    title: "Administrasi Bisnis",
                     listJobs: [
-                        "Accountant",
-                        "Financial Analyst",
-                        "Investment Banker",
-                        "Marketing Manager",
-                        "Business Development Executive",
+                        "Admin",
+                        "Sekretaris",
+                        "Receptionist",
+                        "Kurir",
+                        "Staff Bagian Umum",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan?industri=admin",
                     image: {
-                        src: "/icon/finance.svg",
-                        alt: "Icon Keuangan dan Bisnis Industry",
+                        src: "/icon/admin.svg",
+                        alt: "Icon Administrasi Bisnis Industry",
                         width: 100,
                         height: 100,
                     },
                 },
                 {
-                    title: "Ritel dan Penjualan",
+                    title: "Teknologi Komunikasi",
                     listJobs: [
-                        "Retail Sales Associate",
-                        "Store Manager",
-                        "Sales Representative",
-                        "Customer Service Representative",
-                        "E-commerce Specialist",
+                        "Project Manager",
+                        "Network Engineer",
+                        "Network Security",
+                        "Network Operation Center",
+                        "Teknisi Jaringan",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan?industri=teknologi+komunikasi",
                     image: {
-                        src: "/icon/ritel.svg",
-                        alt: "Icon Ritel dan Penjualan Industry",
+                        src: "/icon/network.svg",
+                        alt: "Icon Teknologi Komunikasi Industry",
                         width: 100,
                         height: 100,
                     },
                 },
                 {
-                    title: "Hubungan Masyarakat",
+                    title: "Pemasaran",
                     listJobs: [
-                        "Public Relations Specialist",
-                        "Communications Manager",
-                        "Social Media Coordinator",
-                        "Event Planner",
-                        "Content Writer",
+                        "Digital Marketing",
+                        "SEO Specialist",
+                        "Desain Grafis & UI/UX",
+                        "Content Creator",
+                        "Riset & Surveyor",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan/industri=pemasaran",
                     image: {
-                        src: "/icon/humas.svg",
-                        alt: "Icon Hubungan Masyarakat Industry",
+                        src: "/icon/marketing.svg",
+                        alt: "Icon Pemasaran Industry",
                         width: 100,
                         height: 100,
                     },
                 },
                 {
-                    title: "Manufaktur dan Produksi",
+                    title: "Warehouse",
                     listJobs: [
-                        "Manufacturing Engineer",
-                        "Production Supervisor",
-                        "Quality Control Inspector",
-                        "Supply Chain Manager",
-                        "Operations Manager",
+                        "Operator Alat Berat",
+                        "Admin Gudang",
+                        "Packer",
+                        "Kepala Gudang",
+                        "Security",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan?industri=warehouse",
                     image: {
-                        src: "/icon/manufaktur.svg",
-                        alt: "Icon Manufaktur dan Produksi Industry",
+                        src: "/icon/warehouse.svg",
+                        alt: "Icon Warehouse Industry",
                         width: 100,
                         height: 100,
                     },
                 },
                 {
-                    title: "Pariwisata dan Perhotelan",
+                    title: "Instalasi & Perbaikan",
                     listJobs: [
-                        "Hotel Manager",
-                        "Tour Guide",
-                        "Event Coordinator",
-                        "Travel Consultant",
-                        "Catering Manager",
+                        "ATM Monitoring / Testing",
+                        "Engineering on Site",
+                        "Mechanical Electrical Engineer",
+                        "Building Maintenance",
+                        "Teknisi Elektronik",
                     ],
-                    to: "/lowongan",
+                    to: "/lowongan?industri=Instalasi+Perbaikan",
                     image: {
-                        src: "/icon/pariwisata.svg",
-                        alt: "Icon Pariwisata dan Perhotelan Industry",
+                        src: "/icon/repair.svg",
+                        alt: "Icon Instalasi & Perbaikan Industry",
+                        width: 100,
+                        height: 100,
+                    },
+                },
+                {
+                    title: "Pelayanan",
+                    listJobs: [
+                        "Customer Service",
+                        "Agent Call Center",
+                        "Petugas Tiket",
+                        "Office Boy / Girl",
+                        "Cleaning Service",
+                    ],
+                    to: "/lowongan?industri=pelayanan",
+                    image: {
+                        src: "/icon/service.svg",
+                        alt: "Icon Pelayanan Industry",
                         width: 100,
                         height: 100,
                     },
@@ -150,7 +184,7 @@ export default {
                         width: 50,
                         height: 50,
                     },
-                    description: "Peluang kerja dari perusahaan terkemuka yang bekerja sama dengan gojobs.",
+                    description: "Kesempatan bekerja bersama brand terbaik di bidang Elektronik, Telekomunikasi, FMCG, Farmasi, Kosmetik, dan Logistik.",
                 },
                 {
                     title: "Pengembangan",
@@ -159,25 +193,25 @@ export default {
                         width: 50,
                         height: 50,
                     },
-                    description: "Pelatihan pengembangan keterampilan membantu meningkatkan keahlian Anda.",
+                    description: "Tersedia pelatihan dan pengembangan dengan modul serta trainer handal untuk meningkatkan ketrampilanmu. ",
                 },
                 {
-                    title: "Regulasi",
+                    title: "Kompensasi",
                     icon: {
                         src: "/icon/letter.svg",
                         width: 50,
                         height: 50,
                     },
-                    description: "Remunerasi memenuhi aturan atau regulasi pemerintah.",
+                    description: "Mendapatkan kompensasi, jaminan ketenagakerjaan, dan jaminan kesehatan sesuai ketentuan yang berlaku.",
                 },
                 {
-                    title: "Benefit Kesejahteraan",
+                    title: "Jenjang Karir",
                     icon: {
-                        src: "/icon/health.svg",
+                        src: "/icon/jenjangkarir.svg",
                         width: 50,
                         height: 50,
                     },
-                    description: "Diikut sertakan dalam program asuransi kesehatan nasional (BPJS).",
+                    description: "Beragam pilihan lowongan kerja yang sesuai dengan minat dan bakat kerjamu.",
                 },
                 {
                     title: "CV Gratis",
@@ -186,7 +220,7 @@ export default {
                         width: 50,
                         height: 50,
                     },
-                    description: "Buat CV Anda secara gratis dengan alat yang mudah digunakan.",
+                    description: "Ngga perlu bingung buat CV! Fitur Gojobs dukung kamu bikin CV Online secara gratis dan mudah.",
                 },
                 {
                     title: "Share",
@@ -195,34 +229,34 @@ export default {
                         width: 50,
                         height: 50,
                     },
-                    description: "Dapat dengan mudah menyebarkan peluang kerja menarik kepada rekan Anda.",
+                    description: "Bagikan informasi lowongan pekerjaan dengan Besti, Teman, dan Sodara dengan cepat dan mudah.",
                 },
             ],
             recruitmentProcess: [
                 {
                     number: 1,
-                    title: "Screening",
-                    description: "Proses awal seleksi berkas dan informasi kandidat.",
+                    title: "Seleksi CV",
+                    description: "Mulai dari sini! Tim ISH akan reviu CV / Resume yang kamu kirim, mencocokkan kompetensimudengan kualifikasi yang dibutuhkan dan kontak kamu bila memenuhi kualifikasi",
                 },
                 {
                     number: 2,
                     title: "Psikotest",
-                    description: "Pengujian psikologi untuk mengukur kecocokan kandidat dengan posisi yang dibutuhkan.",
+                    description: "Agar memastikan profilmu cocok dengan dengan jabatan yang dilamar kamu diminta untukmengerjakan soal-soal psikotes. Tips: Kerjakan tes di pagi hari, fokus tanpa gangguan, danselesaikan segera.",
                 },
                 {
                     number: 3,
                     title: "Wawancara HR",
-                    description: "Wawancara dengan tim HR untuk menilai kemampuan dan kecocokan kandidat dengan perusahaan.",
+                    description: "Tim ISH akan menggali lebih dalam pengalaman, ketrampilan, dan pengetahuan seputar profesiserta jabatan yang kamu lamar. Tips: Persiapan, Berlatih, dan tampil percaya diri.",
                 },
                 {
                     number: 4,
                     title: "Wawancara User",
-                    description: "Wawancara dengan tim atau individu yang akan bekerja bersama kandidat.",
+                    description: "Di tahap ini profil kamu akan digali lebih dalam oleh Tim Klien. Pertanyaan teknis dan roleplaybiasanya diajukan dalam sesi wawancara. Tips: Kuasai teknis pekerjaan, banyak berlatih, dan hadir tepat waktu. ",
                 },
                 {
                     number: 5,
                     title: "Hiring",
-                    description: "Proses akhir pemilihan dan penawaran pekerjaan kepada kandidat terpilih.",
+                    description: "Hore! Ini tahap akhir proses rekrutmen kamu. Segera melengkapi data untuk pembuatan kontrakkerja dan payroll. Semakin cepat kamu lengkapi, semakin cepat kamu bisa bekerja. Selamat ya Ka!",
                 },
             ],
             testimonials: [
@@ -268,18 +302,18 @@ export default {
 <template>
     <div>
         <AuthLogin />
-        <section class="bg-cover min-h-screen" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), url('/image/hero.png'), lightgray 0px -117px / 100% 117.676% no-repeat; background-size:cover; background-repeat: no-repeat;">
+        <section class="bg-cover min-h-screen" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), url('/image/banner-hero.png'), lightgray 0px -117px / 100% 117.676% no-repeat; background-size:cover; background-repeat: no-repeat;">
             <div class="container mx-auto h-screen px-5">
                 <div class="grid grid-cols-12 items-center h-full">
                     <div class="col-span-12 lg:col-span-6">
-                        <h1 class="mb-8 text-white text-4xl lg:text-5xl font-semibold mb-4">Jelajahi Peluang Kerja Terbaik Bersama Kami</h1>
-                        <input type="text" placeholder="Cari Lowongan (Cth: Marketing, Product Manager...)" class="mb-4 w-full rounded-3xl focus:ring-2 focus:ring-primary focus:ring-opacity-70 text-slate-800 focus:border-white p-3 px-4 bg-white">
+                        <h1 class="mb-12 text-white text-4xl lg:text-5xl font-semibold">Yuk Lamar di GoJobs! <br /><span class="font-normal">#Teman Cari Kerja</span></h1>
+                        <PartialsSearch class="mb-4" :label="`Cari posisi / perusahaan lowongan`" />
                         <div class="grid grid-cols-2 gap-4 mb-4">
-                            <PartialsSelect @selected="SelectedKategori" :options="industries" :label="'Kategori'" />
-                            <PartialsSelect @selected="SelectedLokasi" :options="countries" :label="'Lokasi'" />
+                            <PartialsSelect :options="industries" :label="'Kategori'" />
+                            <PartialsSelect :options="countries" :label="'Lokasi'" />
                         </div>
                         <PartialsButton>Cari Lowongan</PartialsButton>
-                        <NuxtLink to="/lowongan" class="mt-8 text-normal lowercase text-white flex items-center gap-4">lihat semua lowongan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10.159 10.72a.75.75 0 1 0 1.06 1.06l3.25-3.25L15 8l-.53-.53l-3.25-3.25a.75.75 0 0 0-1.061 1.06l1.97 1.97H1.75a.75.75 0 1 0 0 1.5h10.379l-1.97 1.97Z" clip-rule="evenodd"/></svg></NuxtLink>
+                        <NuxtLink to="/lowongan" class="mt-12 text-normal lowercase text-white flex items-center gap-4">lihat semua lowongan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10.159 10.72a.75.75 0 1 0 1.06 1.06l3.25-3.25L15 8l-.53-.53l-3.25-3.25a.75.75 0 0 0-1.061 1.06l1.97 1.97H1.75a.75.75 0 1 0 0 1.5h10.379l-1.97 1.97Z" clip-rule="evenodd"/></svg></NuxtLink>
                     </div>
                 </div>
             </div>
@@ -290,15 +324,15 @@ export default {
                     <div class="col-span-12">
                         <h2 class="text-2xl text-center my-9">Industri pekerjaan yang dibutuhkan</h2>
                     </div>
-                    <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 md:col-span-6 lg:col-span-4 mb-8 md:mb-0">
+                    <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 mb-8 md:mb-0">
                         <NuxtLink :to="industry.to" class="block w-full">
-                            <div class="relative z-10 w-full">
-                                <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="mx-auto w-[6em] h-[6em] rounded-[99px] mb-[-3em]" />
-                            </div>
-                            <div class="p-6 px-8 pt-[4em] bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
-                                <h3 class="text-xl mb-4">{{industry.title}}</h3>
+                            <div class="p-6 px-8 bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
+                                <div class="flex items-center gap-5 mb-6">
+                                    <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="w-[6em] h-[6em] rounded-[99px]" />
+                                    <h3 class="text-xl mb-4">{{industry.title}}</h3>
+                                </div>
                                 <ol v-for="(job, index) in industry.listJobs" :key="index" class="list-disc ms-5">
-                                    <li class="text-sm text-slate-500">{{job}}</li>
+                                    <li class="text-sm text-slate-500 mb-1">{{job}}</li>
                                 </ol>
                             </div>
                         </NuxtLink>
@@ -336,18 +370,18 @@ export default {
         <section class="py-[5em] bg-white">
             <div class="container mx-auto px-5">
                 <div class="grid grid-cols-12 lg:gap-12">
-                    <div class="col-span-12 mb-12 lg:mb-0 lg:col-span-5">
+                    <div class="col-span-12 mb-12 lg:mb-0 lg:col-span-4">
                         <NuxtImg
-                            src="/image/alur.png"
+                            src="/image/rekurt.png"
                             alt="Pekerja yang ceria di Gojobs"
                             class="w-full"
-                            height="643"
+                            height="860"
                             width="599"
                         />
                     </div>
-                    <div class="col-span-12 lg:col-span-7">
+                    <div class="col-span-12 lg:col-span-8">
                         <h2 class="text-2xl mb-3">Alur Proses Rekurtmen</h2>
-                        <p class="text-slate-500 mb-6">Mendapatkan pekerjaan dapat melibatkan beberapa langkah penting, berikut beberapa tip umum yang dapat membantu Anda dalam pekerjaan Anda.</p>
+                        <p class="text-slate-500 mb-6">ISH berkomitmen menyediakan tenaga kerja sesuai dengan kualifikasi yang ditentukan klien. Berikutalur proses CV kamu dikerjakan oleh Tim ISH :</p>
                         
                         <ol class="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400 ms-4">                  
                             <li v-for="alur in recruitmentProcess" :key="alur.number" class="mb-7 ms-6">            
@@ -379,7 +413,6 @@ export default {
                     :pagination="{
                         clickable: true,
                     }"
-                    :modules="modules"
                     class="mySwiper"
                 >
                     <swiper-slide v-for="(testimonial,index) in testimonials" :key="index" class="max-w-[30em]">

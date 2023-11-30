@@ -1,7 +1,10 @@
 <template>
-    <div :class="[buttonClass, $parent.buttonClass]">
+    <button v-if="path === ''" :class="[buttonClass, $parent.buttonClass]">
         <slot />
-    </div>
+    </button>
+    <NuxtLink v-else :to="path" :class="[buttonClass, $parent.buttonClass]">
+        <slot />
+    </NuxtLink>
 </template>
   
 <script>
@@ -11,6 +14,10 @@
                 type: Boolean,
                 default: true,
             },
+            path:{
+                type: String,
+                default: '',
+            }
         },
         computed: {
             buttonClass() {

@@ -114,8 +114,6 @@ export default {
         },
         searchOptions(event) {
             this.searchQuery = String(event.target?.value).toLowerCase();
-            console.log('Search Query:', this.searchQuery);
-            console.log('Options:', this.options);
         },
     },
     computed: {
@@ -123,7 +121,6 @@ export default {
             const filtered = this.options.filter((option) =>
                 option.value.toLowerCase().includes(this.searchQuery.toLowerCase())
             );
-            console.log('Filtered Options:', filtered);
             return filtered;
         },
     },

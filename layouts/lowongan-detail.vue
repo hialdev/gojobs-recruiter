@@ -1,13 +1,25 @@
 <template>
   <div>
     <AppHeader />
-    <div class="bg-[#fafafa] min-h-screen py-[2em]">
+    <div class="bg-[#fafafa] min-h-[30em] py-[2em]">
         <div class="container mx-auto px-5">
             <div class="lg:sticky lg:top-0 lg:bg-[#fafafa] pt-1 pb-1 mb-8 z-10">
                 <Filtering />
             </div>
 
-            <slot />
+            <div class="grid grid-cols-12 gap-4">
+                <!-- List Jobs -->
+                <div class="col-span-6 max-h-[47em] listjob overflow-auto p-1 grid grid-cols-12 gap-4 pe-3">
+                    <JobsCard v-if="jobs && jobs.length > 0" :jobs="jobs" />
+                </div>
+                <!-- End List Jobs -->
+
+                <!-- Jobs Detail -->
+                <div class="col-span-6 ">
+                  <slot />
+                </div>
+                <!-- End Jobs Detail -->
+            </div>
         </div>
 
     </div>
@@ -15,16 +27,7 @@
 </template>
 
 <script>
-import JobsListjob from '@/components/jobs/listjob.vue'
-import AppHeader from '@/components/AppHeader.vue'
-import Filtering from '@/components/Filtering.vue'
-
 export default {
-    components:{
-      JobsListjob,
-      Filtering,
-      AppHeader
-    },
     data(){
         return{
             jobs : [
@@ -34,9 +37,8 @@ export default {
                     company: 'Cogency Marketing Indonesia',
                     location: 'Jakarta Barat',
                     salary: '4,8 - 6jt per bulan',
-                    benefits: ['Fast paced', 'Hybrid working arrangement', 'Casual working environment'],
                     datePosted: '3 hari yang lalu',
-                    applicants: 15,
+                    typeJob: 'full-time',
                     logo: '/image/company/4.png',
                 },
                 {
@@ -45,9 +47,8 @@ export default {
                     company: 'Tech Solutions Inc.',
                     location: 'Jakarta Selatan',
                     salary: '8 - 10jt per bulan',
-                    benefits: ['Flexible working hours', 'Health insurance coverage', 'Professional development opportunities'],
                     datePosted: '5 hari yang lalu',
-                    applicants: 20,
+                    typeJob: 'part-time',
                     logo: '/image/company/1.png',
                 },
                 {
@@ -56,9 +57,8 @@ export default {
                     company: 'Dynamic Marketing Agency',
                     location: 'Tangerang',
                     salary: '5 - 7jt per bulan',
-                    benefits: ['Generous commission structure', 'Team building events', 'Career advancement opportunities'],
                     datePosted: '1 minggu yang lalu',
-                    applicants: 10,
+                    typeJob: 'freelance',
                     logo: '/image/company/2.png',
                 },
                 {
@@ -67,9 +67,8 @@ export default {
                     company: 'Creative Designs Studio',
                     location: 'Depok',
                     salary: '6 - 8jt per bulan',
-                    benefits: ['Creative and collaborative work environment', 'Flexible work hours', 'Career growth opportunities'],
                     datePosted: '2 minggu yang lalu',
-                    applicants: 12,
+                    typeJob: 'temporary',
                     logo: '/image/company/3.png',
                 },
                 {
@@ -78,9 +77,8 @@ export default {
                     company: 'Supportive Solutions LLC',
                     location: 'Bekasi',
                     salary: '5 - 7jt per bulan',
-                    benefits: ['Comprehensive training programs', 'Health and wellness programs', 'Opportunities for advancement'],
                     datePosted: '2 minggu yang lalu',
-                    applicants: 18,
+                    typeJob: 'full-time',
                     logo: '/image/company/4.png',
                 },
                 {
@@ -89,9 +87,8 @@ export default {
                     company: 'Numbers Crunch Inc.',
                     location: 'Bogor',
                     salary: '4,5 - 6,5jt per bulan',
-                    benefits: ['Competitive salary', 'Professional development opportunities', 'Flexible work schedule'],
                     datePosted: '3 minggu yang lalu',
-                    applicants: 8,
+                    typeJob:'remote',
                     logo: '/image/company/2.png',
                 },
                 {
@@ -100,9 +97,8 @@ export default {
                     company: 'Sales Dynamics Ltd.',
                     location: 'Cirebon',
                     salary: '6 - 8jt per bulan',
-                    benefits: ['Uncapped commission structure', 'Sales training programs', 'Opportunities for career growth'],
                     datePosted: '1 bulan yang lalu',
-                    applicants: 25,
+                    typeJob: 'full-time',
                     logo: '/image/company/1.png',
                 },
                 {
@@ -111,12 +107,11 @@ export default {
                     company: 'PeopleFirst Solutions',
                     location: 'Serang',
                     salary: '8 - 10jt per bulan',
-                    benefits: ['Competitive compensation package', 'Employee wellness programs', 'Career development opportunities'],
                     datePosted: '1 bulan yang lalu',
-                    applicants: 14,
+                    typeJob: 'part-time',
                     logo: '/image/company/3.png',
                 },
-            ],
+            ]
         }
     },
     computed:{
@@ -130,14 +125,14 @@ export default {
 
 <style scoped>
 .listjob::-webkit-scrollbar {
-    width: 0px;
+    width: 10px;
 }
    
 .listjob::-webkit-scrollbar-track {
-    @apply bg-transparent;
+    @apply bg-slate-200 rounded-3xl;
 }
    
 .listjob::-webkit-scrollbar-thumb {
-    @apply bg-transparent;
+    @apply bg-slate-300;
 }
 </style>
