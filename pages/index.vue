@@ -261,30 +261,50 @@ export default {
             ],
             testimonials: [
                 {
+                    image:{
+                        src:"testi (1).png",
+                        alt:"image testi (1)",
+                    },
                     name: "Albert Flores",
                     rate: 5,
                     position: "Admin HR",
                     quote: "GoJobs membantu saya menemukan kandidat berkualitas dengan cepat dan mudah.",
                 },
                 {
+                    image:{
+                        src:"testi (2).png",
+                        alt:"image testi (2)",
+                    },
                     name: "Eva Simmons",
                     rate: 4,
                     position: "Recruitment Manager",
                     quote: "Pelayanan pelanggan GoJobs sangat responsif dan membantu kami mengelola proses rekrutmen dengan baik.",
                 },
                 {
+                    image:{
+                        src:"testi (3).png",
+                        alt:"image testi (3)",
+                    },
                     name: "John Carter",
                     rate: 5,
                     position: "Senior Developer",
                     quote: "Saya sangat senang bisa bergabung dengan perusahaan ini melalui GoJobs. Prosesnya sangat lancar dan efisien.",
                 },
                 {
+                    image:{
+                        src:"testi (2).png",
+                        alt:"image testi (2)",
+                    },
                     name: "Grace Lee",
                     rate: 3,
                     position: "Marketing Specialist",
                     quote: "GoJobs memberikan banyak peluang pekerjaan menarik, namun masih perlu beberapa fitur penyempurnaan.",
                 },
                 {
+                    image:{
+                        src:"testi (1).png",
+                        alt:"image testi (1)",
+                    },
                     name: "Diana Miller",
                     rate: 5,
                     position: "HR Coordinator",
@@ -324,9 +344,9 @@ export default {
                     <div class="col-span-12">
                         <h2 class="text-2xl text-center my-9">Industri pekerjaan yang dibutuhkan</h2>
                     </div>
-                    <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 mb-8 md:mb-0">
+                    <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 md:col-span-6 lg:col-span-3 mb-8 md:mb-0">
                         <NuxtLink :to="industry.to" class="block w-full">
-                            <div class="p-6 px-8 bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
+                            <div class="p-6 px-8 lg:px-6 bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
                                 <div class="flex items-center gap-5 mb-6">
                                     <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="w-[6em] h-[6em] rounded-[99px]" />
                                     <h3 class="text-xl mb-4">{{industry.title}}</h3>
@@ -416,39 +436,32 @@ export default {
                     class="mySwiper"
                 >
                     <swiper-slide v-for="(testimonial,index) in testimonials" :key="index" class="max-w-[30em]">
-                        <div class="p-6 bg-white rounded-3xl">
-                            <div class="flex items-center gap-2 mb-4">
-                                <template v-for="star in Array(testimonial.rate).fill('')">
-                                    <NuxtImg src="/icon/star.svg" class="w-[20px]" />
-                                </template>
-                            </div>
-                            <q class="text-slate-500">{{testimonial?.quote}}</q>
-                            <div class="flex items-center mt-4 justify-between">
-                                <div class="flex items-center gap-4">
-                                    <NuxtImg 
-                                        src="/image/person.png"
-                                        alt="Person Profile Testimonial"
-                                        width="60"
-                                        height="60"
-                                        class="rounded-[50px]"
-                                    />
-                                    <div>
-                                        <h4 class="text-xl uppercase">{{testimonial?.name}}</h4>
-                                        <p class="text-sm text-blue-600">{{testimonial?.position}}</p>
-                                    </div>
-                                </div>
-                                <div class="text-primary">
-                                    <NuxtImg 
-                                        src="/icon/quote.svg"
-                                        alt="quote icon"
-                                        class="w-full h-[2em] text-primary"
-                                    />
+                        <div class="mb-[-2em] flex justify-center">
+                            <NuxtImg 
+                                :src="`/image/testi/${testimonial?.image?.src}`"
+                                :alt="testimonial?.image?.alt"
+                                width="100"
+                                height="100"
+                                class="rounded-[50px]"
+                            />
+                        </div>
+                        <div class="p-6 pt-12 bg-white rounded-3xl">
+                            <q class="text-slate-500 italic pb-5 block border-b text-center">{{testimonial?.quote}}</q>
+                            <div class="pt-6 text-center">
+                                <h5 class="font-medium mb-1">{{testimonial?.name}}</h5>
+                                <div class="text-sm text-blue-500 mb-3">{{testimonial?.position}}</div>
+                                <div class="flex items-center justify-center gap-2 mb-4">
+                                    <template v-for="star in Array(testimonial.rate).fill('')">
+                                        <NuxtImg src="/icon/star.svg" class="w-[20px]" />
+                                    </template>
                                 </div>
                             </div>
                         </div>
                     </swiper-slide>
                     
                 </swiper>
+
+                
             </div>
         </section>
 

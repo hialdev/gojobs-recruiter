@@ -34,6 +34,7 @@
                 </div>
             </div>
         </div>
+        <PartialsSelect class="border-2 rounded-xl mb-4" :options="sources" :label="`Dari mana kamu mengetahui kami ?`" />
         <div class="flex items-center justify-between mb-4">
             <div class="flex items-start gap-2">
                 <input type="checkbox" name="" class="mt-1">
@@ -50,7 +51,7 @@
             </div>
         </div>
         <div class="flex justify-center">
-            <PartialsButton class="px-6 min-w-[15em]">Daftar</PartialsButton>
+            <PartialsButton :path="`/auth/verifikasi`" class="text-center px-6 min-w-[15em]">Daftar</PartialsButton>
         </div>
         <div class="flex items-center gap-3 text-slate-500 my-6 text-sm">
             <hr class="w-full" />
@@ -84,7 +85,21 @@ export default {
     },
     data(){
         return{
-            isShowPwd : false
+            isShowPwd : false,
+            sources : [
+                { key: 'teman', value: 'Dari teman' },
+                { key: 'internet', value: 'Melalui internet' },
+                { key: 'iklan', value: 'Melalui iklan' },
+                { key: 'media-sosial', value: 'Melalui media sosial' },
+                { key: 'acara', value: 'Melalui acara atau seminar' },
+                { key: 'pencarian', value: 'Melalui mesin pencari' },
+                { key: 'email', value: 'Melalui email' },
+                { key: 'koran', value: 'Melalui koran' },
+                { key: 'radio', value: 'Melalui radio' },
+                { key: 'televisi', value: 'Melalui televisi' },
+                { key: 'komunitas', value: 'Dari komunitas' },
+                { key: 'lainnya', value: 'Lainnya' },
+            ]
         }
     },
     methods:{

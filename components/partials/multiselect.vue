@@ -1,6 +1,6 @@
 <template>
-    <div class="relative" :class="[customClass]">
-        <div class="cursor-pointer bg-white p-3 px-5 rounded-4xl flex justify-between items-center gap-3 text-gray-800 rounded-3xl w-full text-slate-400"
+    <div class="relative">
+        <div :class="['cursor-pointer bg-white p-3 px-5 rounded-4xl flex justify-between items-center gap-3 text-gray-800 rounded-3xl w-full text-slate-400',$parent.class]"
             @click="toggleModal"
             ref="dropdownTrigger"
         >
@@ -22,7 +22,7 @@
             </div> 
             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1024 1024"><path fill="currentColor" d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496z"/></svg>
         </div>
-        <div ref="modalElement" v-if="isModalOpen" class="modal absolute top-0 w-full mt-[3.5em]">
+        <div ref="modalElement" v-if="isModalOpen" :class="['modal absolute top-0 w-full mt-[3.5em]',modalClass]">
             <ul 
                 class="p-3 bg-white rounded-xl max-h-[20em] overflow-auto"
             >
@@ -74,7 +74,7 @@ export default {
             type: String,
             required: true,
         },
-        customClass:{
+        modalClass:{
             type: String,
             default: ''
         }

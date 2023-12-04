@@ -5,10 +5,10 @@
             <p class="text-slate-500 text-sm">Jangan khawatir! Masukkan email Anda di bawah ini dan kami akan membantu Anda mengatur ulang password Anda.</p>
         </div>
         <div class="grid grid-cols-12 gap-8 mb-7">
-            <input type="number" class="block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
-            <input type="number" class="block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
-            <input type="number" class="block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
-            <input type="number" class="block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
+            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  class="no-arrow block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
+            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  class="no-arrow block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
+            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  class="no-arrow block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
+            <input type="text" maxlength="1" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  class="no-arrow block text-center col-span-3 p-4 text-4xl border-b-2 focus:outline-0 focus:border-b-2 focus:border-b-primary" />
         </div>
         <div class="flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-2xl bg-yellow-50" role="alert">
             <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="flex justify-center">
-            <PartialsButton :path="`/dashboard`" class="px-6 min-w-[15em] text-center">Verifikasi</PartialsButton>
+            <PartialsButton :path="`/personalization`" class="px-6 min-w-[15em] text-center">Verifikasi</PartialsButton>
         </div>
         <div class="text-center text-sm md:text-normal text-gray-800 mt-6">
             Kirim ulang kode <span class="cursor-pointer text-primary underline">Kirim</span>

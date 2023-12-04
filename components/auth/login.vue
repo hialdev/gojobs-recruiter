@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <PartialsButton class="px-6 min-w-[15em]">Login</PartialsButton>
+                    <PartialsButton :path="`/seeker/dashboard`" class="px-6 min-w-[15em] block text-center">Login</PartialsButton>
                 </div>
                 <div class="flex items-center gap-3 text-slate-500 my-6 text-sm">
                     <hr class="w-full" />

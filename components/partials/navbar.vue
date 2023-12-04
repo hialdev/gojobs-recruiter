@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center gap-8">
+    <div class="items-center justify-center gap-8 hidden lg:flex">
         <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/">Beranda</NuxtLink>
         <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/lowongan">Lowongan Kerja</NuxtLink>
         <NuxtLink :class="{'text-white':isBlended, 'text-black':!isBlended}" class="menu whitespace-nowrap" activeClass="active" to="/buat-cv">Buat CV</NuxtLink>
