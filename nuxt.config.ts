@@ -4,8 +4,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   devtools: { enabled: true },
-  css: [
-    '~/assets/css/main.css'
+  css: [ 
+    '~/assets/css/main.css',
   ],
   postcss: {
     plugins: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <NuxtLink to="/">
+        <NuxtLink :to="path">
             <NuxtImg
                 :src="imgBlended"
                 alt="Logo Gojobs"
@@ -20,6 +20,10 @@ export default {
         customClass: {
             type: String,
             default: ''
+        },
+        path:{
+            type: String,
+            default: '/'
         }
     },
     computed: {
