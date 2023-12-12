@@ -390,7 +390,7 @@ export default {
         <section class="py-[5em] bg-white">
             <div class="container mx-auto px-5">
                 <div class="grid grid-cols-12 lg:gap-12">
-                    <div class="col-span-12 mb-12 lg:mb-0 lg:col-span-4">
+                    <div class="col-span-12 mb-12 lg:mb-0 lg:col-span-5">
                         <NuxtImg
                             src="/image/rekurt.png"
                             alt="Pekerja yang ceria di Gojobs"
@@ -399,7 +399,7 @@ export default {
                             width="599"
                         />
                     </div>
-                    <div class="col-span-12 lg:col-span-8">
+                    <div class="col-span-12 lg:col-span-7">
                         <h2 class="text-2xl mb-3">Alur Proses Rekurtmen</h2>
                         <p class="text-slate-500 mb-6">ISH berkomitmen menyediakan tenaga kerja sesuai dengan kualifikasi yang ditentukan klien. Berikutalur proses CV kamu dikerjakan oleh Tim ISH :</p>
                         

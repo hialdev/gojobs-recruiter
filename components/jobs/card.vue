@@ -1,5 +1,5 @@
 <template>
-    <div v-for="job in jobs" :key="job?.id" class="col-span-6">
+    <div v-for="job in jobs" :key="job?.id" class="col-span-12 lg:col-span-6">
         <NuxtLink :to="`/lowongan/${job.id}`" activeClass="ring-4 ring-orange-700/20 border-primary border" class="cursor-pointer block bg-white rounded-3xl p-6 hover:ring-4 hover:ring-orange-700/20 border border-white hover:border-primary">
             <div class="flex items-center justify-between">
                 <NuxtImg :src="job?.logo" :alt="`Logo ${job?.company}`" class="h-[3em] mb-3" />
