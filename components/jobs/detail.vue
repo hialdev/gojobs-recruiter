@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 sticky bottom-0">
+            <div class="col-span-12 sticky bottom-0 z-[100]">
                 <div class="flex items-center gap-3 bg-white p-5 rounded-3xl">
                     <PartialsButton class="w-full text-center">Lamar</PartialsButton>
                     <PartialsButton class="bg-transparent border-primary" :primary="false">

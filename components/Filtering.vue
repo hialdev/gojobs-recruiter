@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-row flex-wrap lg:items-center gap-3">
         <PartialsSearch class="basis-full md:basis-1/3" :label="`Posisi / Jabatan`" />
-        <PartialsMultiselect class="basis-full z-10 sm:flex-1" :label="`Lokasi`" :svgData="svgLocation" :options="countries" />
-        <PartialsMultiselect class="flex-1" :label="`Jenis kerja`" :svgData="svgJenisKontrak" :options="[{'key':1,'value':'full time'},{'key':2,'value':'part time'},{'key':3,'value':'freelance'},{'key':4,'value':'remote'}]" />
+        <PartialsMultiselect class="basis-full z-[14] sm:flex-1" :label="`Lokasi`" :svgData="svgLocation" :options="countries" />
+        <PartialsMultiselect class="flex-1 z-[12]" :label="`Jenis kerja`" :svgData="svgJenisKontrak" :options="[{'key':1,'value':'full time'},{'key':2,'value':'part time'},{'key':3,'value':'freelance'},{'key':4,'value':'remote'}]" />
         <PartialsButton>Cari</PartialsButton>
     </div>
 </template>
