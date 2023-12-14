@@ -2,7 +2,7 @@
     <div>
         <div class="flex items-center justify-center min-h-[40em]">
             <div class="bg-white p-10 rounded-2xl max-w-[35em]">
-                <h1 class="text-xl font-medium">Selangkah lagi!, Beritahu kami pekerjaan yang kamu minati</h1>
+                <h1 class="text-xl font-medium">Hey, Beritahu kami seperti apa pekerjaan yang kamu minati!</h1>
                 <form class="flex flex-col mt-5 gap-5">
                     <PartialsMultiselect class="z-[14] border-2 rounded-2xl" :label="`Industri`" :svgData="svgIndustry" :options="industries" />
                     <PartialsMultiselect class="z-[12] border-2 rounded-2xl" :label="`Lokasi / Penempatan`" :svgData="svgLocation" :options="countries" />

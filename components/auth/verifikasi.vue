@@ -20,16 +20,30 @@
             </div>
         </div>
         <div class="flex justify-center">
-            <PartialsButton :path="`/personalization`" class="px-6 min-w-[15em] text-center">Verifikasi</PartialsButton>
+            <PartialsButton @click="verifHandle" class="px-6 min-w-[15em] text-center">Verifikasi</PartialsButton>
         </div>
         <div class="text-center text-sm md:text-normal text-gray-800 mt-6">
             Kirim ulang kode <span class="cursor-pointer text-primary underline">Kirim</span>
         </div>
+
+        <div v-if="verifSuccess">
+            <ModalAuthSuccess :title="`Berhasil Verifikasi`" :message="`Berhasil mendaftarkan akun, Mulai mencari kerjaan impian anda!`" />
+        </div>
     </div>
 </template>
 
-<script>
-export default {
-    
+<script setup>
+let verifSuccess = ref(false);
+
+const verifHandle = () => {
+    verifSuccess.value = true;
 }
+
+watch(verifSuccess, (newValue) => {
+    if (newValue) {
+        setTimeout(() => {
+            useRouter().push(`/personalization`);
+        }, 3000);
+    }
+});
 </script>
