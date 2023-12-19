@@ -1,12 +1,6 @@
 <template>
   <div>
-    <AppHeader />
-    <div class="bg-[#fafafa] min-h-[30em] py-[2em]">
-        <div class="container mx-auto px-5">
-            <div class="lg:sticky lg:top-0 lg:bg-[#fafafa] pt-1 pb-1 mb-8 z-10">
-                <Filtering />
-            </div>
-
+        <NuxtLayout name="lowongan">
             <div class="grid grid-cols-12 gap-4">
                 <!-- List Jobs -->
                 <div class="col-span-12 order-last lg:order-first lg:col-span-6 max-h-[47em] listjob lg:overflow-auto p-1 grid grid-cols-12 gap-4 pe-3">
@@ -20,9 +14,7 @@
                 </div>
                 <!-- End Jobs Detail -->
             </div>
-        </div>
-
-    </div>
+        </NuxtLayout>
   </div>
 </template>
 

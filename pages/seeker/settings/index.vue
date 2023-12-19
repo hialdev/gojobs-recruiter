@@ -1,11 +1,3 @@
-<template>
-    <div>
-        
-    </div>
-</template>
-
 <script setup>
-definePageMeta({
-    layout:'seeker'
-})
+navigateTo('/seeker/settings/detail');
 </script>
