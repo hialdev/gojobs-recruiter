@@ -1,6 +1,6 @@
 <template>
     <div v-if="isOpen === true">
-        <div class="bg-black/60 flex items-center justify-center p-5 lg:p-12 min-h-screen fixed top-0 w-full z-[99] max-h-screen">
+        <div class="bg-black/60 flex items-center justify-center p-5 lg:p-12 min-h-screen fixed top-0 w-full z-[9999] max-h-screen">
             <div class="bg-white p-6 py-9 rounded-3xl w-full max-w-[30em] relative overflow-hidden">
                 <div class="cursor-pointer rounded-3xl absolute top-0 end-0" @click="closeLogin">
                     <div class="flex items-center rounded-bl-3xl bg-slate-50 text-slate-200 hover:text-orange-300 justify-center p-3">

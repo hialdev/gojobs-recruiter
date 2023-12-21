@@ -3,9 +3,18 @@
         <NuxtLayout name="seeker">
             <div class="py-10">
                 <div class="container mx-auto">
-                    <div class="grid grid-cols-12 gap-6">
-                        <div class="col-span-3">
-                            <div class="bg-white rounded-xl p-4 px-7">
+                    <div class="grid grid-cols-12 md:gap-6">
+                        <div class="col-span-12 lg:col-span-3 mb-5">
+                            <div @click="toggleSetting" class="lg:hidden cursor-pointer mx-5 inline-flex items-center gap-5 bg-orange-50 border border-primary cursor-pointer text-primary p-3 px-5 rounded-xl">
+                                <div class="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M14.5 23q-.625 0-1.062-.437T13 21.5v-7q0-.625.438-1.062T14.5 13h7q.625 0 1.063.438T23 14.5v7q0 .625-.437 1.063T21.5 23zm0-1.5h7v-.8q-.625-.775-1.525-1.237T18 19q-1.075 0-1.975.463T14.5 20.7zM18 18q.625 0 1.063-.437T19.5 16.5q0-.625-.437-1.062T18 15q-.625 0-1.062.438T16.5 16.5q0 .625.438 1.063T18 18m-7 4h-.875q-.375 0-.65-.25t-.325-.625l-.3-2.325q-.325-.125-.612-.3t-.563-.375l-2.175.9q-.35.15-.7.038t-.55-.438L2.4 15.4q-.2-.325-.125-.7t.375-.6l1.875-1.425Q4.5 12.5 4.5 12.338v-.675q0-.163.025-.338L2.65 9.9q-.3-.225-.375-.6t.125-.7l1.85-3.225q.2-.325.55-.437t.7.037l2.175.9q.275-.2.575-.375t.6-.3l.3-2.325q.05-.375.325-.625t.65-.25h3.75q.375 0 .65.25t.325.625l.3 2.325q.325.125.613.3t.562.375l2.175-.9q.35-.15.7-.038t.55.438l1.85 3.25q.2.325.125.688t-.375.587L19.925 11H15.4q-.35-1.075-1.25-1.787t-2.1-.713q-1.45 0-2.475 1.025T8.55 12q0 1.2.675 2.1T11 15.35z"/></svg>
+                                </div>
+                                <span class="font-medium">Detail Akun</span>
+                                <div class="ms-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M36 18L24 30L12 18"/></svg>
+                                </div>
+                            </div>
+                            <div v-if="openSetting" class="bg-white rounded-xl p-4 px-7 mx-5 absolute w-full lg:relative max-w-[17em] lg:max-w-auto shadow-2xl shadow-black/10 lg:shadow-none">
                                 <div class="border-b py-4">
                                     <h4 class="font-medium">Pengaturan</h4>
                                 </div>
@@ -29,7 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-9">
+                        <div class="col-span-12 lg:col-span-9">
                             <NuxtPage />
                         </div>
                     </div>
@@ -39,6 +48,32 @@
         
     </div>
 </template>
+
+<script setup>
+
+const openSetting = ref(false)
+const toggleSetting = () => {
+    openSetting.value = !openSetting.value;
+}
+
+// Function to check the screen size and set openSetting accordingly
+const checkScreenSize = () => {
+    // Update openSetting based on screen size (lg or larger)
+    openSetting.value = window.matchMedia('(min-width: 1024px)').matches;
+};
+
+// Attach the checkScreenSize function to the window resize event
+onMounted(() => {
+    checkScreenSize(); // Call it initially to set the correct value
+    window.addEventListener('resize', checkScreenSize);
+});
+
+// Don't forget to remove the event listener when the component is destroyed
+onUnmounted(() => {
+    window.removeEventListener('resize', checkScreenSize);
+});
+
+</script>
 
 <style scoped>
 .activeTab{

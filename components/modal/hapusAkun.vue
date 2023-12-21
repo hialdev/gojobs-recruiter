@@ -4,19 +4,33 @@
             <div class="text-base md:text-xl text-primary mb-3">{{title}}</div>
             <p class="text-sm text-slate-500 mb-4">{{message}}</p>
             <div class="flex items-center justify-center gap-4">
-                <PartialsButton @click="cancel" :primary="false">Cancel</PartialsButton>
-                <PartialsButton @click="hapus">Hapus</PartialsButton>
+                <PartialsButton @click="hapusCancel" :primary="false">Cancel</PartialsButton>
+                <PartialsButton @click="hapusConfirm">Hapus</PartialsButton>
             </div>
         </div>
     </div>
 </template>
 
-<script setup>
+<script>
+export default {
+    props: {
+        title: {
+            type: String,
+            default: '',
+        },
+        message: {
+            type: String,
+            default: '',
+        },
+    },
 
-const props = defineProps({
-    title : String,
-    message : String,
-})
-
-const emit = defineEmits(['cancel', 'hapus']);
+    methods:{
+        hapusCancel(){
+            this.$emit('cancel')
+        },
+        hapusConfirm(){
+            this.$emit('hapus')
+        },
+    }
+}
 </script>

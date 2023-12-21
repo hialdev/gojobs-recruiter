@@ -49,6 +49,7 @@ const cancelHandle = ()=>{
 }
 
 const hapusHandle = ()=>{
-    console.log('Haous button clicked, Now :'+pressed.value);
+    console.log('Hapus button clicked, Now :'+pressed.value);
+    pressed.value = false;
 }
 </script>

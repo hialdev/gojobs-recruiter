@@ -1,22 +1,22 @@
 <template>
     <div class="bg-slate-50">
-        <div class="container mx-auto p-8">
-            <div class="grid grid-cols-12 gap-4">
+        <div class="container mx-auto py-5 md:p-8">
+            <div class="grid grid-cols-12 gap-0 md:gap-4">
                 <div class="col-span-12">
-                    <div class="flex items-center justify-end gap-4">
-                        <span class="text-slate-600 text-xs">terakhir disimpan 6 menit yang lalu</span>
-                        <PartialsButton class="border-2 border-primary" :primary="false">Simpan</PartialsButton>
-                        <PartialsButton class="flex gap-5 items-center justify-between px-5 rounded-lg">Download CV
+                    <div class="flex flex-wrap items-center justify-end gap-4 my-5 px-5">
+                        <span class="flex-initial w-full md:flex-auto md:w-auto text-slate-600 text-xs text-right md:text-left">terakhir disimpan 6 menit yang lalu</span>
+                        <PartialsButton class="border-2 border-primary text-sm" :primary="false">Simpan</PartialsButton>
+                        <PartialsButton class="flex gap-5 items-center justify-between px-5 rounded-lg text-sm">Download CV
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5l5-5m-5-7v12"/></svg>
                         </PartialsButton>
                     </div>
                 </div>
                 <div class="col-span-12 lg:col-span-4">
-                    <div class="bg-white rounded-2xl p-6">
-                        <div class="flex flex-col items-center gap-1 border-b pb-5 relative">
+                    <div class="bg-white rounded-0 md:rounded-2xl p-6">
+                        <div class="flex flex-col items-center md:gap-1 border-b pb-5 relative">
                             <PartialsImage />
                             <span class="text-xs text-slate-500">Klik gambar untuk upload</span>
-                            <PartialsInput :inputClass="`text-center border-b rounded-none focus:rounded-3xl focus:border-transparent w-full block min-w-[20em]`" :placeholder="`Nama Lengkap`" />
+                            <PartialsInput :inputClass="`text-center border-b rounded-none focus:rounded-3xl focus:border-transparent w-full block`" :placeholder="`Nama Lengkap`" />
                             <div class="text-sm text-gray-500 text-start">Social Media</div>
                             <div class="flex flex-col items-center gap-3 my-3">
                                 <div class="flex items-center gap-4">
@@ -67,7 +67,10 @@
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <input type="date" class="p-2 px-3 border-b focus:outline-none block w-full" placeholder="username" />
+                                <div class="w-full">
+                                    <input type="text" class="p-2 px-3 border-b focus:outline-none block w-full" placeholder="Tempat Lahir" />
+                                    <input type="date" class="p-2 px-3 border-b focus:outline-none block w-full" placeholder="username" />
+                                </div>
                             </li>
                             <li class="flex items-center gap-4 text-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -179,7 +182,7 @@
                     </div>
                 </div>
                 <div class="col-span-12 lg:col-span-8">
-                    <div class="bg-white w-full rounded-2xl p-6 mb-5">
+                    <div class="bg-white w-full rounded-0 md:rounded-2xl p-6 mb-5">
                         <div class="flex items-center justify-between">
                             <h3 class="font-medium">Ringkasan</h3>
                         </div>
@@ -188,7 +191,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl p-6 mb-5">
+                    <div class="bg-white rounded-0 md:rounded-2xl p-6 mb-5">
                         <div class="cursor-pointer flex items-center justify-between border-b pb-4">
                             <h3 class="font-medium">Pengalaman Kerja</h3>
                             <div class="flex items-center gap-2 text-sm p-2 px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
@@ -251,13 +254,13 @@
                                         W
                                     </span>
                                     <div class="ps-4">
-                                        <h4 class="font-medium">Web Design & Development Team Leader</h4>
-                                        <div class="flex items-center gap-4 mb-3 text-sm">
+                                        <h4 class="text-sm md:text-base font-medium mb-1">Web Design & Development Team Leader</h4>
+                                        <div class="flex flex-wrap items-center gap-x-4 mb-3 text-xs md:text-sm">
                                             <span>Tech Solutions Inc</span>|
                                             <span>May - September 2022</span>|
                                             <span>5 bulan</span>
                                         </div>
-                                        <ul class="flex items-center gap-6 text-sm mb-3">
+                                        <ul class="flex items-center gap-6 text-xs md:text-sm mb-3">
                                             <li class="flex items-center gap-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                     <path d="M12 7.83398C12 8.36442 11.7893 8.87312 11.4142 9.2482C11.0391 9.62327 10.5304 9.83398 10 9.83398C9.46957 9.83398 8.96086 9.62327 8.58579 9.2482C8.21071 8.87312 8 8.36442 8 7.83398C8 7.30355 8.21071 6.79484 8.58579 6.41977C8.96086 6.0447 9.46957 5.83398 10 5.83398C10.5304 5.83398 11.0391 6.0447 11.4142 6.41977C11.7893 6.79484 12 7.30355 12 7.83398Z" fill="#797979"/>
@@ -284,7 +287,7 @@
                     </div>
 
                     <!-- Pendidikan -->
-                    <div class="bg-white rounded-2xl p-6 mb-5">
+                    <div class="bg-white rounded-0 md:rounded-2xl p-6 mb-5">
                         <div class="cursor-pointer flex items-center justify-between border-b pb-4">
                             <h3 class="font-medium">Pendidikan</h3>
                             <div class="flex items-center gap-2 text-sm p-2 px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
@@ -347,12 +350,12 @@
                                         U
                                     </span>
                                     <div class="ps-4">
-                                        <h4 class="font-medium">Universitas Indonesia</h4>
-                                        <div class="flex items-center gap-4 mb-3 text-sm">
+                                        <h4 class="text-sm md:text-base mb-1 font-medium">Universitas Indonesia</h4>
+                                        <div class="flex items-center gap-4 mb-3 text-xs flex-wrap md:text-sm">
                                             <span>Sarjana Ilmu Komputer</span>|
                                             <span>Depok</span>
                                         </div>
-                                        <div class="flex items-center gap-7 text-sm mb-4">
+                                        <div class="flex items-center gap-7 text-xs md:text-sm mb-4">
                                             <div class="font-medium">
                                                 Jurusan<br/>
                                                 IPK
