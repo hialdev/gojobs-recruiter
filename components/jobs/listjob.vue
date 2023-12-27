@@ -9,7 +9,7 @@
                     </svg>
                 </div>
             </div>
-            <h3 class="text-xl">{{job?.title}}</h3>
+            <h3 class="text-base md:text-xl">{{job?.title}}</h3>
             <p class="text-slate-500 text-sm mb-4">{{job?.company}}</p>
             <div class="font-medium">{{job?.location}}</div>
             <div class="font-medium">{{job?.salary}}</div>

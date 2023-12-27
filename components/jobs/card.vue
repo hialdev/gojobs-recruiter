@@ -9,9 +9,9 @@
                     </svg>
                 </div>
             </div>
-            <h3 class="text-xl">{{job?.title}}</h3>
+            <h3 class="text-lg md:text-xl">{{job?.title}}</h3>
             <p class="text-slate-500 text-sm mb-4">{{job?.company}}</p>
-            <ul class="text-slate-600">
+            <ul class="text-sm md:text-base text-slate-600">
                 <li class="flex items-center gap-3">
                     <div class="w-[20px]">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

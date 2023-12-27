@@ -1,8 +1,8 @@
 <template>
-    <div class="container mx-auto p-8">
+    <div class="container mx-auto p-8 px-0 md:px-8">
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 lg:col-span-4">
-                <div class="bg-white rounded-2xl p-6">
+                <div class="bg-white rounded-none md:rounded-2xl p-6">
                     <div class="flex flex-col items-center gap-1 border-b pb-5 relative">
                         <div class="cursor-pointer absolute top-0 end-0 flex items-center justify-center text-slate-300 hover:text-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -174,7 +174,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-2xl p-6 mb-5">
+                <div class="bg-white rounded-none md:rounded-2xl p-6 mb-5">
                     <div class="cursor-pointer flex items-center justify-between border-b pb-4">
                         <h3 class="font-medium">Pengalaman Kerja</h3>
                         <div class="flex items-center gap-2 text-sm p-2 px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
@@ -206,13 +206,13 @@
                                     W
                                 </span>
                                 <div class="ps-4">
-                                    <h4 class="font-medium">Web Design & Development Team Leader</h4>
-                                    <div class="flex items-center gap-4 mb-3 text-sm">
+                                    <h4 class="text-sm md:text-base font-medium">Web Design & Development Team Leader</h4>
+                                    <div class="text-xs sm:text-sm flex items-center gap-4 mb-3 text-sm">
                                         <span>Tech Solutions Inc</span>|
                                         <span>May - September 2022</span>|
                                         <span>5 bulan</span>
                                     </div>
-                                    <ul class="flex items-center gap-6 text-sm mb-3">
+                                    <ul class="text-xs flex items-center gap-6 sm:text-sm mb-3">
                                         <li class="flex items-center gap-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                 <path d="M12 7.83398C12 8.36442 11.7893 8.87312 11.4142 9.2482C11.0391 9.62327 10.5304 9.83398 10 9.83398C9.46957 9.83398 8.96086 9.62327 8.58579 9.2482C8.21071 8.87312 8 8.36442 8 7.83398C8 7.30355 8.21071 6.79484 8.58579 6.41977C8.96086 6.0447 9.46957 5.83398 10 5.83398C10.5304 5.83398 11.0391 6.0447 11.4142 6.41977C11.7893 6.79484 12 7.30355 12 7.83398Z" fill="#797979"/>
@@ -239,10 +239,10 @@
                 </div>
 
                 <!-- Pendidikan -->
-                <div class="bg-white rounded-2xl p-6 mb-5">
+                <div class="bg-white rounded-none md:rounded-2xl p-6 mb-5">
                     <div class="cursor-pointer flex items-center justify-between border-b pb-4">
                         <h3 class="font-medium">Pendidikan</h3>
-                        <div class="flex items-center gap-2 text-sm p-2 px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
+                        <div class="flex items-center gap-2 p-2 px-4 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                                 <g clip-path="url(#clip0_428_2643)">
                                     <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16 13H13V16C13 16.55 12.55 17 12 17C11.45 17 11 16.55 11 16V13H8C7.45 13 7 12.55 7 12C7 11.45 7.45 11 8 11H11V8C11 7.45 11.45 7 12 7C12.55 7 13 7.45 13 8V11H16C16.55 11 17 11.45 17 12C17 12.55 16.55 13 16 13Z" fill="currentColor"/>
@@ -270,12 +270,12 @@
                                     U
                                 </span>
                                 <div class="ps-4">
-                                    <h4 class="font-medium">Universitas Indonesia</h4>
-                                    <div class="flex items-center gap-4 mb-3 text-sm">
+                                    <h4 class="text-sm md:text-base font-medium">Universitas Indonesia</h4>
+                                    <div class="text-xs sm:text-sm flex items-center gap-4 mb-3 text-sm">
                                         <span>Sarjana Ilmu Komputer</span>|
                                         <span>Depok</span>
                                     </div>
-                                    <div class="flex items-center gap-7 text-sm mb-4">
+                                    <div class="text-xs sm:text-sm flex items-center gap-7 text-sm mb-4">
                                         <div class="font-medium">
                                             Jurusan<br/>
                                             IPK

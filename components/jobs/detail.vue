@@ -5,11 +5,11 @@
                 <div class="py-6 px-5">
                     <NuxtImg :src="`${selectedJob?.logo}`" :alt="`logo ${selectedJob?.company}`" class="h-[4em]" />
                     <div>
-                        <h2 class="text-xl">{{selectedJob?.title}}</h2>
-                        <p class="text-slate-500">{{selectedJob?.company}}</p>
+                        <h2 class="text-lg md:text-xl">{{selectedJob?.title}}</h2>
+                        <p class="text-sm md:text-base text-slate-500">{{selectedJob?.company}}</p>
                     </div>
                 </div>
-                <ul class="text-slate-600 px-5">
+                <ul class="text-sm text-slate-600 px-5">
                     <li class="flex items-center gap-3">
                         <div class="w-[20px]">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -47,7 +47,7 @@
                 </ul>
                 <div class="py-6 border-t-2 px-5">
                     <h5 class="font-medium">Deskripsi Pekerjaan</h5>
-                    <div>
+                    <div class="text-sm md:text-base">
                         <ol class="list-decimal ms-4 text-slate-500">
                             <li class="text-sm">Buat agenda rapat, buat notulensi, dan buat memo.</li>
                             <li class="text-sm">Memelihara dokumentasi digital dan fisik, memperbarui database secara berkala.</li>
