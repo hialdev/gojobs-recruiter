@@ -18,27 +18,27 @@
                         Screening
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/psikotest" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/psikotest" activeClass="activePsikotest" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Psikotest
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/interview-hr" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/interview-hr" activeClass="activeInthr" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Interview HR
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/interview-user" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/interview-user" activeClass="activeIntuser" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Interview User
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/peralihan" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/peralihan" activeClass="activePeralihan" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Peralihan
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/reject" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/reject" activeClass="activeReject" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Reject
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
-                    <NuxtLink to="/job/1szc23asdede/hiring" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
+                    <NuxtLink to="/job/1szc23asdede/hiring" activeClass="activeHiring" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Hiring
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
                     </NuxtLink>
@@ -69,5 +69,47 @@
 }
 .activeScreening>span{
     @apply bg-purple-800 text-purple-50 ;
+}
+
+.activePsikotest{
+    @apply bg-orange-50 text-orange-800 border border-orange-800 ;
+}
+.activePsikotest>span{
+    @apply bg-orange-800 text-orange-50 ;
+}
+
+.activeInthr{
+    @apply bg-blue-50 text-blue-800 border border-blue-800 ;
+}
+.activeInthr>span{
+    @apply bg-blue-800 text-blue-50 ;
+}
+
+.activeIntuser{
+    @apply bg-green-50 text-green-800 border border-green-800 ;
+}
+.activeIntuser>span{
+    @apply bg-green-800 text-green-50 ;
+}
+
+.activePeralihan{
+    @apply bg-sky-50 text-sky-800 border border-sky-800 ;
+}
+.activePeralihan>span{
+    @apply bg-sky-800 text-sky-50 ;
+}
+
+.activeReject{
+    @apply bg-rose-50 text-rose-800 border border-rose-800 ;
+}
+.activeReject>span{
+    @apply bg-rose-800 text-rose-50 ;
+}
+
+.activeHiring{
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-800 ;
+}
+.activeHiring>span{
+    @apply bg-emerald-800 text-emerald-50 ;
 }
 </style>
