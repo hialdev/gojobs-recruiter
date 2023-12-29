@@ -1,539 +1,59 @@
-<script setup>
-definePageMeta({
-    layout: 'fixed',
-})
-</script>
-
-<script>
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
-import 'swiper/css';
-
-// import required modules
-
-export default {
-    components: {
-        Swiper,
-        SwiperSlide,
-    },
-
-    data(){
-        return {
-            countries : [
-                { key: 'us', value: 'United States' },
-                { key: 'ca', value: 'Canada' },
-                { key: 'fr', value: 'France' },
-            ],
-            industries : [
-                { key: 'it', value: 'Information Technology' },
-                { key: 'eng', value: 'Engineering' },
-                { key: 'med', value: 'Medical' },
-                { key: 'fin', value: 'Finance' },
-                { key: 'edu', value: 'Education' },
-                { key: 'man', value: 'Manufacturing' },
-                { key: 'art', value: 'Arts and Entertainment' },
-                { key: 'mar', value: 'Marketing' },
-                { key: 'ret', value: 'Retail' },
-                { key: 'agr', value: 'Agriculture' }
-            ],
-            industriesList : [
-                {
-                    title: "Penjualan",
-                    listJobs: [
-                        "Sales",
-                        "Sales Technical",
-                        "Merchandiser",
-                        "Promotor",
-                        "SPG/B Reguler & Event",
-                    ],
-                    to: "/lowongan?industri=penjualan",
-                    image: {
-                        src: "/icon/sales.svg",
-                        alt: "Icon Penjualan Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Teknologi Informasi",
-                    listJobs: [
-                        "Software Developer",
-                        "Mobile Developer",
-                        "Frontend & Backend Engineer",
-                        "System Analyst",
-                        "IT Helpdesk Support",
-                    ],
-                    to: "/lowongan?industri=it",
-                    image: {
-                        src: "/icon/it.svg",
-                        alt: "Icon IT Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Administrasi Bisnis",
-                    listJobs: [
-                        "Admin",
-                        "Sekretaris",
-                        "Receptionist",
-                        "Kurir",
-                        "Staff Bagian Umum",
-                    ],
-                    to: "/lowongan?industri=admin",
-                    image: {
-                        src: "/icon/admin.svg",
-                        alt: "Icon Administrasi Bisnis Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Teknologi Komunikasi",
-                    listJobs: [
-                        "Project Manager",
-                        "Network Engineer",
-                        "Network Security",
-                        "Network Operation Center",
-                        "Teknisi Jaringan",
-                    ],
-                    to: "/lowongan?industri=teknologi+komunikasi",
-                    image: {
-                        src: "/icon/network.svg",
-                        alt: "Icon Teknologi Komunikasi Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Pemasaran",
-                    listJobs: [
-                        "Digital Marketing",
-                        "SEO Specialist",
-                        "Desain Grafis & UI/UX",
-                        "Content Creator",
-                        "Riset & Surveyor",
-                    ],
-                    to: "/lowongan/industri=pemasaran",
-                    image: {
-                        src: "/icon/marketing.svg",
-                        alt: "Icon Pemasaran Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Warehouse",
-                    listJobs: [
-                        "Operator Alat Berat",
-                        "Admin Gudang",
-                        "Packer",
-                        "Kepala Gudang",
-                        "Security",
-                    ],
-                    to: "/lowongan?industri=warehouse",
-                    image: {
-                        src: "/icon/warehouse.svg",
-                        alt: "Icon Warehouse Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Instalasi & Perbaikan",
-                    listJobs: [
-                        "ATM Monitoring / Testing",
-                        "Engineering on Site",
-                        "Mechanical Electrical Engineer",
-                        "Building Maintenance",
-                        "Teknisi Elektronik",
-                    ],
-                    to: "/lowongan?industri=Instalasi+Perbaikan",
-                    image: {
-                        src: "/icon/repair.svg",
-                        alt: "Icon Instalasi & Perbaikan Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                },
-                {
-                    title: "Pelayanan",
-                    listJobs: [
-                        "Customer Service",
-                        "Agent Call Center",
-                        "Petugas Tiket",
-                        "Office Boy / Girl",
-                        "Cleaning Service",
-                    ],
-                    to: "/lowongan?industri=pelayanan",
-                    image: {
-                        src: "/icon/service.svg",
-                        alt: "Icon Pelayanan Industry",
-                        width: 100,
-                        height: 100,
-                    },
-                }
-            ],
-            values: [
-                {
-                    title: "Brand Terbaik",
-                    icon: {
-                        src: "/icon/achiev.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Kesempatan bekerja bersama brand terbaik di bidang Elektronik, Telekomunikasi, FMCG, Farmasi, Kosmetik, dan Logistik.",
-                },
-                {
-                    title: "Pengembangan",
-                    icon: {
-                        src: "/icon/toga.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Tersedia pelatihan dan pengembangan dengan modul serta trainer handal untuk meningkatkan ketrampilanmu. ",
-                },
-                {
-                    title: "Kompensasi",
-                    icon: {
-                        src: "/icon/letter.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Mendapatkan kompensasi, jaminan ketenagakerjaan, dan jaminan kesehatan sesuai ketentuan yang berlaku.",
-                },
-                {
-                    title: "Jenjang Karir",
-                    icon: {
-                        src: "/icon/jenjangkarir.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Beragam pilihan lowongan kerja yang sesuai dengan minat dan bakat kerjamu.",
-                },
-                {
-                    title: "CV Gratis",
-                    icon: {
-                        src: "/icon/card.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Ngga perlu bingung buat CV! Fitur Gojobs dukung kamu bikin CV Online secara gratis dan mudah.",
-                },
-                {
-                    title: "Share",
-                    icon: {
-                        src: "/icon/health.svg",
-                        width: 50,
-                        height: 50,
-                    },
-                    description: "Bagikan informasi lowongan pekerjaan dengan Besti, Teman, dan Sodara dengan cepat dan mudah.",
-                },
-            ],
-            recruitmentProcess: [
-                {
-                    number: 1,
-                    title: "Seleksi CV",
-                    description: "Mulai dari sini! Tim ISH akan reviu CV / Resume yang kamu kirim, mencocokkan kompetensimudengan kualifikasi yang dibutuhkan dan kontak kamu bila memenuhi kualifikasi",
-                },
-                {
-                    number: 2,
-                    title: "Psikotest",
-                    description: "Agar memastikan profilmu cocok dengan dengan jabatan yang dilamar kamu diminta untukmengerjakan soal-soal psikotes. Tips: Kerjakan tes di pagi hari, fokus tanpa gangguan, danselesaikan segera.",
-                },
-                {
-                    number: 3,
-                    title: "Wawancara HR",
-                    description: "Tim ISH akan menggali lebih dalam pengalaman, ketrampilan, dan pengetahuan seputar profesiserta jabatan yang kamu lamar. Tips: Persiapan, Berlatih, dan tampil percaya diri.",
-                },
-                {
-                    number: 4,
-                    title: "Wawancara User",
-                    description: "Di tahap ini profil kamu akan digali lebih dalam oleh Tim Klien. Pertanyaan teknis dan roleplaybiasanya diajukan dalam sesi wawancara. Tips: Kuasai teknis pekerjaan, banyak berlatih, dan hadir tepat waktu. ",
-                },
-                {
-                    number: 5,
-                    title: "Hiring",
-                    description: "Hore! Ini tahap akhir proses rekrutmen kamu. Segera melengkapi data untuk pembuatan kontrakkerja dan payroll. Semakin cepat kamu lengkapi, semakin cepat kamu bisa bekerja. Selamat ya Ka!",
-                },
-            ],
-            testimonials: [
-                {
-                    image:{
-                        src:"testi (1).png",
-                        alt:"image testi (1)",
-                    },
-                    name: "Albert Flores",
-                    rate: 5,
-                    position: "Admin HR",
-                    quote: "GoJobs membantu saya menemukan kandidat berkualitas dengan cepat dan mudah.",
-                },
-                {
-                    image:{
-                        src:"testi (2).png",
-                        alt:"image testi (2)",
-                    },
-                    name: "Eva Simmons",
-                    rate: 4,
-                    position: "Recruitment Manager",
-                    quote: "Pelayanan pelanggan GoJobs sangat responsif dan membantu kami mengelola proses rekrutmen dengan baik.",
-                },
-                {
-                    image:{
-                        src:"testi (3).png",
-                        alt:"image testi (3)",
-                    },
-                    name: "John Carter",
-                    rate: 5,
-                    position: "Senior Developer",
-                    quote: "Saya sangat senang bisa bergabung dengan perusahaan ini melalui GoJobs. Prosesnya sangat lancar dan efisien.",
-                },
-                {
-                    image:{
-                        src:"testi (2).png",
-                        alt:"image testi (2)",
-                    },
-                    name: "Grace Lee",
-                    rate: 3,
-                    position: "Marketing Specialist",
-                    quote: "GoJobs memberikan banyak peluang pekerjaan menarik, namun masih perlu beberapa fitur penyempurnaan.",
-                },
-                {
-                    image:{
-                        src:"testi (1).png",
-                        alt:"image testi (1)",
-                    },
-                    name: "Diana Miller",
-                    rate: 5,
-                    position: "HR Coordinator",
-                    quote: "Pengalaman menggunakan GoJobs sangat memuaskan. Saya merekomendasikannya kepada rekan-rekan HR lainnya.",
-                },
-            ],
-        }
-    },
-    mounted() {
-       
-    },
-};
-</script>
-
 <template>
-    <div>
-        <AuthLogin />
-        <section class="bg-cover min-h-screen" style="background:linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%), url('/image/banner-hero.png'), lightgray 0px -117px / 100% 117.676% no-repeat; background-size:cover; background-repeat: no-repeat;">
-            <div class="container mx-auto h-screen px-5">
-                <div class="grid grid-cols-12 items-center h-full">
-                    <div class="col-span-12 lg:col-span-6">
-                        <h1 class="mb-12 text-white text-4xl lg:text-5xl font-semibold">Yuk Lamar di GoJobs! <br /><span class="font-normal">#Teman Cari Kerja</span></h1>
-                        <PartialsSearch class="mb-4" :label="`Cari posisi / perusahaan lowongan`" />
-                        <div class="grid grid-cols-2 gap-4 mb-4">
-                            <PartialsSelect :options="industries" :label="'Kategori'" />
-                            <PartialsSelect :options="countries" :label="'Lokasi'" />
-                        </div>
-                        <PartialsButton>Cari Lowongan</PartialsButton>
-                        <NuxtLink to="/lowongan" class="mt-12 text-normal lowercase text-white flex items-center gap-4">lihat semua lowongan <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10.159 10.72a.75.75 0 1 0 1.06 1.06l3.25-3.25L15 8l-.53-.53l-3.25-3.25a.75.75 0 0 0-1.061 1.06l1.97 1.97H1.75a.75.75 0 1 0 0 1.5h10.379l-1.97 1.97Z" clip-rule="evenodd"/></svg></NuxtLink>
+    <div class="h-screen min-w-full bg-slate-100">
+        <div class="grid grid-cols-12">
+            <div class="hidden md:block md:col-span-7">
+                <div class="relative">
+                    <NuxtImg src="/image/bg-login.png" width="520" height="720" class="w-full object-cover h-screen" />
+                    <div class="absolute flex flex-col justify-end top-0 end-0 start-0 bottom-0 bg-[#29675B] bg-opacity-[0.8] bg-blend-multiply p-9">
+                        <h2 class="text-5xl text-white font-medium mb-3">
+                            HR Management Platform
+                        </h2>
+                        <p class="text-white">Manage all applicant candidate </p>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="py-[4em] bg-slate-200">
-            <div class="container mx-auto px-5">
-                <div class="grid grid-cols-12 md:gap-8">
-                    <div class="col-span-12">
-                        <h2 class="text-2xl text-center my-9">Industri pekerjaan yang dibutuhkan</h2>
-                    </div>
-                    <div v-for="industry in industriesList" :key="industry.title" class="col-span-12 md:col-span-6 lg:col-span-3 mb-8 md:mb-0">
-                        <NuxtLink :to="industry.to" class="block w-full">
-                            <div class="p-6 px-8 lg:px-6 bg-white rounded-[50px] shadow-4xl hover:shadow-2xl hover:shadow-orange-300/20">
-                                <div class="flex items-center gap-5 mb-6">
-                                    <NuxtImg :src="industry.image?.src" :alt="industry.image?.alt" :width="industry.image?.width" :height="industry.image?.height" class="w-[6em] h-[6em] rounded-[99px]" />
-                                    <h3 class="text-xl mb-4">{{industry.title}}</h3>
-                                </div>
-                                <ol v-for="(job, index) in industry.listJobs" :key="index" class="list-disc ms-5">
-                                    <li class="text-sm text-slate-500 mb-1">{{job}}</li>
-                                </ol>
+            <div class="col-span-12 md:col-span-5 md:rounded-l-3xl md:overflow-hidden md:ms-[-2em] md:z-10">
+                <div class="bg-white p-12 h-screen text-center">
+                    <h1 class="text-2xl font-medium mb-2 text-emerald-600">Hi Recruter</h1>
+                    <p class="text-sm text-slate-500">Jelajahi beragam profil yang sesuai dengan kebutuhan Anda, dan temukan kandidat ideal untuk memperkuat tim Anda</p>
+                    <form @submit.prevent="login" class="flex flex-col gap-6 mt-12 max-w-[30em] mx-auto">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
+                                <svg class="text-gray-500" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 16 16"><path fill="currentColor" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/></svg>
                             </div>
-                        </NuxtLink>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-100 py-[5em]">
-            <div class="container mx-auto px-5">
-                <div class="grid grid-cols-12 gap-6 items-stretch">
-                    <div class="col-span-12 lg:col-span-6">
-                        <h2 class="text-2xl mb-3">Berbagai keuntungan untukmu!</h2>
-                        <p class="text-slate-500">Temukan peluang tak terbatas dan hadapi tantangan baru. Jangan lewatkan momen untuk menciptakan masa depan suksesmu. Gabunglah sekarang bersama gojobs!</p>
-                    </div>
-                
-                    <div v-for="(value, index) in values" :key="index" class="col-span-12 sm:col-span-6 lg:col-span-3">
-                        <div class="p-6 h-full rounded-3xl bg-white">
-                            <NuxtImg 
-                                :src="value?.icon?.src"
-                                :alt="value?.icon?.alt"
-                                class="mb-3"
-                                :width="value?.icon?.width"
-                                :height="value?.icon?.height"
-                            />
-                            <h3 class="text-normal md:text-xl mb-2 lg:mb-3">{{value?.title}}</h3>
-                            <p class="line-clamp-5 text-slate-500 text-sm lg:text-normal">{{value?.description}}</p>
+                            <input type="text" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-700/50 focus:border-emerald-700/50 block w-full pe-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="NIK">
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-[5em] bg-white">
-            <div class="container mx-auto px-5">
-                <div class="grid grid-cols-12 lg:gap-12">
-                    <div class="col-span-12 mb-12 lg:mb-0 lg:col-span-5">
-                        <NuxtImg
-                            src="/image/rekurt.png"
-                            alt="Pekerja yang ceria di Gojobs"
-                            class="w-full"
-                            height="860"
-                            width="599"
-                        />
-                    </div>
-                    <div class="col-span-12 lg:col-span-7">
-                        <h2 class="text-2xl mb-3">Alur Proses Rekurtmen</h2>
-                        <p class="text-slate-500 mb-6">ISH berkomitmen menyediakan tenaga kerja sesuai dengan kualifikasi yang ditentukan klien. Berikutalur proses CV kamu dikerjakan oleh Tim ISH :</p>
-                        
-                        <ol class="relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400 ms-4">                  
-                            <li v-for="alur in recruitmentProcess" :key="alur.number" class="mb-7 ms-6">            
-                                <span class="absolute flex items-center justify-center w-10 h-10 bg-primary text-white rounded-full -start-5 ring-4 ring-orange-300/40">
-                                    {{alur?.number}}
-                                </span>
-                                <div class="ps-4">
-                                    <h3 class="font-medium mb-3 text-primary">{{alur?.title}}</h3>
-                                    <p class="text-sm">{{alur?.description}}</p>
-                                </div>
-                            </li>
-                            
-                        </ol>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="bg-slate-100 py-[7em] rounded-t-[3em] md:rounded-t-[5em]">
-            <div class="container mx-auto px-5">
-                <div class="text-center max-w-[40em] mx-auto mb-[4em]">
-                    <h2 class="text-2xl mb-3">Testimoni</h2>
-                    <p class="text-slate-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <swiper
-                    :slidesPerView="'auto'"
-                    :spaceBetween="30"
-                    :pagination="{
-                        clickable: true,
-                    }"
-                    class="mySwiper"
-                >
-                    <swiper-slide v-for="(testimonial,index) in testimonials" :key="index" class="max-w-[30em]">
-                        <div class="mb-[-2em] flex justify-center">
-                            <NuxtImg 
-                                :src="`/image/testi/${testimonial?.image?.src}`"
-                                :alt="testimonial?.image?.alt"
-                                width="100"
-                                height="100"
-                                class="rounded-[50px]"
-                            />
-                        </div>
-                        <div class="p-6 pt-12 bg-white rounded-3xl">
-                            <q class="text-slate-500 italic pb-5 block border-b text-center">{{testimonial?.quote}}</q>
-                            <div class="pt-6 text-center">
-                                <h5 class="font-medium mb-1">{{testimonial?.name}}</h5>
-                                <div class="text-sm text-blue-500 mb-3">{{testimonial?.position}}</div>
-                                <div class="flex items-center justify-center gap-2 mb-4">
-                                    <template v-for="star in Array(testimonial.rate).fill('')">
-                                        <NuxtImg src="/icon/star.svg" class="w-[20px]" />
-                                    </template>
-                                </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
+                                <svg class="text-gray-500" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24"><path fill="currentColor" d="M11.83 9L15 12.16V12a3 3 0 0 0-3-3zm-4.3.8l1.55 1.55c-.05.21-.08.42-.08.65a3 3 0 0 0 3 3c.22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53a5 5 0 0 1-5-5c0-.79.2-1.53.53-2.2M2 4.27l2.28 2.28l.45.45C3.08 8.3 1.78 10 1 12c1.73 4.39 6 7.5 11 7.5c1.55 0 3.03-.3 4.38-.84l.43.42L19.73 22L21 20.73L3.27 3M12 7a5 5 0 0 1 5 5c0 .64-.13 1.26-.36 1.82l2.93 2.93c1.5-1.25 2.7-2.89 3.43-4.75c-1.73-4.39-6-7.5-11-7.5c-1.4 0-2.74.25-4 .7l2.17 2.15C10.74 7.13 11.35 7 12 7"/></svg>
                             </div>
+                            <input type="password" id="input-group-1" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-700/50 focus:border-emerald-700/50 block w-full pe-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-emerald-500 dark:focus:border-emerald-500" placeholder="Password">
                         </div>
-                    </swiper-slide>
-                    
-                </swiper>
-
-                
-            </div>
-        </section>
-
-        <footer class="bg-slate-100">
-            <div class="bg-[#182430] rounded-t-[3em] md:rounded-t-[5em]">
-                <div class="container mx-auto">
-                    <div class="grid grid-cols-12 py-[4em] lg:py-[6em] px-5 lg:gap-12">
-                        <div class="col-span-12 lg:col-span-3 mb-12 lg:mb-0">
-                            <NuxtImg src="/image/gojobs-logo-full-whte.svg" class="h-[2em] mb-6" />
-                            <p class="text-white mb-9">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div class="flex items-center gap-5">
-                                <NuxtLink to="" class="w-[50px] h-[50px] flex items-center justify-center border border-white rounded-[99px] p-2 hover:border-primary cursor-pointer"><NuxtImg class="hover:text-primary" src="/icon/fb.svg" /></NuxtLink>
-                                <NuxtLink to="" class="w-[50px] h-[50px] flex items-center justify-center border border-white rounded-[99px] p-2 hover:border-primary cursor-pointer"><NuxtImg class="hover:text-primary" src="/icon/x.svg" /></NuxtLink>
-                                <NuxtLink to="" class="w-[50px] h-[50px] flex items-center justify-center border border-white rounded-[99px] p-2 hover:border-primary cursor-pointer"><NuxtImg class="hover:text-primary" src="/icon/ig.svg" /></NuxtLink>
-                                <NuxtLink to="" class="w-[50px] h-[50px] flex items-center justify-center border border-white rounded-[99px] p-2 hover:border-primary cursor-pointer"><NuxtImg class="hover:text-primary" src="/icon/yt.svg" /></NuxtLink>
-                            </div>
+                        <div class="flex items-center mb-4">
+                            <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 dark:focus:ring-emerald-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ingat saya</label>
                         </div>
-                        <div class="order-1 lg:order-none col-span-6 lg:col-span-3">
-                            <nav class="flex flex-col gap-2">
-                                <h5 class="text-xl lg:text-2xl font-semibold text-white">Link Terkait</h5>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Tentang Perusahaan</a>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Proses Rekrutmen</a>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Industri Pekerjaan</a>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Kebijakan Privasi</a>
-                            </nav>
-                        </div>
-                        <div class="order-last lg:order-none col-span-6 lg:col-span-3">
-                            <nav class="flex flex-col gap-2">
-                                <h5 class="text-xl lg:text-2xl font-semibold text-white">Layanan</h5>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">CV Gratis</a>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Pencari Lowongan</a>
-                                <a href="" class="text-white hover:underline hover:underline-2 hover:decoration-primary">Bantuan</a>
-                            </nav>
-                        </div>
-                        <div class="col-span-12 lg:col-span-3 mb-12 lg:mt-0">
-                            <nav class="flex flex-col gap-5">
-                                <h5 class="text-xl lg:text-2xl font-semibold text-white">Kontak Informasi</h5>
-                                <div class="flex items-center gap-6">
-                                    <NuxtImg class="w-[40px] h-[40px]" src="/icon/phone.svg" />
-                                    <div>
-                                        <div class="text-xs text-slate-400">Nomor Telepon</div>
-                                        <a href="" class="hover:underline hover:underline-2 hover:decoration-primary text-normal lg:text-xl text-white">0420 102 198</a>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-6">
-                                    <NuxtImg class="w-[40px] h-[40px]" src="/icon/mail.svg" />
-                                    <div>
-                                        <div class="text-xs text-slate-400">Email</div>
-                                        <a href="" class="hover:underline hover:underline-2 hover:decoration-primary text-normal lg:text-xl text-white">hi@gojobs.id</a>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-6">
-                                    <NuxtImg class="w-[40px] h-[40px]" src="/icon/location.svg" />
-                                    <div>
-                                        <div class="text-xs text-slate-400">Lokasi</div>
-                                        <a href="" class="hover:underline hover:underline-2 hover:decoration-primary text-normal lg:text-xl text-white">Fatmawati, Jakarta</a>
-                                    </div>
-                                </div>
-                            </nav>
+                        <button class="p-3 px-5 text-center bg-emerald-700 text-white rounded-3xl">Login</button>
+                    </form>
+                    <div class="text-sm text-start px-3 text-slate-500 mt-12">
+                        <p class="mb-2">Developed by IT Service Management for its internal use.</p>
+                        <div class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m-6 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1c1.71 0 3.1 1.39 3.1 3.1z"/></svg>
+                            <span>Every bit of data transmitted is encrypted and officially signed.</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-[#182430]">
-                <div class="flex items-center gap-2 justify-center bg-gray-900 p-8 text-center text-white">
-                    &copy; Made with 
-                    <div class="text-purple-600">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path fill="currentColor" d="M239.125 97.438c-8.085.263-14.998 3.486-22.125 9.062c-10.136 7.93-19.822 21.153-28.906 36.47c-12.06 20.333-22.702 43.987-35.188 63.686l1.156.72c-.418.68-.383.62-.25 1.374c.134.754.767 2.354 2.407 4.5c3.277 4.293 10.342 10.21 19.936 16.156c19.188 11.89 48.29 24.49 78.813 34.906c30.52 10.418 62.6 18.744 87.874 22.625c12.637 1.94 23.6 2.753 31.406 2.313c6.83-.385 10.57-2.374 11.094-2.47c2.313-12.74 5.12-26.273 7.437-40.03c5.32-31.57 7.318-63.1-.686-79.188c-7.48-15.038-17.617-20.69-29.03-22.375c-7.012-1.034-14.537-.068-21.627 1.97c8.783 5.46 18.177 9.676 28.594 11.624l-3.436 18.376c-29.7-5.554-51.25-24.54-69.344-42c-18.093-17.46-33.43-33.012-47.156-36.437c-3.314-.828-6.41-1.236-9.344-1.282a31.44 31.44 0 0 0-1.625 0zM51.72 172.156c-3.565.077-6.743.487-9.532 1.22c-11.158 2.926-17.707 9.42-21.282 27.343c-5.598 28.066 2.315 52.298 19.938 74.874c17.622 22.576 45.243 42.83 77.625 59.937c62.247 32.887 141.57 54.053 199.155 63.19l7.594-18.064l4.342-10.28l9.344 6.062l54.25 35.062c32.376 2.315 60.15-1.828 77.78-10.563c9.02-4.468 15.296-9.976 18.94-16.062c3.642-6.086 5.003-12.87 3.437-21.72c-4.446-25.12-12.418-39.6-23.375-49.31c-10.958-9.712-25.828-15.125-45.313-19.22c-6.452-1.356-13.402-2.563-20.75-3.75c-2.82 16.205-4.812 30.047-4.188 38.344c.416 5.53-2.52 11.542-6.625 14.717c-4.104 3.176-8.748 4.535-13.843 5.407c-10.19 1.743-22.893 1.178-37.908-.75c-30.03-3.857-68.82-13.617-106.125-26.375c-37.304-12.76-72.902-28.365-96.687-44.908c-11.892-8.27-21.073-16.588-25.813-26.78c-2.37-5.097-3.465-10.944-2.28-16.688c1.183-5.744 4.534-10.91 9.156-15.094c5.593-5.063 11.163-12.628 16.78-21.625c-15.758-6.912-30.355-12.82-43.468-17.125c-16.417-5.39-30.464-8.075-41.156-7.844zm88.968 51.47c-2.743 3.246-5.603 6.26-8.594 8.968c-2.423 2.193-3.146 3.77-3.406 5.03c-.26 1.262-.158 2.677.937 5.032c2.19 4.71 9.037 11.992 19.563 19.313c21.05 14.64 55.74 30.15 92.03 42.56c36.292 12.413 74.398 21.896 102.47 25.5c14.035 1.804 25.686 2.02 32.375.876c2.73-.467 4.262-1.1 4.968-1.47c-.39-6.627.103-14.072 1.095-22.123c-2.2.287-4.467.46-6.813.593c-9.955.562-21.878-.436-35.312-2.5c-26.868-4.126-59.644-12.682-91.063-23.406c-31.418-10.724-61.326-23.52-82.625-36.72c-10.65-6.598-19.196-13.17-24.937-20.686c-.24-.316-.456-.648-.688-.97z"/></svg>
-                    </div>
-                    by Infomedia Solusi Humanika - 2023
-                </div>
-            </div>
-        </footer>
+        </div>
     </div>
 </template>
+
+<script setup>
+definePageMeta({
+    layout:'blank',
+})
+
+const login = ()=>{
+    return navigateTo('/dashboard');
+}
+</script>

@@ -20,7 +20,7 @@ svg, img{
 }
    
 *::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-2xl;
+    @apply bg-emerald-600 rounded-2xl;
 }
 h5{
     @apply mb-3;
