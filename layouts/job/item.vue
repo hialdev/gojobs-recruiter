@@ -49,7 +49,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M36 18L24 30L12 18"/></svg>
                         </div>
                     </div>
-                    <div v-if="showStatus" class="absolute top-0 end-0 mt-[2.3em]">
+                    <div v-if="showStatus" class="absolute top-0 end-0 mt-[2.3em] z-10">
                         <div class="bg-white p-5 rounded-2xl min-w-[10em]">
                             <nav class="flex flex-col items-start gap-1">
                                 <NuxtLink activeClass="text-emerald-300" class="cursor-pointer text-emerald-900 p-3 w-full rounded-lg text-[#41806D] text-sm bg-[#DCF7E1]">Open</NuxtLink>
