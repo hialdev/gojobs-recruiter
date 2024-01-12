@@ -34,16 +34,18 @@
                 <option value="FR">France</option>
                 <option value="DE">Germany</option>
             </select>
-            <button class="px-4 pe-5 whitespace-nowrap py-2 bg-emerald-600 text-white rounded-lg flex items-center gap-3">
+            <button @click="addJob" class="px-4 pe-5 whitespace-nowrap py-2 bg-emerald-600 text-white rounded-lg flex items-center gap-3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="M8.5 2.75a.75.75 0 0 0-1.5 0V7H2.75a.75.75 0 0 0 0 1.5H7v4.25a.75.75 0 0 0 1.5 0V8.5h4.25a.75.75 0 0 0 0-1.5H8.5z"/></svg>
                 New Job
             </button>
         </div>
 
-        <div class="text-sm mb-5">3 dari 16 list</div>
-
-        <div class="flex flex-col gap-5">
-            <CardJobSummary />
-        </div>
+        <CardJobTable />
     </div>
 </template>
+
+<script setup>
+const addJob = () => {
+    navigateTo('/job/add')
+}
+</script>

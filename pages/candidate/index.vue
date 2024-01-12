@@ -1,5 +1,10 @@
 <template>
-    <div>
-        
+    <div class="container mx-auto py-5">
+        <CardCandidateTable />
     </div>
 </template>
+
+<script>
+definePageMeta({
+})
+</script>

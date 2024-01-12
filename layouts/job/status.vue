@@ -2,7 +2,7 @@
     <NuxtLayout name="job-item">
         <div class="container mx-auto px-5 py-5">
             <div class="flex flex-wrap items-center gap-2 mb-5">
-                <form class="flex-auto w-full lg:w-auto lg:max-w-[20em] lg:min-w-[15em]">   
+                <form class="flex-auto w-full lg:w-auto lg:max-w-[13.8em] lg:min-w-[10em]">   
                     <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -14,6 +14,9 @@
                     </div>
                 </form>
                 <div class="status-scroll flex items-center gap-2 overflow-auto pb-3 lg:pb-0">
+                    <NuxtLink to="/job/1szc23asdede" activeClass="activeAll" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 bg-white rounded-lg">
+                        All
+                    </NuxtLink>
                     <NuxtLink to="/job/1szc23asdede/screening" activeClass="activeScreening" class="flex-auto whitespace-nowrap cursor-pointer bg-white text-slate-500 border border-white flex items-center gap-2 text-sm p-2 px-4 pe-3 bg-white rounded-lg">
                         Screening
                         <span class="p-1 font-medium bg-slate-50 rounded-lg px-2">4</span>
@@ -63,7 +66,9 @@
 .status-scroll::-webkit-scrollbar-thumb {
     @apply bg-slate-300 rounded-2xl;
 }
-
+.activeAll{
+    @apply bg-emerald-50 text-emerald-800 border border-emerald-800 ;
+}
 .activeScreening{
     @apply bg-purple-50 text-purple-800 border border-purple-800 ;
 }
