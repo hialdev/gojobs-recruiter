@@ -1,13 +1,31 @@
 <template>
     <div class="bg-[#3D405B] flex items-center px-5 py-3 gap-9 container mx-auto">
-        <NuxtLink to="/dashboard">
-            <NuxtImg src="/image/placehold-logo-white.svg" width="100" height="50" />
-        </NuxtLink>
+        <PartialHeaderLogo />
         <nav class="flex items-center gap-7 ms-5 hidden lg:flex">
-            <NuxtLink activeClass="text-emerald-300" class="text-white" to="/job">Jobs</NuxtLink>
-            <NuxtLink activeClass="text-emerald-300" class="text-white" to="/candidate">Candidates</NuxtLink>
-            <NuxtLink activeClass="text-emerald-300" class="text-white" to="/hiring">Hiring</NuxtLink>
-            <NuxtLink activeClass="text-emerald-300" class="text-white" to="/report">Report</NuxtLink>
+            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
+            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/candidate">Candidates</NuxtLink>
+            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/hiring">Hiring</NuxtLink>
+            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/cancel-join">Cancel Join</NuxtLink>
+            <div class="relative">
+                <button @click="() => { showReport = !showReport }" class="flex items-center gap-2 text-white text-sm hover:text-emerald-300">
+                    Report
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                    </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div v-if="showReport" class="z-10 absolute top-0 mt-[2em] font-normal bg-white rounded-lg shadow w-44">
+                    <ul class="py-2 text-sm text-gray-700 m-0">
+                        <li class="m-0">
+                            <NuxtLink to="/report/hiring" class="block px-4 py-2 hover:bg-gray-100 text-sm">Hiring</NuxtLink>
+                        </li>
+                        <li class="m-0">
+                            <NuxtLink to="/report/job-order" class="block px-4 py-2 hover:bg-gray-100 text-sm">Job Order</NuxtLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <NuxtLink activeClass="text-emerald-300" class="text-white text-sm hover:text-emerald-300" to="/calendar">Calendar</NuxtLink>
         </nav>
         
         <div class="flex items-center ms-auto">
@@ -21,7 +39,25 @@
                             <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/job">Jobs</NuxtLink>
                             <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/candidate">Candidates</NuxtLink>
                             <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/hiring">Hiring</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/report">Report</NuxtLink>
+                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/cancel-join">Cancel Join</NuxtLink>
+                            <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                Report
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <NuxtLink to="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</NuxtLink>
+                                    </li>
+                                    <li>
+                                        <NuxtLink to="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</NuxtLink>
+                                    </li>
+                                </ul>
+                            </div>
+                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/calendar">Calendar</NuxtLink>
                         </nav>
                     </div>
                 </div>
@@ -58,6 +94,7 @@
 
 <script setup>
 const isShow = ref(false);
+const showReport = ref(false);
 
 const toggleMenu = ()=>{
     isShow.value = !isShow.value;
