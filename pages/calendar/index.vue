@@ -75,7 +75,7 @@
                     :label="`Month`"
                     :options="monthOptions"
                     :customClass="`shadow-none border text-sm`"
-                    :modalClass="`end-0`"
+                    :modalClass="[`end-0`]"
                     :defaultValue="`${selectedMonth}`"
                     @selected="(value) => {selectedMonth = value}"
                 />
@@ -83,7 +83,7 @@
                     :label="`Year`"
                     :options="yearOptions"
                     :customClass="`shadow-none border text-sm`"
-                    :modalClass="`end-0`"
+                    :modalClass="[`end-0`]"
                     :defaultValue="`${selectedYear}`"
                     @selected="(value) => {selectedYear = value}"
                 />
@@ -92,7 +92,7 @@
                     :options="activityOptions"
                     :customClass="`shadow-none border text-sm`"
                     :defaultValue="``"
-                    :modalClass="`end-0`"
+                    :modalClass="[`end-0`]"
                     @selected="(value) => {selectedActivity = value}"
                 />
                 <button
@@ -129,14 +129,17 @@
                         </div>
                     </div>
                     <div v-for="schedule in getScheduleForDate(day)" :key="schedule.id">
-                        <div class="p-2 rounded border-s-2 border-emerald-600 bg-white text-xs">
+                        <div @click="() => {selectedSchedule = schedule}" class="p-2 cursor-pointer group hover:bg-emerald-600 hover:text-white rounded border-s-2 border-emerald-600 bg-white text-xs">
                             <div class="mb-1">{{ schedule.activity }}</div>
-                            <div class="text-slate-500 line-clamp-3 mb-2">{{ schedule.detail }}</div>
-                            <div class="flex items-center gap-2 text-emerald-700"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/><path stroke-linecap="round" d="M24.008 12v12.01l8.479 8.48"/></g></svg> {{ schedule.time_start }} - {{ schedule.time_end }}</div>
+                            <div class="text-slate-500 line-clamp-3 mb-2 group-hover:text-emerald-200">{{ schedule.detail }}</div>
+                            <div class="flex items-center gap-2 text-emerald-700 group-hover:text-emerald-100"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4"><path d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/><path stroke-linecap="round" d="M24.008 12v12.01l8.479 8.48"/></g></svg> {{ schedule.time_start }} - {{ schedule.time_end }}</div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div v-if="selectedSchedule != null">
+            <CardCalendarDetail @close="closeSchedule" :schedule="selectedSchedule" />
         </div>
     </div>
 </template>
@@ -153,6 +156,7 @@ const year = ref(currentDate.value.getFullYear());
 const daysInMonth = ref([]);
 const monthOptions = ref([]);
 const yearOptions = ref([]);
+let selectedSchedule = ref(null);
 const activityOptions = ref([
     {
         key: '',
@@ -229,19 +233,6 @@ onMounted(() => {
 watch([selectedMonth, selectedYear], () => {
     updateDaysInMonth();
 });
-const handleActivity = () => {
-    store.updateFilter('activity',filters.value.activity);
-}
-
-const handleMonth = (value) => {
-    selectedMonth = value;
-    store.updateFilter('month',value);
-}
-
-const handleYear = (value) => {
-    selectedYear = value;
-    store.updateFilter('year',value);
-}
 
 const getScheduleForDate = (day) => {
     const selectedDate = new Date(selectedYear.value, monthOptions.value.findIndex((m) => m.value === selectedMonth.value), day);
@@ -256,6 +247,10 @@ const getScheduleForDate = (day) => {
         );
     });
 };
+
+const closeSchedule = () => {
+    selectedSchedule.value = null;
+}
 
 </script>
 
