@@ -18,61 +18,51 @@
                 
         </div>
 
-        <CardHiringCancel />
+        <CardHiringCancel :rows="rows" :selectedRow="selectedRow" />
 
     </div>
 </template>
 
 <script setup>
 const showFilter = ref(false);
-const showExport = ref(false);
 
 const selectedRow = ref([]);
 
 const rows = [
     {
-        id : 'cjo',
-        row  : 'Created JO',
+        id : 'nme',
+        row  : 'Name',
     },
     {
-        id : 'tjo',
-        row  : 'Domisili',
+        id : 'prn',
+        row  : 'Perner',
     },
     {
-        id : 'lyn',
-        row  : 'Layanan',
+        id : 'njo',
+        row  : 'no JO',
     },
     {
-        id : 'lks',
-        row  : 'Lokasi',
+        id : 'cdt',
+        row  : 'Cancel Date',
     },
     {
-        id : 'jbs',
+        id : 'cby',
+        row  : 'Created By',
+    },
+    {
+        id : 'apv',
+        row  : 'Approver',
+    },
+    {
+        id : 'sts',
         row  : 'Status',
     },
     {
-        id : 'jmk',
-        row  : 'Jumlah Kebutuhan',
-    },
-    {
-        id : 'jbf',
-        row  : 'Job Family',
-    },
-    {
-        id : 'sjf',
-        row  : 'Sub Job Family',
-    },
-    {
-        id : 'hrg',
-        row  : 'Hiring',
+        id : 'rmk',
+        row  : 'Remarks',
     }
 ]
 selectedRow.value = rows.map((row) => row.id)
-
-const viewjob = () => {
-    const id = selectedId.value;
-    navigateTo(`/job/${id}`);
-}
 
 const selectRow = (rowId) => {
     const index = selectedRow.value.indexOf(rowId);
@@ -83,191 +73,6 @@ const selectRow = (rowId) => {
         selectedRow.value.splice(index, 1);
     }
 };
-
-const jobOrders = [
-  {
-    id: 1,
-    noJO: "029788/JO/01010101/2023",
-    created: "2023-01-01",
-    typeJO: "Replacement",
-    layanan: "ABC Company",
-    lokasi: "Jakarta",
-    status: "On Process",
-    jumlahKebutuhan: 3,
-    jobFamily: "IT",
-    subJobFamily: "Software Developer",
-    hiring: 2,
-  },
-  {
-    id: 2,
-    noJO: "029788/JO/01010102/2023",
-    created: "2023-01-05",
-    typeJO: "New",
-    layanan: "XYZ Corporation",
-    lokasi: "Bandung",
-    status: "On Process",
-    jumlahKebutuhan: 2,
-    jobFamily: "Finance",
-    subJobFamily: "Financial Analyst",
-    hiring: 1,
-  },
-  {
-    id: 3,
-    noJO: "029788/JO/01010103/2023",
-    created: "2023-01-10",
-    typeJO: "Replacement",
-    layanan: "DEF Industries",
-    lokasi: "Surabaya",
-    status: "New",
-    jumlahKebutuhan: 4,
-    jobFamily: "Engineering",
-    subJobFamily: "Mechanical Engineer",
-    hiring: 3,
-  },
-  {
-    id: 4,
-    noJO: "029788/JO/01010104/2023",
-    created: "2023-01-15",
-    typeJO: "New",
-    layanan: "GHI Solutions",
-    lokasi: "Medan",
-    status: "On Process",
-    jumlahKebutuhan: 2,
-    jobFamily: "Marketing",
-    subJobFamily: "Marketing Specialist",
-    hiring: 1,
-  },
-  {
-    id: 5,
-    noJO: "029788/JO/01010105/2023",
-    created: "2023-01-20",
-    typeJO: "Replacement",
-    layanan: "JKL Enterprises",
-    lokasi: "Yogyakarta",
-    status: "On Process",
-    jumlahKebutuhan: 5,
-    jobFamily: "Human Resources",
-    subJobFamily: "HR Generalist",
-    hiring: 4,
-  },
-  {
-    id: 6,
-    noJO: "029788/JO/01010106/2023",
-    created: "2023-01-25",
-    typeJO: "New",
-    layanan: "MNO Innovations",
-    lokasi: "Semarang",
-    status: "On Process",
-    jumlahKebutuhan: 3,
-    jobFamily: "Sales",
-    subJobFamily: "Sales Representative",
-    hiring: 2,
-  },
-  {
-    id: 7,
-    noJO: "029788/JO/01010107/2023",
-    created: "2023-02-01",
-    typeJO: "Replacement",
-    layanan: "PQR Services",
-    lokasi: "Palembang",
-    status: "On Process",
-    jumlahKebutuhan: 4,
-    jobFamily: "Finance",
-    subJobFamily: "Accountant",
-    hiring: 3,
-  },
-  {
-    id: 8,
-    noJO: "029788/JO/01010108/2023",
-    created: "2023-02-05",
-    typeJO: "New",
-    layanan: "STU Solutions",
-    lokasi: "Makassar",
-    status: "On Process",
-    jumlahKebutuhan: 2,
-    jobFamily: "IT",
-    subJobFamily: "Database Administrator",
-    hiring: 1,
-  },
-  {
-    id: 9,
-    noJO: "029788/JO/01010109/2023",
-    created: "2023-02-10",
-    typeJO: "Replacement",
-    layanan: "VWX Corporation",
-    lokasi: "Malang",
-    status: "On Process",
-    jumlahKebutuhan: 3,
-    jobFamily: "Engineering",
-    subJobFamily: "Electrical Engineer",
-    hiring: 2,
-  },
-  {
-    id: 10,
-    noJO: "029788/JO/01010110/2023",
-    created: "2023-02-15",
-    typeJO: "New",
-    layanan: "YZA Industries",
-    lokasi: "Bandar Lampung",
-    status: "On Process",
-    jumlahKebutuhan: 4,
-    jobFamily: "Marketing",
-    subJobFamily: "Digital Marketing Specialist",
-    hiring: 3,
-  },
-  {
-    id: 11,
-    noJO: "029788/JO/01010111/2023",
-    created: "2023-02-20",
-    typeJO: "Replacement",
-    layanan: "BCD Innovations",
-    lokasi: "Pekanbaru",
-    status: "On Process",
-    jumlahKebutuhan: 2,
-    jobFamily: "Human Resources",
-    subJobFamily: "Recruitment Specialist",
-    hiring: 1,
-  },
-  {
-    id: 12,
-    noJO: "029788/JO/01010112/2023",
-    created: "2023-02-25",
-    typeJO: "New",
-    layanan: "EFG Enterprises",
-    lokasi: "Pontianak",
-    status: "On Process",
-    jumlahKebutuhan: 3,
-    jobFamily: "Sales",
-    subJobFamily: "Sales Manager",
-    hiring: 2,
-  },
-  {
-    id: 13,
-    noJO: "029788/JO/01010113/2023",
-    created: "2023-03-01",
-    typeJO: "Replacement",
-    layanan: "HIJ Corporation",
-    lokasi: "Balikpapan",
-    status: "On Process",
-    jumlahKebutuhan: 4,
-    jobFamily: "Finance",
-    subJobFamily: "Financial Controller",
-    hiring: 3,
-  },
-  {
-    id: 14,
-    noJO: "029788/JO/01010114/2023",
-    created: "2023-03-05",
-    typeJO: "New",
-    layanan: "KLM Solutions",
-    lokasi: "Batam",
-    status: "On Process",
-    jumlahKebutuhan: 2,
-    jobFamily: "IT",
-    subJobFamily: "Network Administrator",
-    hiring: 1,
-  },
-];
 
 
 </script>

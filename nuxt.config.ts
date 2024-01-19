@@ -4,6 +4,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia/nuxt',
   ],
+  pinia: {
+    storesDirs: ['./stores/**'],
+  },
   devtools: { enabled: true },
   css: [ 
     '~/assets/css/main.css',

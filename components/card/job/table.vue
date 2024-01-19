@@ -85,27 +85,36 @@
                         <td class="px-3 py-3 text-sm">
                             {{job.total}}
                         </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.screening}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.psikotest}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.interview_hr}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.interview_user}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.peralihan}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.reject}}
-                        </td>
-                        <td class="px-3 py-3 text-sm">
-                            {{job.hiring}}
-                        </td>
+                        <template v-if="job.isPosted === false">
+                            <td class="px-3 py-3 text-sm">
+                                {{job.screening}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.psikotest}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.interview_hr}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.interview_user}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.peralihan}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.reject}}
+                            </td>
+                            <td class="px-3 py-3 text-sm">
+                                {{job.hiring}}
+                            </td>
+                        </template>
+                        <template v-else>
+                            <td class="px-3 py-3 bg-slate-50" colspan="7">
+                                <div class="flex items-center justify-end">
+                                    <button class="p-2 px-4 rounded-lg bg-emerald-100 text-emerald-600">Create Job Posting</button>
+                                </div>
+                            </td>
+                        </template>
                     </tr>
                 </tbody>
             </table>
@@ -116,6 +125,10 @@
 
 <script setup>
 const selectedId = ref([]);
+
+const props = defineProps({
+    jobs : Array,
+})
 const selectJob = (jobId) => {
     const index = selectedId.value.indexOf(jobId);
 
@@ -127,186 +140,17 @@ const selectJob = (jobId) => {
 };
 
 const selectAll = () => {
-    if (selectedId.value.length === jobs.length) {
+    if (selectedId.value.length === props.jobs.length) {
         selectedId.value = [];
     } else {
-        selectedId.value = jobs.map((job) => job.id);
+        selectedId.value = props.jobs.map((job) => job.id);
     }
 };
 
 const unchecked = () => {
     selectedId.value = [];
 }
-const jobs = [
-    {
-        id : 1,
-        posisi : 'Promotor Elektronik',
-        no_jo : '029788/ISH/01010107/2023',
-        lokasi : 'Tangerang',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 2,
-        posisi : 'Admin Warehouse',
-        no_jo : '029788/ISH/01010106/2023',
-        lokasi : 'Jakarta Selatan',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 3,
-        posisi : 'Digital Marketing',
-        no_jo : '029788/ISH/01010105/2023',
-        lokasi : 'Depok',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 4,
-        posisi : 'Sales',
-        no_jo : '029788/ISH/01010104/2023',
-        lokasi : 'Bekasi',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 5,
-        posisi : 'Promotor Elektronik',
-        no_jo : '029788/ISH/01010107/2023',
-        lokasi : 'Tangerang',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 6,
-        posisi : 'Admin Warehouse',
-        no_jo : '029788/ISH/01010106/2023',
-        lokasi : 'Jakarta Selatan',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 7,
-        posisi : 'Digital Marketing',
-        no_jo : '029788/ISH/01010105/2023',
-        lokasi : 'Depok',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 8,
-        posisi : 'Sales',
-        no_jo : '029788/ISH/01010104/2023',
-        lokasi : 'Bekasi',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 9,
-        posisi : 'Promotor Elektronik',
-        no_jo : '029788/ISH/01010107/2023',
-        lokasi : 'Tangerang',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 10,
-        posisi : 'Admin Warehouse',
-        no_jo : '029788/ISH/01010106/2023',
-        lokasi : 'Jakarta Selatan',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 11,
-        posisi : 'Digital Marketing',
-        no_jo : '029788/ISH/01010105/2023',
-        lokasi : 'Depok',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-    {
-        id : 12,
-        posisi : 'Sales',
-        no_jo : '029788/ISH/01010104/2023',
-        lokasi : 'Bekasi',
-        total : 14,
-        screening : 2,
-        psikotest : 2,
-        interview_hr : 2,
-        interview_user : 2,
-        peralihan : 2,
-        reject : 2,
-        hiring : 2,
-    },
-]
+
 </script>
 
 <style scoped>

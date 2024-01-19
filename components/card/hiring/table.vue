@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex items-center gap-3 mb-4">
-            <PartialFormSearch />
+            <PartialFormSearch @input="applyFilters" v-model="filters.search" />
             
             <NuxtLink to="/hiring/report" class="ms-auto p-2 px-4 bg-white text-slate-600 text-sm rounded-lg flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg> Report Hiring</NuxtLink>
             <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-emerald-100 text-emerald-600 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Request Hiring</button>
@@ -28,7 +28,7 @@
                         <th scope="col" class="px-4 py-3">
                             <!-- Select All -->
                             <input
-                                :checked="selectedId.length === hirings.length"
+                                :checked="selectedId.length === store.filteredHirings.length"
                                 id="select-all-checkbox"
                                 type="checkbox"
                                 value=""
@@ -58,27 +58,27 @@
                     <tr>
                         <td></td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.name" />
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.profile" />
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.noJO" />
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.posisi" />
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.lokasi" />
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.layanan" />
                         </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="hiring in hirings" :key="hiring.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr v-for="hiring in store.filteredHirings" :key="hiring.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-4 py-3">
                             <input @change="selecthiring(hiring.id)" :checked="selectedId.includes(hiring.id)" :id="hiring.id" :value="hiring.id" type="checkbox" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
                         </td>
@@ -109,43 +109,20 @@
 </template>
 
 <script setup>
-const showFilter = ref(false);
+import {useHiringStore} from '@/stores/hiring';
+
+const store = useHiringStore();
 const selectedId = ref([]);
 const selectedRow = ref([]);
-const process = [
-    {
-        key : null,
-        value : 'Semua',
-    },
-    {
-        key : 1,
-        value : 'Screening',
-    },
-    {
-        key : 2,
-        value : 'Psikotest',
-    },
-    {
-        key : 3,
-        value : 'Interview HR',
-    },
-    {
-        key : 4,
-        value : 'Interview User',
-    },
-    {
-        key : 5,
-        value : 'Peralihan',
-    },
-    {
-        key : 6,
-        value : 'Reject',
-    },
-    {
-        key : 7,
-        value : 'Hiring',
-    }
-]
+const filters = ref({
+    search : '',
+    name : '',
+    profile : '',
+    noJO : '',
+    posisi : '',
+    lokasi : '',
+    layanan : '',
+})
 const rows = [
     {
         id : 'tg',
@@ -182,11 +159,6 @@ const rows = [
 ]
 selectedRow.value = rows.map((row) => row.id)
 
-const viewhiring = () => {
-    const id = selectedId.value;
-    navigateTo(`/hiring/${id}`);
-}
-
 const selecthiring = (hiringId) => {
     const index = selectedId.value.indexOf(hiringId);
 
@@ -208,144 +180,26 @@ const selectRow = (rowId) => {
 };
 
 const selectAll = () => {
-    if (selectedId.value.length === hirings.length) {
+    if (selectedId.value.length === store.filteredHirings.length) {
         selectedId.value = [];
     } else {
-        selectedId.value = hirings.map((hiring) => hiring.id);
+        selectedId.value = store.filteredHirings.map((hiring) => hiring.id);
     }
 };
 
 const unchecked = () => {
     selectedId.value = [];
 }
-const hirings =  [
-{
-        id: 1,
-        name: "John Doe",
-        profile: "80%",
-        noJO: "029788/ISH/01010101/2023",
-        posisi: "Manager",
-        lokasi: "DKI Jakarta",
-        layanan: "ABC Company"
-    },
-    {
-        id: 2,
-        name: "Jane Doe",
-        profile: "65%",
-        noJO: "029788/ISH/01010102/2023",
-        posisi: "Senior Engineer",
-        lokasi: "Jawa Barat",
-        layanan: "XYZ Corporation"
-    },
-    {
-        id: 3,
-        name: "Alice Smith",
-        profile: "45%",
-        noJO: "029788/ISH/01010103/2023",
-        posisi: "Marketing Specialist",
-        lokasi: "Banten",
-        layanan: "PQR Industries"
-    },
-    {
-        id: 4,
-        name: "Bob Johnson",
-        profile: "75%",
-        noJO: "029788/ISH/01010104/2023",
-        posisi: "Finance Analyst",
-        lokasi: "Jawa Tengah",
-        layanan: "LMN Solutions"
-    },
-    {
-        id: 5,
-        name: "Eva Williams",
-        profile: "90%",
-        noJO: "029788/ISH/01010105/2023",
-        posisi: "Software Developer",
-        lokasi: "Sumatra Utara",
-        layanan: "DEF Tech"
-    },
-    {
-        id: 6,
-        name: "David Lee",
-        profile: "50%",
-        noJO: "029788/ISH/01010106/2023",
-        posisi: "HR Specialist",
-        lokasi: "Kalimantan Barat",
-        layanan: "GHI Solutions"
-    },
-    {
-        id: 7,
-        name: "Catherine Brown",
-        profile: "85%",
-        noJO: "029788/ISH/01010107/2023",
-        posisi: "Sales Manager",
-        lokasi: "Sulawesi Selatan",
-        layanan: "JKL Corporation"
-    },
-    {
-        id: 8,
-        name: "George Miller",
-        profile: "60%",
-        noJO: "029788/ISH/01010108/2023",
-        posisi: "Quality Assurance Analyst",
-        lokasi: "Nusa Tenggara Timur",
-        layanan: "MNO Tech"
-    },
-    {
-        id: 9,
-        name: "Grace Davis",
-        profile: "70%",
-        noJO: "029788/ISH/01010109/2023",
-        posisi: "Customer Support Specialist",
-        lokasi: "Maluku",
-        layanan: "PST Services"
-    },
-    {
-        id: 10,
-        name: "Frank Wilson",
-        profile: "55%",
-        noJO: "029788/ISH/01010110/2023",
-        posisi: "Logistics Coordinator",
-        lokasi: "Papua Barat",
-        layanan: "UVW Logistics"
-    },
-    {
-        id: 11,
-        name: "Helen Anderson",
-        profile: "80%",
-        noJO: "029788/ISH/01010111/2023",
-        posisi: "Operations Manager",
-        lokasi: "Aceh",
-        layanan: "XYZ Operations"
-    },
-    {
-        id: 12,
-        name: "Ivan Garcia",
-        profile: "40%",
-        noJO: "029788/ISH/01010112/2023",
-        posisi: "IT Specialist",
-        lokasi: "Sulawesi Tengah",
-        layanan: "ABC IT Solutions"
-    },
-    {
-        id: 13,
-        name: "Jessica Moore",
-        profile: "75%",
-        noJO: "029788/ISH/01010113/2023",
-        posisi: "Research Scientist",
-        lokasi: "Bangka Belitung",
-        layanan: "DEF Research"
-    },
-    {
-        id: 14,
-        name: "Kevin Taylor",
-        profile: "95%",
-        noJO: "029788/ISH/01010114/2023",
-        posisi: "CEO",
-        lokasi: "Lampung",
-        layanan: "GHI Enterprises"
-    }
-];
+
+const applyFilters = () => {
+    store.updateFilter('search',filters.value.search)
+    store.updateFilter('name',filters.value.name)
+    store.updateFilter('profile',filters.value.profile)
+    store.updateFilter('noJO',filters.value.noJO)
+    store.updateFilter('posisi',filters.value.posisi)
+    store.updateFilter('layanan',filters.value.layanan)
+    store.updateFilter('lokasi',filters.value.lokasi)
+}
 
 </script>
 

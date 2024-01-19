@@ -62,6 +62,9 @@ export default {
         showLabel:{
             type: Boolean,
             default: false,
+        },
+        defaultValue:{
+            type: String,
         }
     },
     data() {
@@ -96,6 +99,14 @@ export default {
         searchOptions(event) {
             this.searchQuery = String(event.target?.value).toLowerCase();
         },
+        getDefaultValue() {
+            if (this.defaultValue) {
+                const defaultOption = this.options.find(option => option.key === this.defaultValue);
+                if (defaultOption) {
+                    this.selectItem = defaultOption;
+                }
+            }
+        },
     },
     computed: {
         filteredOptions() {
@@ -105,6 +116,21 @@ export default {
             return filtered;
         },
     },
+    mounted(){
+        this.getDefaultValue();
+    },
+    watch: {
+        options : {
+            handler(){
+                this.getDefaultValue();
+            }
+        },
+        defaultValue : {
+            handler(){
+                this.getDefaultValue();
+            }
+        },
+    }
 };
 </script>
 

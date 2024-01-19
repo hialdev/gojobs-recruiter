@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <PartialFormSelect :label="`Process`" :options="process" :customClass="`p-2 text-sm shadow-none hover:ring hover:ring-emerald-600/10`" />
+            <PartialFormSelect @selected="applySelectFilters" :label="`Process`" :options="process" :customClass="`p-2 text-sm shadow-none hover:ring hover:ring-emerald-600/10`" />
             <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg">Move</button>
             <button @click="viewCandidate()" class="p-2 px-4 bg-emerald-100 text-emerald-700 text-sm rounded-lg">View</button>
         </div>
@@ -42,10 +42,6 @@
             <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-8 9.79V14H9c-.55 0-1-.45-1-1s.45-1 1-1h3v-1.79c0-.45.54-.67.85-.35l2.79 2.79c.2.2.2.51 0 .71l-2.79 2.79a.5.5 0 0 1-.85-.36"/></svg>
                 Move
-            </button>
-            <button @click="viewCandidate()" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-100 hover:bg-emerald-100 text-emerald-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path fill="currentColor" d="M0 226v32c128 192 384 192 512 0v-32C384 34 128 34 0 226m256 144c-70.7 0-128-57.3-128-128s57.3-128 128-128s128 57.3 128 128s-57.3 128-128 128m0-200c0-8.3 1.7-16.1 4.3-23.6c-1.5-.1-2.8-.4-4.3-.4c-53 0-96 43-96 96s43 96 96 96s96-43 96-96c0-1.5-.4-2.8-.4-4.3c-7.4 2.6-15.3 4.3-23.6 4.3c-39.8 0-72-32.2-72-72"/></svg>
-                View
             </button>
             <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-blue-100 hover:bg-blue-100 text-blue-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21v-4.25L17.625 2.175L21.8 6.45L7.25 21zM17.6 7.8L19 6.4L17.6 5l-1.4 1.4z"/></svg>
@@ -67,7 +63,7 @@
                         <th scope="col" class="px-4 py-3">
                             <!-- Select All -->
                             <input
-                                :checked="selectedId.length === candidates.length"
+                                :checked="selectedId.length === candidatesStore.filteredCandidates.length"
                                 id="select-all-checkbox"
                                 type="checkbox"
                                 value=""
@@ -107,37 +103,36 @@
                 <tbody>
                     <tr class="border-b-[5px] border-slate-50 bg-white">
                         <td class="p-1">
-
                         </td>
                         <td class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.name" />
                         </td>
                         <td v-if="selectedRow.includes('tg')" class="p-1">
-                            <PartialFormSearch />
+                            
                         </td>
                         <td v-if="selectedRow.includes('dm')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.domisili" />
                         </td>
                         <td v-if="selectedRow.includes('gd')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.gender" />
                         </td>
                         <td v-if="selectedRow.includes('us')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.usia" />
                         </td>
                         <td v-if="selectedRow.includes('pd')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.pendidikan" />
                         </td>
                         <td v-if="selectedRow.includes('ly')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.layanan" />
                         </td>
                         <td v-if="selectedRow.includes('jb')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.jabatan" />
                         </td>
                         <td v-if="selectedRow.includes('mn')" class="p-1">
-                            <PartialFormSearch />
+                            <PartialFormSearch @input="applyFilters" v-model="filters.minat" />
                         </td>
                     </tr>
-                    <tr v-for="candidate in candidates" :key="candidate.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr v-for="candidate in candidatesStore.filteredCandidates" :key="candidate.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-4 py-3">
                             <input @change="selectcandidate(candidate.id)" :checked="selectedId.includes(candidate.id)" :id="candidate.id" :value="candidate.id" type="checkbox" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
                         </td>
@@ -184,9 +179,24 @@
 </template>
 
 <script setup>
+import { useCandidatesStore } from '@/stores/candidates';
 const showFilter = ref(false);
 const selectedId = ref([]);
 const selectedRow = ref([]);
+const filters = ref({
+    name : '',
+    status : '',
+    domisili : '',
+    gender : '',
+    usia : '',
+    pendidikan : '',
+    layanan : '',
+    jabatan : '',
+    minat : '',
+});
+
+const candidatesStore = useCandidatesStore();
+
 const process = [
     {
         key : null,
@@ -257,6 +267,21 @@ const rows = [
 ]
 selectedRow.value = rows.map((row) => row.id)
 
+const applySelectFilters = (value) => {
+    candidatesStore.updateFilter('status', value);
+    console.log(value);
+}
+const applyFilters = () => {
+    candidatesStore.updateFilter('name', filters.value.name);
+    candidatesStore.updateFilter('domisili', filters.value.domisili);
+    candidatesStore.updateFilter('gender', filters.value.gender);
+    candidatesStore.updateFilter('usia', filters.value.usia);
+    candidatesStore.updateFilter('pendidikan', filters.value.pendidikan);
+    candidatesStore.updateFilter('layanan', filters.value.layanan);
+    candidatesStore.updateFilter('jabatan', filters.value.jabatan);
+    candidatesStore.updateFilter('minat', filters.value.minat);
+};
+
 const viewCandidate = () => {
     const id = selectedId.value;
     navigateTo(`/candidate/${id}`);
@@ -283,187 +308,18 @@ const selectRow = (rowId) => {
 };
 
 const selectAll = () => {
-    if (selectedId.value.length === candidates.length) {
+    if (selectedId.value.length === candidatesStore.filteredCandidates.length) {
         selectedId.value = [];
     } else {
-        selectedId.value = candidates.map((candidate) => candidate.id);
+        selectedId.value = candidatesStore.filteredCandidates.map((candidate) => candidate.id);
     }
 };
 
 const unchecked = () => {
     selectedId.value = [];
 }
-const candidates = [
-  {
-    id: 1,
-    name: 'Budi Santoso',
-    status: 1,
-    tags: 2,
-    domisili: 'Jakarta',
-    gender: 'Laki-laki',
-    usia: 28,
-    pendidikan: 'S1 Teknik Informatika',
-    layanan: 'ABC Corp',
-    jabatan: 'Software Engineer',
-    minat: 'Promotor'
-  },
-  {
-    id: 2,
-    name: 'Dewi Lestari',
-    status: 2,
-    tags: 1,
-    domisili: 'Surabaya',
-    gender: 'Perempuan',
-    usia: 24,
-    pendidikan: 'S1 Ekonomi',
-    layanan: 'XYZ Solutions',
-    jabatan: 'Marketing Specialist',
-    minat: 'Promotor'
-  },
-  {
-    id: 3,
-    name: 'Anwar Setiawan',
-    status: 3,
-    tags: 3,
-    domisili: 'Bandung',
-    gender: 'Laki-laki',
-    usia: 30,
-    pendidikan: 'S1 Teknik Elektro',
-    layanan: '123 Services',
-    jabatan: 'Electrical Engineer',
-    minat: 'Promotor'
-  },
-  {
-    id: 4,
-    name: 'Rini Cahyani',
-    status: 4,
-    tags: 2,
-    domisili: 'Yogyakarta',
-    gender: 'Perempuan',
-    usia: 26,
-    pendidikan: 'S1 Psikologi',
-    layanan: 'Tech Innovators',
-    jabatan: 'HR Specialist',
-    minat: 'Promotor'
-  },
-  {
-    id: 5,
-    name: 'Joko Susanto',
-    status: 5,
-    tags: 1,
-    domisili: 'Semarang',
-    gender: 'Laki-laki',
-    usia: 29,
-    pendidikan: 'S1 Manajemen',
-    layanan: 'Global Solutions',
-    jabatan: 'Business Analyst',
-    minat: 'Promotor'
-  },
-  {
-    id: 6,
-    name: 'Siti Aminah',
-    status: 6,
-    tags: 3,
-    domisili: 'Medan',
-    gender: 'Perempuan',
-    usia: 25,
-    pendidikan: 'S1 Teknik Industri',
-    layanan: 'Innovate Tech',
-    jabatan: 'Quality Assurance',
-    minat: 'Promotor'
-  },
-  {
-    id: 7,
-    name: 'Adi Pratama',
-    status: 1,
-    tags: 2,
-    domisili: 'Surabaya',
-    gender: 'Laki-laki',
-    usia: 27,
-    pendidikan: 'S1 Akuntansi',
-    layanan: 'Tech Wizards',
-    jabatan: 'Accountant',
-    minat: 'Promotor'
-  },
-  {
-    id: 8,
-    name: 'Budi Luhur',
-    status: 2,
-    tags: 1,
-    domisili: 'Jakarta',
-    gender: 'Laki-laki',
-    usia: 31,
-    pendidikan: 'S1 Ilmu Komunikasi',
-    layanan: 'Digital Innovations',
-    jabatan: 'Content Creator',
-    minat: 'Promotor'
-  },
-  {
-    id: 9,
-    name: 'Maya Wijaya',
-    status: 5,
-    tags: 3,
-    domisili: 'Bandung',
-    gender: 'Perempuan',
-    usia: 28,
-    pendidikan: 'S1 Desain Grafis',
-    layanan: 'Creative Minds',
-    jabatan: 'Graphic Designer',
-    minat: 'Promotor'
-  },
-  {
-    id: 10,
-    name: 'Ryan Ramadhan',
-    status: 6,
-    tags: 2,
-    domisili: 'Yogyakarta',
-    gender: 'Laki-laki',
-    usia: 25,
-    pendidikan: 'S1 Hukum',
-    layanan: 'Legal Eagles',
-    jabatan: 'Legal Consultant',
-    minat: 'Promotor'
-  },
-  {
-    id: 11,
-    name: 'Rizki Ramadhan',
-    status: 3,
-    tags: 1,
-    domisili: 'Semarang',
-    gender: 'Laki-laki',
-    usia: 29,
-    pendidikan: 'S1 Teknik Sipil',
-    layanan: 'Urban Builders',
-    jabatan: 'Civil Engineer',
-    minat: 'Promotor'
-  },
-  {
-    id: 12,
-    name: 'Novan Setya',
-    status: 4,
-    tags: 3,
-    domisili: 'Medan',
-    gender: 'Laki-laki',
-    usia: 26,
-    pendidikan: 'S1 Farmasi',
-    layanan: 'Health Innovations',
-    jabatan: 'Pharmacist',
-    minat: 'Promotor'
-  },
-  {
-    id: 13,
-    name: 'Example Candidate',
-    status: 1,
-    tags: 1,
-    domisili: 'Example City',
-    gender: 'Laki-laki',
-    usia: 30,
-    pendidikan: 'S1 Example',
-    layanan: 'Example Services',
-    jabatan: 'Example candidate',
-    minat: 'Promotor'
-  },
-];
+
+
 
 </script>
 
