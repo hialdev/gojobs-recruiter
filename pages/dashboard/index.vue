@@ -22,7 +22,7 @@
                     </div>
                     <table class="w-full mt-6">
                         <tr>
-                            <th class="text-start text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Jobs</th>
+                            <th class="text-start text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Job Category</th>
                             <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Screening</th>
                             <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Psikotest</th>
                             <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Interview HR</th>
@@ -34,7 +34,7 @@
                         <tr>
                             <td>
                                 <div class="text-sm font-medium">Promotor Elektronik</div>
-                                <div class="text-sm text-slate-500">029788/ISH/01010107/2023</div>
+                                <div class="text-xs text-slate-500">23 Job Orders</div>
                             </td>
                             <td>
                                 <div class="bg-emerald-100 text-emerald-800 text-center py-4 w-full rounded-lg">5</div>
@@ -108,8 +108,8 @@
                         </select>
                     </div>
                     <div class="relative">
-                        <div>
-                            <Doughnut :data="data" :options="options" />
+                        <div class="relative z-[99] h-[20em]">
+                            <Doughnut :data="data" :options="options"/>
                         </div>
                         <div class="absolute top-0 end-0 start-0 bottom-0 flex flex-col items-center justify-center text-center">
                             <div class="text-2xl font-medium mt-12">39</div>

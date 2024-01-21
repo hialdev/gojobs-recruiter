@@ -31,21 +31,16 @@
                 </div>
             </div>
             <PartialFormSelect @selected="applySelectFilters" :label="`Process`" :options="process" :customClass="`p-2 text-sm shadow-none hover:ring hover:ring-emerald-600/10`" />
-            <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg">Move</button>
-            <button @click="viewCandidate()" class="p-2 px-4 bg-emerald-100 text-emerald-700 text-sm rounded-lg">View</button>
+            <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg flex items-center gap-2"><span v-if="selectedId.length > 0" class="p-1 flex items-center justify-center w-[20px] h-[20px] rounded-lg bg-emerald-100 text-emerald-700">{{ selectedId.length }}</span> Move</button>
         </div>
         <div v-if="selectedId.length > 0" class="flex items-center gap-2 text-sm mb-4 rounded-xl p-2 px-5 bg-white">
             <div @click="unchecked" class="flex items-center justify-center cursor-pointer text-slate-500 hover:text-red-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12L7 7m5 5l5 5m-5-5l5-5m-5 5l-5 5"/></svg>
             </div>
             <div class="fw-medium text-slate-500 me-4">{{ selectedId.length }} selected</div>
-            <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-white">
+            <button @click="action.move = true" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-8 9.79V14H9c-.55 0-1-.45-1-1s.45-1 1-1h3v-1.79c0-.45.54-.67.85-.35l2.79 2.79c.2.2.2.51 0 .71l-2.79 2.79a.5.5 0 0 1-.85-.36"/></svg>
                 Move
-            </button>
-            <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-blue-100 hover:bg-blue-100 text-blue-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M3 21v-4.25L17.625 2.175L21.8 6.45L7.25 21zM17.6 7.8L19 6.4L17.6 5l-1.4 1.4z"/></svg>
-                Edit
             </button>
             <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-100 hover:bg-emerald-100 text-emerald-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20"><g fill="currentColor"><path d="M7 9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2V5h8a2 2 0 0 0-2-2z"/></g></svg>
@@ -175,11 +170,16 @@
             </table>
         </div>
 
+        <!-- Action Modal -->
+        <BlockActionCandidateMove v-if="action.move" @close="action.move = false" />
     </div>
 </template>
 
 <script setup>
 import { useCandidatesStore } from '@/stores/candidates';
+const action = ref({
+    move : false,
+})
 const showFilter = ref(false);
 const selectedId = ref([]);
 const selectedRow = ref([]);
@@ -199,7 +199,7 @@ const candidatesStore = useCandidatesStore();
 
 const process = [
     {
-        key : null,
+        key : '',
         value : 'Semua',
     },
     {
@@ -269,7 +269,6 @@ selectedRow.value = rows.map((row) => row.id)
 
 const applySelectFilters = (value) => {
     candidatesStore.updateFilter('status', value);
-    console.log(value);
 }
 const applyFilters = () => {
     candidatesStore.updateFilter('name', filters.value.name);

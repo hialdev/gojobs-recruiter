@@ -2,7 +2,7 @@
     <NuxtLayout name="default">
         <div class="flex flex-col md:flex-row items-center gap-4 bg-white p-7" style="padding: 2em; background-color: #fff;">
             <NuxtLink to="/job" class="me-auto flex items-center justify-center text-slate-500"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256"><path fill="currentColor" d="M168.49 199.51a12 12 0 0 1-17 17l-80-80a12 12 0 0 1 0-17l80-80a12 12 0 0 1 17 17L97 128Z"/></svg></NuxtLink>
-            <div class="me-auto">
+            <div class="">
                 <h1 class="text-xl font-medium mb-2">Senior Project Management</h1>
                 <div class="flex flex-wrap gap-x-5 gap-y-2 items-center text-xs text-slate-500">
                     <span class="flex-initial w-full">030149/ISH/01010107/2023</span>
@@ -26,39 +26,18 @@
                     Add Candidate
                 </button>
                 <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    Activity
-                </button>
-                <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83l3.75 3.75z"/></svg>
                     Edit
                 </button>
-                <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M9 5a1 1 0 1 0 0 2a1 1 0 0 0 0-2M6.17 5a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 0 1 0-2zM15 11a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-1.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2zM9 17a1 1 0 1 0 0 2a1 1 0 0 0 0-2m-2.83 0a3.001 3.001 0 0 1 5.66 0H19a1 1 0 1 1 0 2h-7.17a3.001 3.001 0 0 1-5.66 0H5a1 1 0 1 1 0-2z"/></svg>
-                    Filter
+                <button @click="navigateTo('/job/1/setting')" class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12 1.485c-.658 0-1.23.421-2.373 1.264L7.906 4.018c-.18.133-.27.199-.367.255c-.097.056-.2.1-.405.19l-1.959.856c-1.302.57-1.953.854-2.282 1.423c-.328.57-.25 1.276-.091 2.688l.238 2.125c.025.222.037.333.037.445c0 .112-.012.223-.037.445l-.238 2.125c-.158 1.412-.237 2.118.091 2.688c.33.57.98.854 2.282 1.423l1.96.856c.204.09.307.134.404.19c.096.056.187.122.367.255l1.72 1.269c1.145.843 1.717 1.264 2.374 1.264s1.23-.421 2.373-1.264l1.721-1.269c.18-.133.27-.199.367-.255c.097-.056.2-.1.405-.19l1.959-.856c1.302-.57 1.953-.854 2.282-1.423c.328-.57.25-1.276.09-2.688l-.237-2.125c-.025-.222-.038-.333-.038-.445c0-.112.013-.223.038-.445l.238-2.125c.158-1.412.237-2.118-.091-2.688c-.33-.57-.98-.854-2.282-1.423l-1.96-.856a4.128 4.128 0 0 1-.404-.19a4.132 4.132 0 0 1-.367-.255l-1.72-1.269C13.228 1.906 12.656 1.485 12 1.485M12 16a4 4 0 1 0 0-8a4 4 0 0 0 0 8" clip-rule="evenodd"/></svg>
+                    Setting
                 </button>
                 <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 36 36"><path fill="currentColor" d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71a5 5 0 1 0 5-5Z" class="clr-i-solid clr-i-solid-path-1"/><path fill="none" d="M0 0h36v36H0z"/></svg>
                     Share
                 </button>
-                <div class="relative">
-                    <div @click="toggleStatus" class="cursor-pointer px-4 py-2 pe-0 whitespace-nowrap text-[#41806D] text-sm bg-[#DCF7E1] rounded-lg flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L5.53 12.7a.996.996 0 1 0-1.41 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71a.996.996 0 1 0-1.41-1.41z"/></svg>
-                        Open
-                        <div class="px-1 pe-2 border-s border-emerald-400 flex items-center jusity-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M36 18L24 30L12 18"/></svg>
-                        </div>
-                    </div>
-                    <div v-if="showStatus" class="absolute top-0 end-0 mt-[2.3em] z-10">
-                        <div class="bg-white p-5 rounded-2xl min-w-[10em]">
-                            <nav class="flex flex-col items-start gap-1">
-                                <NuxtLink activeClass="text-emerald-300" class="cursor-pointer text-emerald-900 p-3 w-full rounded-lg text-[#41806D] text-sm bg-[#DCF7E1]">Open</NuxtLink>
-                                <NuxtLink activeClass="text-emerald-300" class="cursor-pointer text-emerald-900 p-3 w-full rounded-lg text-sm hover:bg-slate-100 text-slate-600">Hold</NuxtLink>
-                                <NuxtLink activeClass="text-emerald-300" class="cursor-pointer text-emerald-900 p-3 w-full rounded-lg text-sm hover:bg-red-100 text-red-600">Close</NuxtLink>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+                <BlockJobStatus />
             </div>
         </div>
         <slot />

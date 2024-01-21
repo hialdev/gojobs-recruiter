@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg">Create</button>
+            <button @click="navigateTo('/cancel-join/create')" class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg">Create</button>
                 
         </div>
 

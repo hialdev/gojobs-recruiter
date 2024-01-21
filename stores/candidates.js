@@ -202,8 +202,11 @@ export const useCandidatesStore = defineStore('candidates',{
                 const layananMatch = candidate.layanan.toLowerCase().includes(this.filters.layanan.toLowerCase());
                 const jabatanMatch = candidate.jabatan.toLowerCase().includes(this.filters.jabatan.toLowerCase());
                 const minatMatch = candidate.minat.toLowerCase().includes(this.filters.minat.toLowerCase());
-
-                return domisiliMatch && genderMatch && usiaMatch && nameMatch && pendidikanMatch && layananMatch && jabatanMatch && minatMatch;
+                let statusMatch = true;
+                if(this.filters.status !== ''){
+                  statusMatch = candidate.status === this.filters.status;
+                }
+                return statusMatch && domisiliMatch && genderMatch && usiaMatch && nameMatch && pendidikanMatch && layananMatch && jabatanMatch && minatMatch;
             });
         },
     },
