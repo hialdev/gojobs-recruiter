@@ -1,7 +1,7 @@
 <template>
     <div>
         <label v-if="showLabel" for="" class="text-sm mb-3 block">{{label}}</label>
-        <div class="relative z-[10]">
+        <div class="relative text-sm">
             <div :class="['cursor-pointer bg-white p-2 px-4 rounded-4xl flex justify-between items-center gap-3 text-gray-800 rounded-lg shadow-lg shadow-gray-900/10', $parent.class, customClass]"
                 @click="toggleModal"
                 ref="dropdownTrigger"
@@ -9,11 +9,11 @@
                 <span class="">{{selectItem ? selectItem?.value : label}}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 1024 1024"><path fill="currentColor" d="M104.704 338.752a64 64 0 0 1 90.496 0l316.8 316.8l316.8-316.8a64 64 0 0 1 90.496 90.496L557.248 791.296a64 64 0 0 1-90.496 0L104.704 429.248a64 64 0 0 1 0-90.496z"/></svg>
             </div>
-            <div ref="modalElement" v-if="isModalOpen" :class="['modal absolute top-0 w-full mt-[3.5em] min-w-[17em] z-10',modalClass]">
+            <div ref="modalElement" v-if="isModalOpen" :class="['modal absolute shadow rounded-xl top-0 w-full mt-[3.5em] min-w-[17em] z-10', modalClass]">
                 <ul 
                     class="p-3 bg-white rounded-xl max-h-[20em] overflow-auto"
                 >
-                    <li class="mb-3"><PartialFormSearch :label="'Cari '+label" :customClass="'ring-4 ring-slate-200'" @input="searchOptions" /></li>
+                    <li class="mb-3"><PartialFormSearch :label="'Cari '+label" :customClass="'lg:max-w-[25em]'" @input="searchOptions" /></li>
                     <div v-for="option in filteredOptions"
                         :key="option.key"
                         >
@@ -56,8 +56,7 @@ export default {
             ],
         },
         modalClass:{
-            type: Array,
-            default: [],
+            type: String,
         },
         showLabel:{
             type: Boolean,

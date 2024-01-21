@@ -3,6 +3,10 @@
         <div class="px-5 border-b-[4px] border-slate-50 mb-5">
             <h1 class="font-medium">Tambah detail pekerjaan</h1>
             <div class="grid grid-cols-12 py-4 gap-5">
+                <div class="col-span-12">
+                    <label for="first_name" class="block mb-2 text-sm text-slate-500">No JO</label>
+                    <input type="text" id="first_name" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5" placeholder="" required>
+                </div>
                 <div class="col-span-12 lg:col-span-6">
                     <label for="ads" class="block mb-2 text-sm text-slate-500">Type Ads</label>
                     <select id="ads" class="mb-3 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-500 focus:border-emerald-500 block w-full p-2.5">

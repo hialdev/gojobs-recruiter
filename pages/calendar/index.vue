@@ -96,6 +96,7 @@
                     @selected="(value) => {selectedActivity = value}"
                 />
                 <button
+                    @click="addSchedule"
                     class="p-2 px-4 rounded-lg text-sm bg-emerald-100 flex items-center gap-2 text-emerald-700"
                 >
                     <svg
@@ -141,6 +142,7 @@
         <div v-if="selectedSchedule != null">
             <CardCalendarDetail @close="closeSchedule" :schedule="selectedSchedule" />
         </div>
+        <CardCalendarAdd v-if="showAddSchedule" @close="closeAddSchedule"/>
     </div>
 </template>
 
@@ -150,6 +152,7 @@ import { useScheduleStore } from "@/stores/schedule"
 
 const store = useScheduleStore();
 const selectedActivity = ref('');
+const showAddSchedule = ref(false);
 const currentDate = ref(new Date());
 const month = ref(currentDate.value.toLocaleDateString("default", { month: "long" }));
 const year = ref(currentDate.value.getFullYear());
@@ -251,6 +254,10 @@ const getScheduleForDate = (day) => {
 const closeSchedule = () => {
     selectedSchedule.value = null;
 }
+const closeAddSchedule = () => {
+    showAddSchedule.value = false;
+}
 
+const addSchedule = () => {showAddSchedule.value = !showAddSchedule.value};
 </script>
 
