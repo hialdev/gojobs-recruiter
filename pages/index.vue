@@ -65,14 +65,14 @@ const roles = [
         key : 1,
         value : 'Recruiter',
     },
-    // {
-    //     key : 2,
-    //     value : 'Operation',
-    // },
-    // {
-    //     key : 3,
-    //     value : 'Project Manager',
-    // },
+    {
+        key : 2,
+        value : 'Operation',
+    },
+    {
+        key : 3,
+        value : 'Project Manager',
+    },
 ]
 const selectedRole = ref('');
 const updateSelectedRole = (value) => {

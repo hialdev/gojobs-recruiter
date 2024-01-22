@@ -105,7 +105,7 @@ export const useStopjoStore = defineStore('stopjo',{
         },
     }),
     getters : {
-        filteredJobs(){
+        filteredStopjo(){
             return this.data.filter((job) => {
                 const statusMatch = job.status.toLowerCase().includes(this.filters.status.toLowerCase());
                 const noJOMatch = job.noJO.toLowerCase().includes(this.filters.noJO.toLowerCase());
