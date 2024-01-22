@@ -3,7 +3,7 @@
         <h3 class="mb-4 font-medium">Manage Job Access</h3>
         <div class="mb-5">
             <div class="flex items-center mb-3">
-                <button class="ms-auto p-2 px-4 text-sm text-white bg-emerald-600 rounded-lg">Create Access</button>
+                <button @click="show.create_access = true" class="ms-auto p-2 px-4 text-sm text-white bg-emerald-600 rounded-lg">Create Access</button>
             </div>
             <table class="w-full overflow-hidden border rounded-lg">
                 <thead class="text-xs bg-slate-100">
@@ -39,7 +39,7 @@
                     <h4 class="text-sm font-medium">Internal Access</h4>
                     <p class="text-xs text-slate-500">Pengguna Internal dan reviewer yang ditugaskan</p>
                 </div>
-                <button class="p-2 px-4 text-sm text-white bg-emerald-600 rounded-lg">Add PIC</button>
+                <button @click="show.add_pic = true" class="p-2 px-4 text-sm text-white bg-emerald-600 rounded-lg">Add PIC</button>
             </div>
             <table class="w-full overflow-hidden border rounded-lg">
                 <thead class="text-xs bg-slate-100">
@@ -98,11 +98,19 @@
                 </tbody>
             </table>
         </div>
+
+        <CardSettingCreateAccess v-if="show.create_access" @close="show.create_access = false" />
+        <CardSettingAddPic v-if="show.add_pic" @close="show.add_pic = false" />
     </div>
 </template>
 
 <script setup>
 definePageMeta({
     layout: 'job-setting',
+})
+
+const show = ref({
+    create_access : false,
+    add_pic : false,
 })
 </script>

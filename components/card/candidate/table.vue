@@ -1,6 +1,7 @@
 <template>
     <div>
         <div class="flex items-center gap-3 mb-4">
+            <h1 class="font-medium text-lg">Candidate</h1>
             <div class="ms-auto relative">
                 <button @click="() => {showFilter = !showFilter}" class="hover:ring hover:ring-emerald-600/10 p-2 px-4 bg-white text-slate-500 text-sm rounded-lg flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 12 12"><path fill="currentColor" d="M1 2.75A.75.75 0 0 1 1.75 2h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 1 2.75m2 3A.75.75 0 0 1 3.75 5h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 3 5.75M5.25 8a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5z"/></svg>
@@ -127,7 +128,15 @@
                             </NuxtLink>
                         </td>
                         <td v-if="selectedRow.includes('tg')" class="px-3 py-3 text-sm">
-                            {{candidate.tags}}
+                            <div class="group relative">
+                                <div class="w-[10px] h-[10px] rounded-3xl" :class="{'bg-emerald-600': candidate.tags === 1, 'bg-rose-600': candidate.tags === 2, 'bg-purple-600': candidate.tags === 3}"></div>
+                                <div class="group-hover:block hidden absolute top-0 mt-3">
+                                    <div class="bg-white p-2 shadow rounded-lg text-xs whitespace-nowrap">
+                                        Tags Mean
+                                    </div>
+                                </div>
+                            </div>
+                        
                         </td>
                         <td v-if="selectedRow.includes('dm')" class="px-3 py-3 text-sm">
                             {{candidate.domisili}}

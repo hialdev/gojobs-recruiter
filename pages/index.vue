@@ -33,7 +33,11 @@
                             <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 dark:focus:ring-emerald-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                             <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ingat saya</label>
                         </div>
-                        <button class="p-3 px-5 text-center bg-emerald-700 text-white rounded-3xl">Login</button>
+                        <div class="mb-3">
+                            <div class="mb-2 text-xs">Masuk sebagai (Untuk uji coba Frontend)</div>
+                            <PartialFormSelect @selected="updateSelectedRole" :label="`Pilih Role`" :customClass="`shadow-none border`" :options="roles"/>
+                        </div>
+                        <button @click="login" class="p-3 px-5 text-center bg-emerald-700 text-white rounded-3xl">Login</button>
                     </form>
                     <div class="text-sm text-start px-3 text-slate-500 mt-12">
                         <p class="mb-2">Developed by IT Service Management for its internal use.</p>
@@ -52,8 +56,36 @@
 definePageMeta({
     layout:'blank',
 })
-
-const login = ()=>{
-    return navigateTo('/dashboard');
+const roles = [
+    {
+        key : 0,
+        value : 'Manager',
+    },
+    {
+        key : 1,
+        value : 'Recruiter',
+    },
+    // {
+    //     key : 2,
+    //     value : 'Operation',
+    // },
+    // {
+    //     key : 3,
+    //     value : 'Project Manager',
+    // },
+]
+const selectedRole = ref('');
+const updateSelectedRole = (value) => {
+    console.log(value);
+    selectedRole.value = value;
 }
+const login = ()=>{
+    localStorage.setItem('role', selectedRole.value);
+    if(selectedRole.value === 0){
+        navigateTo('/manager');
+    }else{
+        navigateTo('/dashboard');
+    }
+}
+
 </script>

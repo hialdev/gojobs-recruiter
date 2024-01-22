@@ -16,7 +16,7 @@
                         <div class="text-xs text-slate-500">123456</div>
                     </div>
                 </div>
-                <NuxtLink class="mb-2 flex px-4 py-2 cursor-pointer rounded-lg hover:bg-red-100 text-red-700 items-center gap-3">
+                <NuxtLink to="/" class="mb-2 flex px-4 py-2 cursor-pointer rounded-lg hover:bg-red-100 text-red-700 items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/><path d="M9 12h12l-3-3m0 6l3-3"/></g></svg>
                     Logout
                 </NuxtLink>

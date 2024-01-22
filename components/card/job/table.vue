@@ -44,7 +44,6 @@
                 </thead>
                 <tbody>
                     <tr v-for="(job, index) in jobs" :key="job.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        
                         <td class="px-3 py-3 text-sm">
                             {{job.posisi}}
                         </td>
@@ -57,29 +56,37 @@
                         <td class="px-3 py-3 text-sm">
                             {{job.total}}
                         </td>
-                        <template v-if="job.isPosted === false">
+                        <td class="px-3 py-3 text-sm">
+                            {{job.screening}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.psikotest}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.interview_hr}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.interview_user}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.peralihan}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.reject}}
+                        </td>
+                        <td class="px-3 py-3 text-sm">
+                            {{job.hiring}}
+                        </td>
+                        <template v-if="role == 0">
                             <td class="px-3 py-3 text-sm">
-                                {{job.screening}}
+                                <button @click="showAssign = true" title="Assign job" class="flex items-center cursor-pointer justify-center w-[30px] h-[30px] text-emerald-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h4.2q.35-.9 1.1-1.45T12 1q.95 0 1.7.55T14.8 3H19q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm7-16.75q.325 0 .538-.213t.212-.537q0-.325-.213-.537T12 2.75q-.325 0-.537.213t-.213.537q0 .325.213.538T12 4.25M12 13q1.45 0 2.475-1.025T15.5 9.5q0-1.45-1.025-2.475T12 6q-1.45 0-2.475 1.025T8.5 9.5q0 1.45 1.025 2.475T12 13m-7 6h14v-1.15q-1.35-1.325-3.137-2.087T12 15q-2.075 0-3.863.763T5 17.85z"/></svg>
+                                </button>
                             </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.psikotest}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.interview_hr}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.interview_user}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.peralihan}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.reject}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
-                                {{job.hiring}}
-                            </td>
-                            <td class="px-3 py-3 text-sm">
+                        </template>
+                        <template v-else>
+                            <td v-if="!job.isPosted" class="px-3 py-3 text-sm"><NuxtLink :to="`/job/${job.id}/edit`" class="flex items-center justify-center w-[25px] h-[25px] bg-emerald-600 text-white rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M11.883 3.007L12 3a1 1 0 0 1 .993.883L13 4v7h7a1 1 0 0 1 .993.883L21 12a1 1 0 0 1-.883.993L20 13h-7v7a1 1 0 0 1-.883.993L12 21a1 1 0 0 1-.993-.883L11 20v-7H4a1 1 0 0 1-.993-.883L3 12a1 1 0 0 1 .883-.993L4 11h7V4a1 1 0 0 1 .883-.993L12 3z"/></svg></NuxtLink></td>
+                            <td v-else class="px-3 py-3 text-sm">
                                 <div class="relative">
                                     <!-- 3 Dots -->
                                     <div @click="toggleModal(index, job.id)" class="flex items-center justify-center w-[20px] h-[20px] text-emerald-600 cursor-pointer">
@@ -126,24 +133,40 @@
                                 </div>
                             </td>
                         </template>
-                        <template v-else>
-                            <td class="px-3 py-3 bg-slate-50" colspan="7">
-                                <div class="flex items-center justify-end">
-                                    <NuxtLink :to="`/job/${job.id}/edit`" class="p-2 px-4 rounded-lg bg-emerald-100 text-emerald-600">Create Job Posting</NuxtLink>
-                                </div>
-                            </td>
-                        </template>
                     </tr>
                 </tbody>
             </table>
+            <div class="flex items-center gap-3 text-sm mt-4">
+                <button class="flex items-center gap-1 cursor-pointer p-1 px-2 pe-4 text-emerald-600 bg-slate-100 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M31 36L19 24l12-12"/></svg>
+                    prev
+                </button>
+                <ul class="flex items-center gap-1 m-0">
+                    <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">1</li>
+                    <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">2</li>
+                    <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">3</li>
+                    <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">..</li>
+                    <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">8</li>
+                </ul>
+                <button class="flex items-center gap-1 cursor-pointer p-1 px-2 ps-4 text-white bg-emerald-600 rounded-lg">
+                    next
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m19 12l12 12l-12 12"/></svg>
+                </button>
+            </div>
         </div>
+
+        <BlockActionJobAssign v-if="showAssign" @close="showAssign = false"/>
     </div>
 </template>
 
 <script setup>
+const showAssign = ref(false);
 const selectedId = ref([]);
 const openModalIndex = ref(null);
-
+const role = ref('');
+onMounted(()=>{
+    role.value = localStorage.getItem('role')
+})
 const props = defineProps({
   jobs: Array,
 });
