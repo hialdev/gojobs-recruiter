@@ -2,10 +2,10 @@
     <div class="bg-[#3D405B] flex items-center px-5 py-3 gap-9 container mx-auto">
         <PartialHeaderLogo />
         <nav class="flex items-center gap-7 ms-5 hidden lg:flex">
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/candidate">Candidates</NuxtLink>
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/hiring">Hiring</NuxtLink>
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/cancel-join">Cancel Join</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/candidate">Candidates</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/hiring">Hiring</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/cancel-join">Cancel Join</NuxtLink>
             <div class="relative">
                 <button @click="() => { showReport = !showReport }" class="flex items-center gap-2 text-white text-sm hover:text-emerald-300">
                     Report
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
             </div>
-            <NuxtLink activeClass="text-emerald-300" class="text-white text-sm hover:text-emerald-300" to="/calendar">Calendar</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/calendar">Calendar</NuxtLink>
         </nav>
         
         <div class="flex items-center ms-auto">
@@ -36,10 +36,10 @@
                 <div v-if="isShow" class="absolute top-0 end-0 border-t-4 border-emerald-400 mt-[3.7em] z-[99] w-screen lg:hidden">
                     <div class="bg-white p-5">
                         <nav class="flex flex-col items-start gap-4">
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/job">Jobs</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/candidate">Candidates</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/hiring">Hiring</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/cancel-join">Cancel Join</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/job">Jobs</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/candidate">Candidates</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/hiring">Hiring</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/cancel-join">Cancel Join</NuxtLink>
                             <button @click="() => { showReport = !showReport }" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                                 Report
                                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -57,7 +57,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <NuxtLink activeClass="text-emerald-300" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/calendar">Calendar</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/calendar">Calendar</NuxtLink>
                         </nav>
                     </div>
                 </div>
@@ -84,3 +84,9 @@ watch(
     }
 )
 </script>
+
+<style scoped>
+.menuActive{
+    @apply text-emerald-300 font-medium;
+}
+</style>

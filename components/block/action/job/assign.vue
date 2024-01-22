@@ -99,7 +99,7 @@
             <div class="col-span-12">
                 <div class="flex items-center gap-3">
                     <PartialFormButton class="min-w-[15em] text-center flex justify-center">Assign</PartialFormButton>
-                    <PartialFormButton :primary="false">Cancel</PartialFormButton>
+                    <PartialFormButton @click="closeAction" :primary="false">Cancel</PartialFormButton>
                 </div>
             </div>
         </div>

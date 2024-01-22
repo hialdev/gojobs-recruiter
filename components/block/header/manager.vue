@@ -1,10 +1,10 @@
 <template>
     <div class="bg-[#3D405B] flex items-center px-5 py-3 gap-9 container mx-auto">
-        <PartialHeaderLogo />
+        <PartialHeaderLogo :to="`/manager`" />
         <nav class="flex items-center gap-7 ms-5 hidden lg:flex">
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/manager">Dashboard</NuxtLink>
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
-            <NuxtLink activeClass="text-emerald-600" class="text-white text-sm hover:text-emerald-300" to="/job-access">Job Access</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/manager">Dashboard</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job-access">Job Access</NuxtLink>
         </nav>
         
         <div class="flex items-center ms-auto">
@@ -15,9 +15,9 @@
                 <div v-if="isShow" class="absolute top-0 end-0 border-t-4 border-emerald-400 mt-[3.7em] z-[99] w-screen lg:hidden">
                     <div class="bg-white p-5">
                         <nav class="flex flex-col items-start gap-4">
-                            <NuxtLink activeClass="text-emerald-300" class="text-white text-sm hover:text-emerald-300" to="/manager">Dashboard</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
-                            <NuxtLink activeClass="text-emerald-300" class="text-white text-sm hover:text-emerald-300" to="/job-access">Job Access</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/manager">Dashboard</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job-access">Job Access</NuxtLink>
                         </nav>
                     </div>
                 </div>
@@ -44,3 +44,9 @@ watch(
     }
 )
 </script>
+
+<style scoped>
+.menuActive{
+    @apply text-emerald-300 font-medium;
+}
+</style>
