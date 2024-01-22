@@ -41,7 +41,6 @@
 <script setup>
 import { useJobsStore } from '@/stores/jobs'
 const jobsStore = useJobsStore();
-
 const filters = ref({
     search : '',
     creator : '',
@@ -59,4 +58,13 @@ const applyFilters = () => {
 const addJob = () => {
     navigateTo('/job/add')
 }
+
+const resetFilters = () => {
+    filters.value = {
+        search: '',
+        creator: '',
+        location: '',
+        status: '',
+    };
+};
 </script>

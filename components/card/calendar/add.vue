@@ -33,13 +33,13 @@
                 <div class="mb-3 flex items-center gap-2">
                     <svg class="text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 13a4 4 0 1 0 0-8a4 4 0 0 0 0 8Zm-6 9v-3a6 6 0 1 1 12 0v3M13 5c.404-1.664 2.015-3 4-3c2.172 0 3.98 1.79 4 4c-.02 2.21-1.828 4-4 4h-1h1c3.288 0 6 2.686 6 6v2M11 5c-.404-1.664-2.015-3-4-3c-2.172 0-3.98 1.79-4 4c.02 2.21 1.828 4 4 4h1h-1c-3.288 0-6 2.686-6 6v2"/></svg>
                     <div class="flex-1">
-                        <PartialFormMultiselect :label="`Kandidat`" :options="candidates" class="p-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 shadow-none" :modalClass="`z-[10]`"/>
+                        <PartialFormMultiselect :label="`Kandidat`" :options="candidates" class="p-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full shadow-none" :modalClass="`z-[10]`"/>
                     </div>
                 </div>
                 <div class="mb-3 flex items-center gap-2">
                     <svg class="text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10 4.5a2 2 0 1 1-4 0a2 2 0 0 1 4 0m1.5 0a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0m-9 8c0-.204.22-.809 1.32-1.459C4.838 10.44 6.32 10 8 10c1.68 0 3.162.44 4.18 1.041c1.1.65 1.32 1.255 1.32 1.459a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1m5.5-4c-3.85 0-7 2-7 4A2.5 2.5 0 0 0 3.5 15h9a2.5 2.5 0 0 0 2.5-2.5c0-2-3.15-4-7-4" clip-rule="evenodd"/></svg>
                     <div class="flex-1">
-                        <PartialFormMultiselect :label="`Pewawancara`" :options="rekurters" class="p-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 shadow-none" :modalClass="`z-[9]`"/>
+                        <PartialFormMultiselect :label="`Pewawancara`" :options="rekurters" class="p-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full shadow-none" :modalClass="`z-[9]`"/>
                     </div>
                 </div>
                 <div class="w-full text-xs text-slate-500 mb-2 mt-4">Link Meeting Online</div>

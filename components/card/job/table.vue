@@ -129,7 +129,7 @@
                         <template v-else>
                             <td class="px-3 py-3 bg-slate-50" colspan="7">
                                 <div class="flex items-center justify-end">
-                                    <button class="p-2 px-4 rounded-lg bg-emerald-100 text-emerald-600">Create Job Posting</button>
+                                    <NuxtLink :to="`/job/${job.id}/edit`" class="p-2 px-4 rounded-lg bg-emerald-100 text-emerald-600">Create Job Posting</NuxtLink>
                                 </div>
                             </td>
                         </template>

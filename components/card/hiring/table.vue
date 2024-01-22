@@ -4,19 +4,19 @@
             <PartialFormSearch @input="applyFilters" v-model="filters.search" />
             
             <NuxtLink to="/hiring/report" class="ms-auto p-2 px-4 bg-white text-slate-600 text-sm rounded-lg flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg> Report Hiring</NuxtLink>
-            <button class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-emerald-100 text-emerald-600 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Request Hiring</button>
-            <button class="p-2 px-4 bg-rose-100 text-rose-700 text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-rose-600 text-rose-100 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Cancel Join</button>
+            <button @click="action.request = true" class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-emerald-100 text-emerald-600 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Request Hiring</button>
+            <button @click="action.cancel = true" class="p-2 px-4 bg-rose-100 text-rose-700 text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-rose-600 text-rose-100 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Cancel Join</button>
         </div>
         <div v-if="selectedId.length > 0" class="flex items-center gap-2 text-sm mb-4 rounded-xl p-2 px-5 bg-white">
             <div @click="unchecked" class="flex items-center justify-center cursor-pointer text-slate-500 hover:text-red-600">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12L7 7m5 5l5 5m-5-5l5-5m-5 5l-5 5"/></svg>
             </div>
             <div class="fw-medium text-slate-500 me-4">{{ selectedId.length }} selected</div>
-            <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-white">
+            <button @click="action.request = true" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-600 text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m23 19l-3-3v2h-4v2h4v2zm-10 0c0-.3 0-.7.1-1H6v-2h7.8c.5-.8 1.1-1.5 1.9-2H6v-2h12v1.1c.3-.1.7-.1 1-.1s.7 0 1 .1V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h7.8c-.5-.9-.8-1.9-.8-3m0-15.5L18.5 9H13z"/></svg>
                 Request
             </button>
-            <button class="flex items-center gap-3 p-2 px-4 rounded-lg bg-rose-100 hover:bg-rose-100 text-rose-700">
+            <button @click="action.cancel = true" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-rose-100 hover:bg-rose-100 text-rose-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10 22h4c3.771 0 5.657 0 6.828-1.172C22 19.657 22 17.771 22 14v-.437c0-.873 0-1.529-.043-2.063h-4.052c-1.097 0-2.067 0-2.848-.105c-.847-.114-1.694-.375-2.385-1.066c-.692-.692-.953-1.539-1.067-2.386c-.105-.781-.105-1.75-.105-2.848l.01-2.834c0-.083.007-.164.02-.244C11.121 2 10.636 2 10.03 2C6.239 2 4.343 2 3.172 3.172C2 4.343 2 6.229 2 10v4c0 3.771 0 5.657 1.172 6.828C4.343 22 6.229 22 10 22" clip-rule="evenodd" opacity=".5"/><path fill="currentColor" d="M6.53 14.47a.75.75 0 0 0-1.06 1.06l.97.97l-.97.97a.75.75 0 1 0 1.06 1.06l.97-.97l.97.97a.75.75 0 0 0 1.06-1.06l-.97-.97l.97-.97a.75.75 0 1 0-1.06-1.06l-.97.97zm4.98-12.21l-.01 2.835c0 1.097 0 2.066.105 2.848c.114.847.375 1.694 1.067 2.385c.69.691 1.538.953 2.385 1.067c.781.105 1.751.105 2.848.105h4.052c.013.155.022.321.028.5H22c0-.268 0-.402-.01-.56a5.322 5.322 0 0 0-.958-2.641c-.094-.128-.158-.204-.285-.357C19.954 7.494 18.91 6.312 18 5.5c-.81-.724-1.921-1.515-2.89-2.161c-.832-.556-1.248-.834-1.819-1.04a5.488 5.488 0 0 0-.506-.154c-.384-.095-.758-.128-1.285-.14z"/></svg>
                 Cancel
             </button>
@@ -129,12 +129,18 @@
                 </div>
             </div>
         </div>
+
+        <BlockActionHiringRequest v-if="action.request" @click="action.request = false" />
+        <BlockActionHiringCancel v-if="action.cancel" @click="action.cancel = false" />
     </div>
 </template>
 
 <script setup>
 import {useHiringStore} from '@/stores/hiring';
-
+const action = ref({
+    request : false,
+    cancel : false
+})
 const showProfile = ref(false);
 const showJo = ref(false);
 const store = useHiringStore();

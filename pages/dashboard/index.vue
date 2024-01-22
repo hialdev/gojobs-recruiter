@@ -63,7 +63,7 @@
                 <div class="mb-3">
                     <div class="p-5 flex items-center justify-between bg-white rounded-lg mb-2">
                         <div class="font-medium text-emerald-600">My Schedule</div>
-                        <button class="flex items-center text-sm gap-2 py-2 px-4 rounded-lg bg-emerald-600 text-white">
+                        <button @click="showAddSchedule = true" class="flex items-center text-sm gap-2 py-2 px-4 rounded-lg bg-emerald-600 text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="M8.5 2.75a.75.75 0 0 0-1.5 0V7H2.75a.75.75 0 0 0 0 1.5H7v4.25a.75.75 0 0 0 1.5 0V8.5h4.25a.75.75 0 0 0 0-1.5H8.5z"/></svg>
                             Add Schedule
                         </button>
@@ -141,11 +141,14 @@
                 </table>
             </div>
         </div>
+
+        <CardCalendarAdd v-if="showAddSchedule" @close="showAddSchedule = false" />
     </div>
 </template>
 
 <script lang="ts" setup>
 import { Doughnut } from 'vue-chartjs'
+const showAddSchedule = ref(false);
 const data = ref({
     labels: [
         'Published',

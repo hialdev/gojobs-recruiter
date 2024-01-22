@@ -19,7 +19,7 @@
         </div>
 
         <CardHiringCancel :rows="rows" :selectedRow="selectedRow" />
-
+        
     </div>
 </template>
 

@@ -21,11 +21,11 @@
                 </div>
             </div>
             <div class="ms-auto flex flex-wrap items-center gap-2">
-                <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
+                <button @click="action.add = true" class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="M8.5 2.75a.75.75 0 0 0-1.5 0V7H2.75a.75.75 0 0 0 0 1.5H7v4.25a.75.75 0 0 0 1.5 0V8.5h4.25a.75.75 0 0 0 0-1.5H8.5z"/></svg>
                     Add Candidate
                 </button>
-                <button class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
+                <button @click="navigateTo('/job/1/edit')" class="flex-auto px-4 py-2 whitespace-nowrap bg-slate-50 text-dark text-sm hover:bg-emerald-50 rounded-lg flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83l3.75 3.75z"/></svg>
                     Edit
                 </button>
@@ -41,10 +41,15 @@
             </div>
         </div>
         <slot />
+
+        <BlockActionCandidateAdd v-if="action.add" @close="action.add = false" />
     </NuxtLayout>
 </template>
 
 <script setup>
+const action = ref({
+    add : false,
+})
 const showStatus = ref(false);
 const toggleStatus = ()=>{
     showStatus.value = !showStatus.value;

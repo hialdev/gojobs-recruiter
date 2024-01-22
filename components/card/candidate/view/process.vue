@@ -68,6 +68,18 @@
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
+                              <div class="flex-1">
+                                <label class="block mb-2 text-xs text-slate-600 dark:text-white" for="file_input">Upload file</label>
+                                <input class="block w-full text-sm text-slate-900 border border-slate-300 rounded-lg cursor-pointer bg-white focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file">
+                                <p class="mt-1 text-xs text-slate-500 mb-3" id="file_input_help">SVG, PNG, JPG, pdf, docx (MAX. 2mb).</p>
+                              </div>
+                              <button class="p-2 px-4 rounded-lg bg-emerald-600 text-white text-sm">Upload</button>
+                            </div>
+                            <div class="flex items-center gap-3 mb-2 p-2 bg-emerald-100 text-emerald-700 rounded-lg">
+                              <div class="flex-1 me-auto text-xs line-clamp-1 text-emerald-600">File_Name_In_this_title_of_file.pdf</div>
+                              <button class="ms-auto flex items-center justify-center w-[20px] h-[20px]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg></button>
+                            </div>
+                            <div class="flex items-center gap-3">
                                 <button class="bg-rose-600 text-white p-2 px-4 rounded-lg">Reject</button>
                                 <button class="bg-emerald-600 text-white p-2 px-4 rounded-lg">Lolos</button>
                             </div>
@@ -77,9 +89,19 @@
             </div>
             <div class="col-span-12">
                 <div class="p-5 bg-white rounded-lg">
-                    <div class="flex items-center mb-3 pb-4 border-b">
+                    <div @click="isAddNote = !isAddNote" class="flex items-center mb-3 pb-4 border-b">
                         <h4 class="text-lg font-medium">Notes</h4>
                         <button class="ms-auto bg-emerald-100 text-emerald-900 p-2 px-4 rounded-lg text-xs">Add Note</button>
+                    </div>
+                    <div v-if="isAddNote" class="flex items-start gap-3 mb-4">
+                      <NuxtImg src="https://placeholder.co/70" alt="Image Asignee" class="block rounded-3xl w-[40px] h-[40px]" />
+                      <div class="w-full">
+                        <textarea name="" id="" cols="30" rows="4" class="text-sm w-full rounded-lg border border-slate-300 focus:border-emerald-600 focus:ring-emerald-600 p-2 px-4" placeholder="Tulis note..."></textarea>
+                        <div class="flex items-center gap-2">
+                          <button @click="isAddNote = false" class="p-2 px-4 text-xs rounded-lg text-slte-700 bg-slate-100">Cancel</button>
+                          <button class="p-2 px-4 text-xs rounded-lg bg-emerald-600 text-white">Add Note</button>
+                        </div>
+                      </div>
                     </div>
                     <div class="flex items-center gap-3">
                         <NuxtImg src="https://placeholder.co/70" alt="Image Asignee" class="block rounded-3xl w-[40px] h-[40px]" />
@@ -102,6 +124,7 @@
 
 <script setup>
 const status = ref(3);
+const isAddNote = ref(false);
 </script>
 
 <style scoped>
