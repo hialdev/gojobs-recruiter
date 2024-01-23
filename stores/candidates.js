@@ -19,7 +19,7 @@ export const useCandidatesStore = defineStore('candidates',{
             {
               id: 2,
               name: 'Dewi Lestari',
-              status: 2,
+              status: 7,
               tags: 1,
               domisili: 'Surabaya',
               gender: 'Perempuan',
@@ -174,6 +174,7 @@ export const useCandidatesStore = defineStore('candidates',{
             }
         ],
         filters:{
+			search: '',
             name : '',
             status : '',
             domisili : '',
@@ -184,6 +185,50 @@ export const useCandidatesStore = defineStore('candidates',{
             jabatan : '',
             minat : '',
         },
+        rows: [
+          {
+            id : 'tg',
+            row  : 'Tags',
+          },
+          {
+              id : 'dm',
+              row  : 'Domisili',
+          },
+          {
+              id : 'gd',
+              row  : 'Gender',
+          },
+          {
+              id : 'us',
+              row  : 'Usia',
+          },
+          {
+              id : 'pd',
+              row  : 'Pendidikan',
+          },
+          {
+              id : 'ly',
+              row  : 'Layanan',
+          },
+          {
+              id : 'jb',
+              row  : 'Jabatan',
+          },
+          {
+              id : 'mn',
+              row  : 'Minat',
+          }
+        ],
+        selectedRow: [
+          'tg',
+          'dm',
+          'gd',
+          'us',
+          'pd',
+          'ly',
+          'jb',
+          'mn',
+        ],
     }),
     getters : {
         getByStatus(){
@@ -209,11 +254,39 @@ export const useCandidatesStore = defineStore('candidates',{
                 return statusMatch && domisiliMatch && genderMatch && usiaMatch && nameMatch && pendidikanMatch && layananMatch && jabatanMatch && minatMatch;
             });
         },
+		filteredBySearch(){
+            return this.data.filter((candidate) => {
+                const nameMatch = candidate.name.toLowerCase().includes(this.filters.search.toLowerCase());
+                const domisiliMatch = true;
+                const usiaMatch = true;
+                const pendidikanMatch = true;
+                const genderMatch = true;
+                const layananMatch = true;
+                const jabatanMatch = true;
+                const minatMatch = true;
+                let statusMatch = true;
+                if(this.filters.status !== ''){
+                  statusMatch = candidate.status === this.filters.status;
+                }
+                return statusMatch && domisiliMatch && genderMatch && usiaMatch && nameMatch && pendidikanMatch && layananMatch && jabatanMatch && minatMatch;
+            });
+        },
     },
     actions : {
         updateFilter(column, value) {
             this.filters[column] = value;
         },
+        selectRow(rowId) {
+          const index = this.selectedRow.indexOf(rowId);
+          if (index === -1) {
+            this.selectedRow.push(rowId);
+          } else {
+            this.selectedRow.splice(index, 1);
+          }
+        },
+        isSelected(rowId) {
+          this.selectedRow.includes(rowId);
+        }
     },
     
 })

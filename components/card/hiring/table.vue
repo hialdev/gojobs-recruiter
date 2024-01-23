@@ -107,28 +107,30 @@
             </table>
         </div>
         <div v-if="showProfile" class="fixed top-0 bottom-0 start-0 end-0 bg-black/10">
-            <div class="bg-white relative">
+            <div class="bg-slate-50 relative m-10 max-h-[87vh] overflow-hidden rounded-xl">
                 <div @click="()=>{showProfile = false}" class="absolute flex items-center top-0 end-0 text-slate-700 bg-slate-100 hover:bg-rose-100 hover:text-rose-700 p-3 rounded-bl-3xl cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M6.225 4.811a1 1 0 0 0-1.414 1.414L10.586 12L4.81 17.775a1 1 0 1 0 1.414 1.414L12 13.414l5.775 5.775a1 1 0 0 0 1.414-1.414L13.414 12l5.775-5.775a1 1 0 0 0-1.414-1.414L12 10.586z"/></svg>
                 </div>
+                <h3 class="text-lg font-medium pb-3 border-b p-5">View Profile</h3>
                 <div class=" max-h-screen overflow-auto">
                     <CardHiringProfile />
                 </div>
             </div>
         </div>
         <div v-if="showJo" class="fixed top-0 bottom-0 start-0 end-0 bg-black/10">
-            <div class="bg-white h-screen relative p-8">
+            <div class="bg-white h-screen relative p-5 m-10 max-h-[87vh] overflow-hidden rounded-xl">
                 <div class="flex items-center mb-5">
                     <h3 class="text-lg font-medium">View JO Recruitment Request</h3>
                     <div @click="()=>{showJo = false}" class="absolute flex items-center top-0 end-0 text-slate-700 bg-slate-100 hover:bg-rose-100 hover:text-rose-700 p-3 rounded-bl-3xl cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M6.225 4.811a1 1 0 0 0-1.414 1.414L10.586 12L4.81 17.775a1 1 0 1 0 1.414 1.414L12 13.414l5.775 5.775a1 1 0 0 0 1.414-1.414L13.414 12l5.775-5.775a1 1 0 0 0-1.414-1.414L12 10.586z"/></svg>
                     </div>
                 </div>
-                <div class="h-full max-h-screen overflow-auto">
+                <div class="h-full max-h-[87vh] overflow-auto">
                     <CardHiringJo />
                 </div>
             </div>
         </div>
+        <PartialTablePaginate :label="`Menampilkan 15 dari 762 data`"/>
 
         <BlockActionHiringRequest v-if="action.request" @click="action.request = false" />
         <BlockActionHiringCancel v-if="action.cancel" @click="action.cancel = false" />

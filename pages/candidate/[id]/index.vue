@@ -3,9 +3,9 @@
         <div class="grid grid-cols-12">
             <div class="col-span-3 bg-white border-e min-h-screen">
                 <div class="p-5 flex items-center gap-2 border-b">
-                    <NuxtLink to="/candidate" class="flex items-center justif-center p-1">
+                    <button @click="$router.back()" class="flex items-center justif-center p-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M328 112L184 256l144 144"/></svg>
-                    </NuxtLink>
+                    </button>
                     <div class="">
                         <h5 class="font-medium text-lg mb-0">Candidate</h5>
                         <div class="text-slate-500 text-sm">8 Results</div>
@@ -104,7 +104,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92c1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92"/></svg>
                                     Share
                                 </button>
-                                <button @click="action.delete = true" class="flex w-full mb-2 items-center gap-3 p-2 px-4 rounded-lg hover:bg-rose-100 text-rose-700">
+                                <button @click="action.delete = false" class="flex w-full mb-2 items-center gap-3 p-2 px-4 rounded-lg hover:bg-rose-100 text-rose-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="-3 -2 24 24"><path fill="currentColor" d="M12 2h5a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1zm3.8 6l-.613 9.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.205 8zM7 9a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1m4 0a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1"/></svg>
                                     Delete
                                 </button>
@@ -133,7 +133,7 @@
 
         <CardCalendarAdd v-if="showAddSchedule" @close="showAddSchedule = false" />
         <BlockActionCandidateMove v-if="action.move" @close="action.move = false" />
-        <BlockActionCandidateDelete v-if="action.delete" @close="action.delete = false" />
+        <!-- <BlockActionCandidateDelete v-if="action.delete" @close="action.delete = false" /> -->
         <div v-if="action.edit" class="fixed z-10 top-0 bottom-0 start-0 end-0 bg-black/10 flex items-center justify-center">
             <div class="rounded-xl overflow-hidden relative">
                 <div class="bg-white p-5">
@@ -152,6 +152,7 @@
 
 <script setup>
 let activeTab = ref('resume');
+
 const showAction = ref(false);
 const action = ref({
     move : false,
@@ -159,6 +160,7 @@ const action = ref({
 })
 const showAddTag = ref(false);
 const showAddSchedule = ref(false);
+
 const candidates = [
   {
     id: 1,

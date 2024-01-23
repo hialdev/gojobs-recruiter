@@ -7,6 +7,7 @@ export const usePICStore = defineStore('pic',{
             id: 1,
             name: 'John Doe',
             perner: '123456',
+            layanan : ['Administrasi Keuangan', 'Content Creator'],
             category: 'Software Developer',
             area: ['Jakarta', 'Surabaya'],
           },
@@ -14,6 +15,7 @@ export const usePICStore = defineStore('pic',{
             id: 2,
             name: 'Jane Doe',
             perner: '234567',
+            layanan : ['Perhotelan'],
             category: 'Marketing Specialist',
             area: ['Bandung'],
           },
@@ -21,6 +23,7 @@ export const usePICStore = defineStore('pic',{
             id: 3,
             name: 'David Smith',
             perner: '345678',
+            layanan : ['Sales Promotion', 'Office Boy'],
             category: 'Data Analyst',
             area: ['Yogyakarta', 'Semarang'],
           },
@@ -28,6 +31,7 @@ export const usePICStore = defineStore('pic',{
             id: 4,
             name: 'Emily Johnson',
             perner: '456789',
+            layanan : ['Sales Promotion', 'Talent Aquisition'],
             category: 'HR Manager',
             area: ['Surabaya'],
           },
@@ -35,6 +39,7 @@ export const usePICStore = defineStore('pic',{
             id: 5,
             name: 'Michael Wilson',
             perner: '567890',
+            layanan : ['IT Engineer', ''],
             category: 'Graphic Designer',
             area: ['Bandung', 'Medan'],
           },
@@ -42,6 +47,7 @@ export const usePICStore = defineStore('pic',{
             id: 6,
             name: 'Olivia Brown',
             perner: '678901',
+            layanan : ['Sales Promotion', 'IT Engineer'],
             category: 'Finance Analyst',
             area: ['Surabaya'],
           },
@@ -49,6 +55,7 @@ export const usePICStore = defineStore('pic',{
             id: 7,
             name: 'Daniel Miller',
             perner: '789012',
+            layanan : ['Sales Promotion'],
             category: 'Sales Executive',
             area: ['Jakarta', 'Bandung'],
           },
@@ -56,6 +63,7 @@ export const usePICStore = defineStore('pic',{
             id: 8,
             name: 'Sophia Wilson',
             perner: '890123',
+            layanan : ['Sales Promotion', 'IT Engineer', 'Software Development'],
             category: 'Customer Support',
             area: ['Surabaya', 'Semarang'],
           },
@@ -63,6 +71,7 @@ export const usePICStore = defineStore('pic',{
             id: 9,
             name: 'Noah Brown',
             perner: '901234',
+            layanan : ['Sales Promotion', 'IT Engineer', 'Customer Service'],
             category: 'Project Manager',
             area: ['Jakarta', 'Surabaya'],
           },
@@ -70,6 +79,7 @@ export const usePICStore = defineStore('pic',{
             id: 10,
             name: 'Ava Jones',
             perner: '123321',
+            layanan : ['Sales Promotion', 'IT Engineer', 'Office Girl'],
             category: 'Network Engineer',
             area: ['Yogyakarta', 'Bandung'],
           },
@@ -77,6 +87,7 @@ export const usePICStore = defineStore('pic',{
             id: 11,
             name: 'Ethan Taylor',
             perner: '321123',
+            layanan : ['Sales Promotion', 'IT Engineer', 'RnD'],
             category: 'UX/UI Designer',
             area: ['Surabaya', 'Jakarta'],
           },
@@ -86,6 +97,7 @@ export const usePICStore = defineStore('pic',{
             perner : '',
             category : '',
             area : '',
+            layanan : '',
         },
     }),
     getters : {
@@ -95,8 +107,9 @@ export const usePICStore = defineStore('pic',{
           const pernerMatch = pic.perner.toLowerCase().includes(this.filters.perner.toLowerCase());
           const categoryMatch = pic.category.toLowerCase().includes(this.filters.category.toLowerCase());
           const areaMatch = pic.area.some((a) => a.toLowerCase().includes(this.filters.area.toLowerCase()));
+          const layananMatch = pic.layanan.some((a) => a.toLowerCase().includes(this.filters.layanan.toLowerCase()));
   
-          return nameMatch && pernerMatch && categoryMatch && areaMatch;
+          return nameMatch && pernerMatch && categoryMatch && areaMatch && layananMatch;
         });
       },
     },
