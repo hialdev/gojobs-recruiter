@@ -44,6 +44,7 @@
                 </div>
             </div>
             <NuxtLink activeClass="menuActive" class="text-white text-sm" to="/hiring">Hiring</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm" to="/calendar">Calendar</NuxtLink>
 
         </nav>
         
@@ -93,6 +94,7 @@
                                 </ul>
                             </div>
                             <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/hiring">Hiring</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/calendar">Calendar</NuxtLink>
 
                         </nav>
                     </div>

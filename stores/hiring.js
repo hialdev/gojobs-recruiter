@@ -6,6 +6,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 1,
                 name: "John Doe",
+                status : 1,
                 profile: "80%",
                 noJO: "029788/ISH/01010101/2023",
                 posisi: "Manager",
@@ -15,6 +16,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 2,
                 name: "Jane Doe",
+                status : 1,
                 profile: "65%",
                 noJO: "029788/ISH/01010102/2023",
                 posisi: "Senior Engineer",
@@ -24,6 +26,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 3,
                 name: "Alice Smith",
+                status : 1,
                 profile: "45%",
                 noJO: "029788/ISH/01010103/2023",
                 posisi: "Marketing Specialist",
@@ -33,6 +36,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 4,
                 name: "Bob Johnson",
+                status : 1,
                 profile: "75%",
                 noJO: "029788/ISH/01010104/2023",
                 posisi: "Finance Analyst",
@@ -42,6 +46,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 5,
                 name: "Eva Williams",
+                status : 3,
                 profile: "90%",
                 noJO: "029788/ISH/01010105/2023",
                 posisi: "Software Developer",
@@ -51,6 +56,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 6,
                 name: "David Lee",
+                status : 3,
                 profile: "50%",
                 noJO: "029788/ISH/01010106/2023",
                 posisi: "HR Specialist",
@@ -60,6 +66,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 7,
                 name: "Catherine Brown",
+                status : 2,
                 profile: "85%",
                 noJO: "029788/ISH/01010107/2023",
                 posisi: "Sales Manager",
@@ -69,6 +76,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 8,
                 name: "George Miller",
+                status : 2,
                 profile: "60%",
                 noJO: "029788/ISH/01010108/2023",
                 posisi: "Quality Assurance Analyst",
@@ -78,6 +86,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 9,
                 name: "Grace Davis",
+                status : 1,
                 profile: "70%",
                 noJO: "029788/ISH/01010109/2023",
                 posisi: "Customer Support Specialist",
@@ -87,6 +96,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 10,
                 name: "Frank Wilson",
+                status : 2,
                 profile: "55%",
                 noJO: "029788/ISH/01010110/2023",
                 posisi: "Logistics Coordinator",
@@ -96,6 +106,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 11,
                 name: "Helen Anderson",
+                status : 2,
                 profile: "80%",
                 noJO: "029788/ISH/01010111/2023",
                 posisi: "Operations Manager",
@@ -105,6 +116,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 12,
                 name: "Ivan Garcia",
+                status : 2,
                 profile: "40%",
                 noJO: "029788/ISH/01010112/2023",
                 posisi: "IT Specialist",
@@ -114,6 +126,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 13,
                 name: "Jessica Moore",
+                status : 1,
                 profile: "75%",
                 noJO: "029788/ISH/01010113/2023",
                 posisi: "Research Scientist",
@@ -123,6 +136,7 @@ export const useHiringStore = defineStore('hirings',{
             {
                 id: 14,
                 name: "Kevin Taylor",
+                status : 1,
                 profile: "95%",
                 noJO: "029788/ISH/01010114/2023",
                 posisi: "CEO",
@@ -138,6 +152,7 @@ export const useHiringStore = defineStore('hirings',{
             posisi : '',
             lokasi : '',
             layanan : '',
+            status : '',
         },
     }),
     getters : {
@@ -152,8 +167,12 @@ export const useHiringStore = defineStore('hirings',{
                 const lokasiMatch = hiring.lokasi.toLowerCase().includes(this.filters.lokasi.toLowerCase());
                 const layananMatch = hiring.layanan.toLowerCase().includes(this.filters.layanan.toLowerCase());
                 const searchMatch = searchJOMatch || searchNameMatch;
+                let statusMatch = true;
+                if(this.filters.status !== ''){
+                  statusMatch = hiring.status === this.filters.status;
+                }
 
-                return nameMatch && profileMatch && noJOMatch && posisiMatch && lokasiMatch && layananMatch && searchMatch;
+                return statusMatch && nameMatch && profileMatch && noJOMatch && posisiMatch && lokasiMatch && layananMatch && searchMatch;
             });
         },
     },

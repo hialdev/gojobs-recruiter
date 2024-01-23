@@ -3,11 +3,10 @@
         <PartialHeaderLogo />
         <nav class="flex items-center gap-7 ms-5 hidden lg:flex">
             <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/job">Jobs</NuxtLink>
+            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/recruitment-request">Job Order</NuxtLink>
             <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/cancel-join">Cancel Join</NuxtLink>
             <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/stop-jo">Stop JO</NuxtLink>
             <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/hiring">Hiring</NuxtLink>
-            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/recuirtment-request">Job Order</NuxtLink>
-            <NuxtLink activeClass="menuActive" class="text-white text-sm hover:text-emerald-300" to="/cancel-join">Cancel Join</NuxtLink>
             <div class="relative">
                 <button @click="() => { showReport = !showReport }" class="flex items-center gap-2 text-white text-sm hover:text-emerald-300">
                     Report
@@ -39,7 +38,8 @@
                     <div class="bg-white p-5">
                         <nav class="flex flex-col items-start gap-4">
                             <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/job">Jobs</NuxtLink>
-                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/candidate">Candidates</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/recruitment-request">Job Order</NuxtLink>
+                            <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/stop-jo">Stop JO</NuxtLink>
                             <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/hiring">Hiring</NuxtLink>
                             <NuxtLink activeClass="menuActive" class="text-emerald-900 hover:bg-emerald-50 p-3 w-full rounded-xl" to="/cancel-join">Cancel Join</NuxtLink>
                             <button @click="() => { showReport = !showReport }" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">

@@ -106,6 +106,37 @@
                                 </div>
                             </div>
                         </td>
+                        <td v-else-if="role == 3" class="px-3 py-3 text-xs">
+                            <div class="relative">
+                                <!-- 3 Dots -->
+                                <div @click="dotsModal(index)" class="flex items-center justify-center w-[20px] h-[20px] text-emerald-600 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20">
+                                        <g fill="currentColor">
+                                        <circle cx="10" cy="15" r="2" />
+                                        <circle cx="10" cy="10" r="2" />
+                                        <circle cx="10" cy="5" r="2" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <!-- 3 Dots Modal -->
+                                <div v-if="openModalIndex === index" class="absolute z-10" :class="{'bottom-0 end-0 me-[2em]' : index >= (store.filteredCancels.length-5), 'top-0 end-0 mt-[2em]' : index <= (store.filteredCancels.length-5)}">
+                                    <div class="p-3 rounded-lg bg-white shadow">
+                                        <div class="mb-2">
+                                            <button @click="action.detail = true" class="w-full text-xs flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-100 hover:bg-emerald-100 text-emerald-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32"><circle cx="22" cy="24" r="2" fill="currentColor"/><path fill="currentColor" d="M29.777 23.479A8.64 8.64 0 0 0 22 18a8.64 8.64 0 0 0-7.777 5.479L14 24l.223.522A8.64 8.64 0 0 0 22 30a8.64 8.64 0 0 0 7.777-5.478L30 24zM22 28a4 4 0 1 1 4-4a4.005 4.005 0 0 1-4 4M7 17h5v2H7zm0-5h12v2H7zm0-5h12v2H7z"/><path fill="currentColor" d="M22 2H4a2.006 2.006 0 0 0-2 2v24a2.006 2.006 0 0 0 2 2h8v-2H4V4h18v11h2V4a2.006 2.006 0 0 0-2-2"/></svg>
+                                                Detail
+                                            </button>
+                                        </div>
+                                        <div class="">
+                                            <button class="w-full text-xs flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-600 text-white">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5 2a1 1 0 0 0-1 1v16a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V8a1 1 0 0 0-.293-.707l-5-5A1 1 0 0 0 14 2zm9 2.414L17.586 8H14zm1.707 9.293a1 1 0 0 0-1.414-1.414L11 15.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0z" clip-rule="evenodd"/></svg>
+                                                Approve
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

@@ -120,7 +120,13 @@
                                                 View
                                             </NuxtLink>
                                         </div>
-                                        <div class="">
+                                        <div v-if="role == 3" class="">
+                                            <button @click="action.addCandidate = true" class="whitespace-nowrap w-full text-xs flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-100 text-emerald-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="currentColor" d="M16 14a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5zm4-6a1 1 0 0 1 1 1v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 1 1 0-2h1V9a1 1 0 0 1 1-1m-8-6a5 5 0 1 1 0 10a5 5 0 0 1 0-10"/></g></svg>
+                                                Add Candidate
+                                            </button>
+                                        </div>
+                                        <div v-else class="">
                                             <button class="whitespace-nowrap w-full text-xs flex items-center gap-3 p-2 px-4 rounded-lg bg-rose-100 text-rose-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m3 14H9c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h6c.55 0 1 .45 1 1v6c0 .55-.45 1-1 1"/></svg>
                                                 Stop JO
@@ -134,24 +140,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="flex items-center gap-3 text-sm my-4">
-            <button class="flex items-center gap-1 cursor-pointer p-1 px-2 pe-4 text-emerald-600 bg-slate-100 rounded-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M31 36L19 24l12-12"/></svg>
-                prev
-            </button>
-            <ul class="flex items-center gap-1 m-0">
-                <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">1</li>
-                <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">2</li>
-                <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">3</li>
-                <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">..</li>
-                <li class="m-0 w-[25px] h-[25px] flex items-center justify-center cursor-pointer p-1 rounded-lg text-center border border-slate-200 hover:bg-emerald-200 hover:text-emerald-800 hover:border-emerald-200">8</li>
-            </ul>
-            <button class="flex items-center gap-1 cursor-pointer p-1 px-2 ps-4 text-white bg-emerald-600 rounded-lg">
-                next
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="m19 12l12 12l-12 12"/></svg>
-            </button>
-        </div>
+        <PartialTablePaginate :label="`Menampilkan 15 data dari 12732 data`" />
 
+        <BlockActionCandidateAdd v-if="action.addCandidate" @close="action.addCandidate = false" class="z-[99]" />
         <!-- <BlockActionRecreqStopjo v-if="action.stopjo" @close="action.stopjo = false" /> -->
     </div>
 </template>
@@ -160,8 +151,13 @@
 import {useRecreqStore} from '@/stores/recrequest'
 const openModalIndex = ref(null);
 const action = ref({
-    stopjo : false,
+    addCandidate : false,
 })
+const role = ref('');
+
+onMounted(() => {
+  role.value = localStorage.getItem('role');
+});
 const store = useRecreqStore();
 const props = defineProps({
     rows : Array,

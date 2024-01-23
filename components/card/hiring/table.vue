@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex items-center gap-3 mb-4">
-            <PartialFormSearch @input="applyFilters" v-model="filters.search" />
+            <PartialFormSearch @input="applyFilters" v-model="filters.search" :customClass="`lg:max-w-[20em]`" />
             
             <NuxtLink to="/hiring/report" class="ms-auto p-2 px-4 bg-white text-slate-600 text-sm rounded-lg flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m20 8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM9 19H7v-9h2zm4 0h-2v-6h2zm4 0h-2v-3h2zM14 9h-1V4l5 5z"/></svg> Report Hiring</NuxtLink>
             <button @click="action.request = true" class="p-2 px-4 bg-emerald-600 text-white text-sm rounded-lg flex items-center"><span v-if="selectedId.length > 0" class="p-1 rounded-lg bg-emerald-100 text-emerald-600 me-2 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</span>Request Hiring</button>

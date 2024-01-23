@@ -2,6 +2,7 @@
     <BlockHeaderManager v-if="role == 0" />
     <BlockHeaderRecruiter v-if="role == 1" />
     <BlockHeaderOperation v-if="role == 2" />
+    <BlockHeaderPm v-if="role == 3" />
 </template>
 
 <script setup>
