@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex items-center gap-3 mb-4">
-            <div class="text-sm">Lamaran untuk <NuxtLink class="text-emerald-600">Senior Project Management at PT. KRETEK</NuxtLink></div>
+            <CardCandidateViewLink :to="to" :text="text" />
         </div>
         <div class="grid grid-cols-12 gap-x-5">
             <div class="col-span-12">
@@ -109,3 +109,9 @@
         </div>
     </div>
 </template>
+<script setup>
+const props = defineProps({
+    to : String,
+    text : String,
+})
+</script>

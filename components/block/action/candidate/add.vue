@@ -4,8 +4,10 @@
         <div class="p-5 bg-white flex flex-col m-5 rounded-xl">
             <div class="flex items-center justify-between gap-3 pb-3 mb-3 border-b">
                 <h3 class="font-medium">Tambah Kandidat</h3>
-                <button class="ms-auto text-sm text-white p-2 px-4 rounded-lg bg-emerald-600 flex items-center gap-3">
-                    <div class="text-sm p-1 rounded-lg bg-emerald-100 text-emerald-600">{{selectedId.length}}</div>
+                <PartialFormSelect @selected="applySelectFilters" :label="`Process`" :options="process" :customClass="`border border-slate-200 p-2 text-sm shadow-none hover:ring hover:ring-emerald-600/10`" />
+
+                <button @click="closeAction" class="ms-auto text-sm text-white p-2 px-4 rounded-lg bg-emerald-600 flex items-center gap-3">
+                    <div class="text-sm p-1 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center w-[25px] h-[25px]">{{selectedId.length}}</div>
                     Add Candidate
                 </button>
                 <div @click="closeAction" class="cursor-pointer flex items-center justify-center w-[30px] h-[30px] text-slate-500 hover:text-rose-700">
@@ -93,17 +95,15 @@
                                 <td class="px-4 py-3">
                                     <input @change="selectcandidate(candidate.id)" :checked="selectedId.includes(candidate.id)" :id="candidate.id" :value="candidate.id" type="checkbox" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
                                 </td>
-                                <td class="px-3 py-3 text-sm">
-                                    <NuxtLink :to="`/candidate/${candidate.id}`">
-                                        <span class="hover:text-emerald-600">{{candidate.name}}</span> <br/>
-                                        <div v-if="candidate.status == 1" class="inline-block mt-1 text-xs bg-purple-500 text-purple-50 rounded-lg p-1 px-2">Screening</div>
-                                        <div v-else-if="candidate.status == 2" class="inline-block mt-1 text-xs bg-orange-500 text-orange-50 rounded-lg p-1 px-2">Psikotest</div>
-                                        <div v-else-if="candidate.status == 3" class="inline-block mt-1 text-xs bg-blue-500 text-blue-50 rounded-lg p-1 px-2">Interview HR</div>
-                                        <div v-else-if="candidate.status == 4" class="inline-block mt-1 text-xs bg-green-500 text-green-50 rounded-lg p-1 px-2">Interview User</div>
-                                        <div v-else-if="candidate.status == 5" class="inline-block mt-1 text-xs bg-sky-500 text-sky-50 rounded-lg p-1 px-2">Peralihan</div>
-                                        <div v-else-if="candidate.status == 6" class="inline-block mt-1 text-xs bg-rose-500 text-rose-50 rounded-lg p-1 px-2">Reject</div>
-                                        <div v-else-if="candidate.status == 7" class="inline-block mt-1 text-xs bg-emerald-500 text-emerald-50 rounded-lg p-1 px-2">Hiring</div>
-                                    </NuxtLink>
+                                <td @click="navigateTo(`/candidate/${candidate.id}`)" class="px-3 py-3 text-sm">
+                                    <span class="hover:text-emerald-600">{{candidate.name}}</span> <br/>
+                                    <div v-if="candidate.status == 1" class="inline-block mt-1 text-xs bg-purple-500 text-purple-50 rounded-lg p-1 px-2">Screening</div>
+                                    <div v-else-if="candidate.status == 2" class="inline-block mt-1 text-xs bg-orange-500 text-orange-50 rounded-lg p-1 px-2">Psikotest</div>
+                                    <div v-else-if="candidate.status == 3" class="inline-block mt-1 text-xs bg-blue-500 text-blue-50 rounded-lg p-1 px-2">Interview HR</div>
+                                    <div v-else-if="candidate.status == 4" class="inline-block mt-1 text-xs bg-green-500 text-green-50 rounded-lg p-1 px-2">Interview User</div>
+                                    <div v-else-if="candidate.status == 5" class="inline-block mt-1 text-xs bg-sky-500 text-sky-50 rounded-lg p-1 px-2">Peralihan</div>
+                                    <div v-else-if="candidate.status == 6" class="inline-block mt-1 text-xs bg-rose-500 text-rose-50 rounded-lg p-1 px-2">Reject</div>
+                                    <div v-else-if="candidate.status == 7" class="inline-block mt-1 text-xs bg-emerald-500 text-emerald-50 rounded-lg p-1 px-2">Hiring</div>
                                 </td>
                                 <td class="px-3 py-3 text-sm">
                                     <div class="group relative">

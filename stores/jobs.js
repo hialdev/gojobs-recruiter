@@ -230,8 +230,9 @@ export const useJobsStore = defineStore('jobs',{
                 const creatorMatch = job.creator.toLowerCase().includes(this.filters.creator.toLowerCase());
                 const locationMatch = job.lokasi.toLowerCase().includes(this.filters.location.toLowerCase());
                 const joMatch = job.no_jo.toLowerCase().includes(this.filters.search.toLowerCase());
+                const slocationMatch = job.lokasi.toLowerCase().includes(this.filters.search.toLowerCase());
                 const posisiMatch = job.posisi.toLowerCase().includes(this.filters.search.toLowerCase());
-                const searchMatch = posisiMatch || joMatch;
+                const searchMatch = posisiMatch || joMatch || slocationMatch;
 
                 return statusMatch && creatorMatch && locationMatch && searchMatch;
             });

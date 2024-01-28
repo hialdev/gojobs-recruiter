@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="flex items-center gap-3 mb-4">
-            <div class="text-sm">Lamaran untuk <NuxtLink class="text-emerald-600">Senior Project Management at PT. KRETEK</NuxtLink></div>
+            <CardCandidateViewLink :to="to" :text="text" />
             <button class="ms-auto text-sm text-slate-500 hover:text-emerald-600 hover:border-emerald-600 flex items-center gap-3 p-1 px-3 text-sm border rounded-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><g fill="none"><path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M8 17H5a1 1 0 0 1-1-1v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a1 1 0 0 1-1 1h-3M8 4h8v5H8zm0 11h8v4H8z"/><circle cx="7" cy="12" r="1" fill="currentColor"/></g></svg>
                 Print
@@ -21,9 +21,16 @@
             </div>
             <div class="col-span-8">
                 <div class="rounded-lg bg-white max-h-[36em] overflow-auto">
-                    <NuxtImg src="/image/cv.png" alt="Image CV" class="block w-full h-full" />
+                    <NuxtImg src="/image/cv_gojobs.png" alt="Image CV" class="block w-full h-full" />
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script setup>
+const props = defineProps({
+    to : String,
+    text : String,
+})
+</script>

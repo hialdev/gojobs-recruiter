@@ -18,51 +18,51 @@
                             <option selected>Terbaru</option>
                             <option>Terlama</option>
                         </select>
-                        <NuxtLink to="/job" class="ms-auto text-emerald-600 underline">View All Job</NuxtLink>
+                        <NuxtLink to="/job" class="ms-auto text-emerald-600 underline">View All Task</NuxtLink>
                     </div>
                     <table class="w-full mt-6">
                         <tr>
                             <th class="text-start text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Job</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Screening</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Psikotest</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Interview HR</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Interview User</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Peralihan</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Reject</th>
-                            <th class="text-center text-emerald-700 text-xs py-3 font-medium w-[10.2%] px-3">Hiring</th>
+                            <th class="text-center bg-emerald-100 text-emerald-800 text-xs w-[10.2%] px-3">Screening</th>
+                            <th class="text-center bg-emerald-200 text-emerald-800 text-xs w-[10.2%] px-3">Psikotest</th>
+                            <th class="text-center bg-emerald-300 text-emerald-800 text-xs w-[10.2%] px-3">Interview HR</th>
+                            <th class="text-center bg-emerald-400 text-emerald-50 text-xs w-[10.2%] px-3">Interview User</th>
+                            <th class="text-center bg-emerald-500 text-emerald-50 text-xs w-[10.2%] px-3">Peralihan</th>
+                            <th class="text-center bg-emerald-600 text-emerald-50 text-xs w-[10.2%] px-3">Reject</th>
+                            <th class="text-center bg-emerald-700 text-emerald-50 text-xs w-[10.2%] px-3">Hiring</th>
                         </tr>
-                        <tr>
+                        <tr @click="navigateTo('job/1')" class="group cursor-pointer">
                             <td>
-                                <div class="text-sm font-medium">Promotor Elektronik</div>
-                                <div class="text-xs text-slate-500">030149/ISH/01010107/2023</div>
+                                <div class="group-hover:text-emerald-600 text-sm font-medium">Promotor Elektronik</div>
+                                <div class="group-hover:text-emerald-800 text-xs text-slate-500">030149/ISH/01010107/2023</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-100 text-emerald-800 text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-200 text-emerald-800 text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-300 text-emerald-800 text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-400 text-emerald-800 text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-500 text-white text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-600 text-white text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                             <td>
-                                <div class="bg-emerald-700 text-white text-center py-4 w-full rounded-lg">5</div>
+                                <div class="text-xs text-center py-4 w-full rounded-lg">5</div>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="mb-3">
                     <div class="p-5 flex items-center justify-between bg-white rounded-lg mb-2">
-                        <div class="font-medium text-emerald-600">My Schedule</div>
+                        <div class="font-medium text-emerald-600">My Task</div>
                         <button @click="showAddSchedule = true" class="flex items-center text-sm gap-2 py-2 px-4 rounded-lg bg-emerald-600 text-white">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="M8.5 2.75a.75.75 0 0 0-1.5 0V7H2.75a.75.75 0 0 0 0 1.5H7v4.25a.75.75 0 0 0 1.5 0V8.5h4.25a.75.75 0 0 0 0-1.5H8.5z"/></svg>
                             Add Schedule

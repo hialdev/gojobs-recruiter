@@ -1,40 +1,35 @@
 <template>
-    <div>
+    <div class="relative">
         <div class="flex items-center gap-3 mb-4">
-            <div class="text-sm">Lamaran untuk <NuxtLink class="text-emerald-600">Senior Project Management at PT. KRETEK</NuxtLink></div>
+          <CardCandidateViewLink :to="to" :text="text" />
         </div>
         <ul class="box">
-            <li class="relative box-item" :class="{'active' : status >= 1}">
+            <li @click="status = 1" class="cursor-pointer relative box-item" :class="{'active' : status >= 1}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm ms-3">Screening</p>
                 </div>
             </li>
-            <li class="relative box-item" :class="{'active' : status >= 2}">
+            <li @click="status = 2" class="cursor-pointer relative box-item" :class="{'active' : status >= 2}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm ms-3">Psikotest</p>
                 </div>
             </li>
-            <li class="relative box-item" :class="{'active' : status >= 3}">
+            <li @click="status = 3" class="cursor-pointer relative box-item" :class="{'active' : status >= 3}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm ms-3">Interview HR</p>
                 </div>
             </li>
-            <li class="relative box-item" :class="{'active' : status >= 4}">
+            <li @click="status = 4" class="cursor-pointer relative box-item" :class="{'active' : status >= 4}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm ms-3">Interview User</p>
                 </div>
             </li>
-            <li class="relative box-item" :class="{'active' : status >= 5}">
-                <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
-                    <p class="text-sm ms-3">Peralihan</p>
-                </div>
-            </li>
-            <li class="relative box-item" :class="{'active' : status >= 6}">
+            <li @click="status = 5" class="cursor-pointer relative box-item" :class="{'active' : status >= 6}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm ms-3">Reject</p>
                 </div>
             </li>
-            <li class="relative box-item" :class="{'active' : status >= 7}">
+            <li @click="status = 6" class="cursor-pointer relative box-item" :class="{'active' : status >= 7}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm">Hiring</p>
                 </div>
@@ -42,50 +37,10 @@
         </ul>
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-12">
-                <div class="p-5 bg-white rounded-lg">
-                    <h4 class="text-lg font-medium mb-3 pb-4 border-b">Detail</h4>
-                    <div class="grid grid-cols-12">
-                        <div class="col-span-6">
-                            <div class="mb-3">
-                                <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Current Status</span>
-                                <span class="p-1 px-3 rounded-lg bg-emerald-600 text-white text-sm uppercase">Active</span>
-                            </div>
-                            <div class="mb-3">
-                                <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Stage</span>
-                                <span class="font-medium text-sm whitespace-nowrap">Interview HR</span>
-                            </div>
-                            <div class="mb-3">
-                                <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Date</span>
-                                <span class="font-medium text-sm whitespace-nowrap">08 Des 2023</span>
-                            </div>
-                        </div>
-                        <div class="col-span-6">
-                            <div class="mb-3">
-                                <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Date</span>
-                                <div class="flex items-center gap-3">
-                                    <NuxtImg src="https://placeholder.co/70" alt="Image Asignee" class="block rounded-3xl w-[40px] h-[40px]" />
-                                    <span class="font-medium text-sm">Name Surname</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                              <div class="flex-1">
-                                <label class="block mb-2 text-xs text-slate-600 dark:text-white" for="file_input">Upload file</label>
-                                <input class="block w-full text-sm text-slate-900 border border-slate-300 rounded-lg cursor-pointer bg-white focus:outline-none" aria-describedby="file_input_help" id="file_input" type="file">
-                                <p class="mt-1 text-xs text-slate-500 mb-3" id="file_input_help">SVG, PNG, JPG, pdf, docx (MAX. 2mb).</p>
-                              </div>
-                              <button class="p-2 px-4 rounded-lg bg-emerald-600 text-white text-sm">Upload</button>
-                            </div>
-                            <div class="flex items-center gap-3 mb-2 p-2 bg-emerald-100 text-emerald-700 rounded-lg">
-                              <div class="flex-1 me-auto text-xs line-clamp-1 text-emerald-600">File_Name_In_this_title_of_file.pdf</div>
-                              <button class="ms-auto flex items-center justify-center w-[20px] h-[20px]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/></svg></button>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <button class="bg-rose-600 text-white p-2 px-4 rounded-lg">Reject</button>
-                                <button class="bg-emerald-600 text-white p-2 px-4 rounded-lg">Lolos</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <CardCandidateProcessScreening v-if="selectedProcess == 1" @reject="status = 6" @lolos="status = status+1" />
+                <CardCandidateProcessPsikotest v-if="selectedProcess == 2" @reject="status = 6" @lolos="status = status+1" />
+                <CardCandidateProcessInterviewhr v-if="selectedProcess == 3" @reject="status = 6" @lolos="status = status+1" />
+                <CardCandidateProcessInterviewuser v-if="selectedProcess == 4" @reject="status = 6" @lolos="status = 7" />
             </div>
             <div class="col-span-12">
                 <div class="p-5 bg-white rounded-lg">
@@ -125,6 +80,11 @@
 <script setup>
 const status = ref(3);
 const isAddNote = ref(false);
+const selectedProcess = ref(status);
+const props = defineProps({
+    to : String,
+    text : String,
+})
 </script>
 
 <style scoped>
@@ -144,7 +104,7 @@ const isAddNote = ref(false);
   line-height: 40px;
   margin-right: 10px;
   padding: 0 10px;
-  @apply ps-5 bg-slate-200 text-slate-900 w-[13.3%] hidden lg:block;
+  @apply ps-5 bg-slate-200 text-slate-900 w-[15.7%] hidden lg:block;
   border-radius: 4px;
 }
 .box-item:before {

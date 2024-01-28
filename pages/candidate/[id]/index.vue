@@ -32,7 +32,7 @@
             <div class="col-span-9">
                 <div class="p-5 bg-white flex items-center gap-5 border-b">
                     <div class="relative">
-                        <NuxtImg src="https://placeholder.co/150" alt="Selected Image Candidate" class="block rounded-[50px] w-[70px] h-[70px]" />
+                        <NuxtImg src="/image/person.png" alt="Selected Image Candidate" class="block rounded-[50px] w-[70px] h-[70px]" />
                         <div class="absolute bottom-0 start-0 end-0 mb-[-0.8em] flex items-center justify-center">
                             <div class="p-1 bg-slate-100 flex items-center gap-1 text-xs rounded-xl px-3">
                                 <svg class="text-yellow-300" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M12.908 1.581a1 1 0 0 0-1.816 0l-2.87 6.22l-6.801.807a1 1 0 0 0-.562 1.727l5.03 4.65l-1.335 6.72a1 1 0 0 0 1.469 1.067L12 19.426l5.977 3.346a1 1 0 0 0 1.47-1.068l-1.335-6.718l5.029-4.651a1 1 0 0 0-.562-1.727L15.777 7.8z" clip-rule="evenodd"/></svg>
@@ -104,7 +104,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81c1.66 0 3-1.34 3-3s-1.34-3-3-3s-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65c0 1.61 1.31 2.92 2.92 2.92c1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92"/></svg>
                                     Share
                                 </button>
-                                <button @click="action.delete = false" class="flex w-full mb-2 items-center gap-3 p-2 px-4 rounded-lg hover:bg-rose-100 text-rose-700">
+                                <button @click="action.delete = true" class="flex w-full mb-2 items-center gap-3 p-2 px-4 rounded-lg hover:bg-rose-100 text-rose-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="-3 -2 24 24"><path fill="currentColor" d="M12 2h5a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1zm3.8 6l-.613 9.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.205 8zM7 9a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1m4 0a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1"/></svg>
                                     Delete
                                 </button>
@@ -121,19 +121,18 @@
                         <div @click="selectTab('log')" class="cursor-pointer p-2 px-5 text-sm hover:text-emerald-600 mb-[-2px] border-b-2 hover:border-emerald-600 uppercase" :class="{'border-emerald-600 text-emerald-600' : activeTab == 'log'}">Log Activity</div>
                     </div>
                     <div class="pb-5 max-h-[44em] overflow-auto">
-                        <CardCandidateViewResume v-if="activeTab == 'resume'" />
-                        <CardCandidateViewQuestion v-if="activeTab == 'question'" />
-                        <CardCandidateViewProcess v-if="activeTab == 'process'" />
-                        <CardCandidateViewHistory v-if="activeTab == 'history'" />
-                        <CardCandidateViewLog v-if="activeTab == 'log'" />
+                        <CardCandidateViewResume :to="link.to" :text="link.text" v-if="activeTab == 'resume'" />
+                        <CardCandidateViewQuestion :to="link.to" :text="link.text" v-if="activeTab == 'question'" />
+                        <CardCandidateViewProcess :to="link.to" :text="link.text" v-if="activeTab == 'process'" />
+                        <CardCandidateViewHistory :to="link.to" :text="link.text" v-if="activeTab == 'history'" />
+                        <CardCandidateViewLog :to="link.to" :text="link.text" v-if="activeTab == 'log'" />
                     </div>
                 </div>
             </div>
         </div>
 
         <CardCalendarAdd v-if="showAddSchedule" @close="showAddSchedule = false" />
-        <BlockActionCandidateMove v-if="action.move" @close="action.move = false" />
-        <!-- <BlockActionCandidateDelete v-if="action.delete" @close="action.delete = false" /> -->
+        <BlockActionCandidateSinglemove v-if="action.move" @close="action.move = false" />
         <div v-if="action.edit" class="fixed z-10 top-0 bottom-0 start-0 end-0 bg-black/10 flex items-center justify-center">
             <div class="rounded-xl overflow-hidden relative">
                 <div class="bg-white p-5">
@@ -152,11 +151,14 @@
 
 <script setup>
 let activeTab = ref('resume');
-
+const link = {
+    to : `/job/1`,
+    text : `Software Engineer at PT Devtektif (029788/ISH/01010107/2023)`
+}
 const showAction = ref(false);
 const action = ref({
-    move : false,
-    delete : false,
+    move : true,
+    delete : true,
 })
 const showAddTag = ref(false);
 const showAddSchedule = ref(false);
@@ -166,79 +168,79 @@ const candidates = [
     id: 1,
     name: 'Budi Santoso',
     status: 1,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 2,
     name: 'Dewi Lestari',
     status: 2,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 3,
     name: 'Anwar Setiawan',
     status: 3,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 4,
     name: 'Rini Cahyani',
     status: 4,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 5,
     name: 'Joko Susanto',
     status: 5,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 6,
     name: 'Siti Aminah',
     status: 6,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 7,
     name: 'Adi Pratama',
     status: 1,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 8,
     name: 'Budi Luhur',
     status: 2,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 9,
     name: 'Maya Wijaya',
     status: 5,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 10,
     name: 'Ryan Ramadhan',
     status: 6,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 11,
     name: 'Rizki Ramadhan',
     status: 3,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 12,
     name: 'Novan Setya',
     status: 4,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
   {
     id: 13,
     name: 'Example Candidate',
     status: 1,
-    image: 'https://placeholder.co/100',
+    image: '/image/person.png',
   },
 ];
 

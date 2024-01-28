@@ -9,9 +9,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-8 9.79V14H9c-.55 0-1-.45-1-1s.45-1 1-1h3v-1.79c0-.45.54-.67.85-.35l2.79 2.79c.2.2.2.51 0 .71l-2.79 2.79a.5.5 0 0 1-.85-.36"/></svg>
                 Move
             </button>
-            <button @click="action.duplicate = true" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-emerald-100 hover:bg-emerald-100 text-emerald-700">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20"><g fill="currentColor"><path d="M7 9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2V5h8a2 2 0 0 0-2-2z"/></g></svg>
-                Duplicate
+            <button @click="action.delete = true" class="flex items-center gap-3 p-2 px-4 rounded-lg bg-rose-100 hover:bg-rose-100 text-rose-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="-3 -2 24 24"><path fill="currentColor" d="M12 2h5a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1zm3.8 6l-.613 9.2a3 3 0 0 1-2.993 2.8H5.826a3 3 0 0 1-2.993-2.796L2.205 8zM7 9a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1m4 0a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1"/></svg>
+                Delete / Reject
             </button>
         </div>
         <div class="relative overflow-x-auto">
@@ -63,20 +63,18 @@
                         <td class="px-4 py-3">
                             <input @change="selectcandidate(candidate.id)" :checked="selectedId.includes(candidate.id)" :id="candidate.id" :value="candidate.id" type="checkbox" class="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2">
                         </td>
-                        <td class="px-3 py-3 text-sm">
-                            <NuxtLink :to="`/candidate/${candidate.id}`">
-                                <span class="text-emerald-600">{{candidate.name}}</span> <br/>
-                                <div v-if="candidate.status == 1" class="inline-block mt-1 text-xs bg-purple-500 text-purple-50 rounded-lg p-1 px-2">Screening</div>
-                                <div v-else-if="candidate.status == 2" class="inline-block mt-1 text-xs bg-orange-500 text-orange-50 rounded-lg p-1 px-2">Psikotest</div>
-                                <div v-else-if="candidate.status == 3" class="inline-block mt-1 text-xs bg-blue-500 text-blue-50 rounded-lg p-1 px-2">Interview HR</div>
-                                <div v-else-if="candidate.status == 4" class="inline-block mt-1 text-xs bg-green-500 text-green-50 rounded-lg p-1 px-2">Interview User</div>
-                                <div v-else-if="candidate.status == 5" class="inline-block mt-1 text-xs bg-sky-500 text-sky-50 rounded-lg p-1 px-2">Peralihan</div>
-                                <div v-else-if="candidate.status == 6" class="inline-block mt-1 text-xs bg-rose-500 text-rose-50 rounded-lg p-1 px-2">Reject</div>
-                                <div v-else-if="candidate.status == 7" class="inline-block mt-1 text-xs bg-emerald-500 text-emerald-50 rounded-lg p-1 px-2">Hiring</div>
-                            </NuxtLink>
+                        <td @click="navigateTo('/candidate/1')" class="group cursor-pointer px-3 py-3 text-sm">
+                            <span class="group-hover:text-emerald-600">{{candidate.name}}</span> <br/>
+                            <div v-if="candidate.status == 1" class="inline-block mt-1 text-xs bg-purple-500 text-purple-50 rounded-lg p-1 px-2">Screening</div>
+                            <div v-else-if="candidate.status == 2" class="inline-block mt-1 text-xs bg-orange-500 text-orange-50 rounded-lg p-1 px-2">Psikotest</div>
+                            <div v-else-if="candidate.status == 3" class="inline-block mt-1 text-xs bg-blue-500 text-blue-50 rounded-lg p-1 px-2">Interview HR</div>
+                            <div v-else-if="candidate.status == 4" class="inline-block mt-1 text-xs bg-green-500 text-green-50 rounded-lg p-1 px-2">Interview User</div>
+                            <div v-else-if="candidate.status == 5" class="inline-block mt-1 text-xs bg-sky-500 text-sky-50 rounded-lg p-1 px-2">Peralihan</div>
+                            <div v-else-if="candidate.status == 6" class="inline-block mt-1 text-xs bg-rose-500 text-rose-50 rounded-lg p-1 px-2">Reject</div>
+                            <div v-else-if="candidate.status == 7" class="inline-block mt-1 text-xs bg-emerald-500 text-emerald-50 rounded-lg p-1 px-2">Hiring</div>
                         </td>
                         <td v-if="candidatesStore.selectedRow.includes('tg')" class="px-3 py-3 text-sm">
-                            <div class="group relative">
+                            <div class="group relative flex justify-center">
                                 <div class="w-[10px] h-[10px] rounded-3xl" :class="{'bg-emerald-600': candidate.tags === 1, 'bg-rose-600': candidate.tags === 2, 'bg-purple-600': candidate.tags === 3}"></div>
                                 <div class="group-hover:block hidden absolute top-0 mt-3">
                                     <div class="bg-white p-2 shadow rounded-lg text-xs whitespace-nowrap">
@@ -114,8 +112,8 @@
         </div>
 
         <!-- Action Modal -->
-        <BlockActionCandidateMove v-if="action.move" @close="action.move = false" />
-        <BlockActionCandidateDuplicate v-if="action.duplicate" @close="action.duplicate = false" />
+        <BlockActionCandidateMove :selectedId="selectedId" v-if="action.move" @close="action.move = false" />
+        <BlockActionCandidateDelete :selectedId="selectedId" v-if="action.delete" @close="action.delete = false" />
     </div>
 </template>
 
