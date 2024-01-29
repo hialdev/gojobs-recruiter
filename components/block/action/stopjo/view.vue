@@ -11,16 +11,72 @@
                     <div class="col-span-12 mb-3">
                         <table class="w-full rounded-xl overflow-hidden">
                             <tr class="bg-slate-100">
-                                <td class="p-2 px-4 text-sm">Data</td>
-                                <td class="p-2 px-4 text-sm">Value</td>
+                                <td class="p-2 px-4 text-sm">ID</td>
+                                <td class="p-2 px-4 text-sm">2757</td>
                             </tr>
                             <tr class="bg-white">
-                                <td class="p-2 px-4 text-sm">Data</td>
-                                <td class="p-2 px-4 text-sm">Value</td>
+                                <td class="p-2 px-4 text-sm">No Job Order</td>
+                                <td class="p-2 px-4 text-sm">029399/ISH/01010107/2023</td>
                             </tr>
                             <tr class="bg-slate-100">
-                                <td class="p-2 px-4 text-sm">Data</td>
-                                <td class="p-2 px-4 text-sm">Value</td>
+                                <td class="p-2 px-4 text-sm">Created by</td>
+                                <td class="p-2 px-4 text-sm">FAUZAN RIVALDY</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Created at</td>
+                                <td class="p-2 px-4 text-sm">20/11/2023   20:05</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Updated by</td>
+                                <td class="p-2 px-4 text-sm">FAUZAN RIVALDY</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Updated at</td>
+                                <td class="p-2 px-4 text-sm">20/11/2023   20:05</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Approval I</td>
+                                <td class="p-2 px-4 text-sm">PM</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Approval I at</td>
+                                <td class="p-2 px-4 text-sm">20/11/2023   20:05</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Approval II</td>
+                                <td class="p-2 px-4 text-sm">Tofan Kusuma</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Approval II at</td>
+                                <td class="p-2 px-4 text-sm">20/11/2023   20:05</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Status</td>
+                                <td class="p-2 px-4 text-sm"><span class="bg-emerald-600 text-white rounded-lg p-1 px-2">APPROVED</span></td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Alasan Stop</td>
+                                <td class="p-2 px-4 text-sm">Permintaan User / Client</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Remarks</td>
+                                <td class="p-2 px-4 text-sm">Dikarenakan sudah tidak ada kebutuhan lagi ditoko tersebut</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Jumlah Kebutuhan Sebelumnya</td>
+                                <td class="p-2 px-4 text-sm">1</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Jumlah Stop Pemenuhan Pekerja</td>
+                                <td class="p-2 px-4 text-sm">1</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="p-2 px-4 text-sm">Jumlah Kebutuhan</td>
+                                <td class="p-2 px-4 text-sm">1</td>
+                            </tr>
+                            <tr class="bg-slate-100">
+                                <td class="p-2 px-4 text-sm">Document</td>
+                                <td class="p-2 px-4 text-sm"><button class="flex items-center gap-2 rounded-lg bg-white border border-slate-500 p-2 px-4 text-slate-700">Download</button></td>
                             </tr>
                         </table>
                     </div>

@@ -23,6 +23,9 @@
                         <li class="m-0">
                             <NuxtLink to="/report/job-order" class="block px-4 py-2 hover:bg-gray-100 text-sm">Job Order</NuxtLink>
                         </li>
+                        <li class="m-0">
+                            <NuxtLink to="/report/cancel-join" class="block px-4 py-2 hover:bg-gray-100 text-sm">Cancel Join</NuxtLink>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -56,6 +59,9 @@
                                     </li>
                                     <li>
                                         <NuxtLink to="/report/job-order" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Job Order</NuxtLink>
+                                    </li>
+                                    <li>
+                                        <NuxtLink to="/report/cancel-join" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cancel Join</NuxtLink>
                                     </li>
                                 </ul>
                             </div>

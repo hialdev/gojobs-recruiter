@@ -4,7 +4,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 256 256"><path fill="currentColor" d="M168.49 199.51a12 12 0 0 1-17 17l-80-80a12 12 0 0 1 0-17l80-80a12 12 0 0 1 17 17L97 128Z"/></svg>
             <span class="font-medium">Recruitment Request : 030170/ISH/01010107/2023</span>
         </NuxtLink>
-        <div class="grid grid-cols-12 gap-x-5">
+        <div v-if="role != 3" class="grid grid-cols-12 gap-x-5">
             <div class="col-span-4 order-last">
                 <div class="p-5 rounded-lg bg-white">
                     <div class="mb-3">
@@ -73,8 +73,13 @@
                         </table>
                     </div>
                 </div>
-                
             </div>
         </div>
+        <BlockActionRecreqView v-if="role == 3" />
     </div>
+
 </template>
+
+<script setup>
+const role = localStorage.getItem('role');
+</script>
