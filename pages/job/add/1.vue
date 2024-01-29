@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="col-span-12">
-                    <button class="px-4 py-2 text-sm bg-emerald-700 text-white rounded-lg w-full">Lanjut</button>
+                    <button @click="navigateTo('/job/add/2')" class="px-4 py-2 text-sm bg-emerald-700 text-white rounded-lg w-full">Lanjut</button>
                 </div>
             </div>
         </div>

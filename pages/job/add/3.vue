@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="my-5 flex justify-end">
-                        <Button class="text-white bg-emerald-700 p-2 px-5 rounded text-sm">Lanjut</Button>
+                        <Button @click="navigateTo('/job/add/4')" class="text-white bg-emerald-700 p-2 px-5 rounded text-sm">Lanjut</Button>
                     </div>
                 </div>
             </div>
