@@ -1,21 +1,10 @@
 <template>
     <div class="h-screen min-w-full bg-slate-100">
         <div class="grid grid-cols-12">
-            <div class="hidden md:block md:col-span-7">
-                <div class="relative">
-                    <NuxtImg src="/image/bg-login.png" width="520" height="720" class="w-full object-cover h-screen" />
-                    <div class="absolute flex flex-col justify-end top-0 end-0 start-0 bottom-0 bg-[#29675B] bg-opacity-[0.8] bg-blend-multiply p-9">
-                        <h2 class="text-5xl text-white font-medium mb-3">
-                            HR Management Platform
-                        </h2>
-                        <p class="text-white">Manage all applicant candidate </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-span-12 md:col-span-5 md:rounded-l-3xl md:overflow-hidden md:ms-[-2em] md:z-10">
+            <div class="col-span-12 md:col-span-6">
                 <div class="bg-white p-12 h-screen text-center">
-                    <h1 class="text-2xl font-medium mb-2 text-emerald-600">Hi Recruter</h1>
-                    <p class="text-sm text-slate-500">Jelajahi beragam profil yang sesuai dengan kebutuhan Anda, dan temukan kandidat ideal untuk memperkuat tim Anda</p>
+                    <NuxtImg class="block mx-auto mb-3 w-[6em]" src="/image/ish-logo.png" />
+                    <p class="text-sm text-slate-500 max-w-[30em] mx-auto">Bermimpilah dan Berproses setiap hari, Halaman buku hidup ini terbatas maka tulislah perjalanan terbaik mu</p>
                     <form @submit.prevent="login" class="flex flex-col gap-6 mt-12 max-w-[30em] mx-auto">
                         <div class="relative">
                             <div class="absolute inset-y-0 end-0 flex items-center pe-3.5 pointer-events-none">
@@ -37,15 +26,13 @@
                             <div class="mb-2 text-xs">Masuk sebagai (Untuk uji coba Frontend)</div>
                             <PartialFormSelect @selected="updateSelectedRole" :label="`Pilih Role`" :customClass="`shadow-none border`" :options="roles"/>
                         </div>
-                        <button @click="login" class="p-3 px-5 text-center bg-emerald-700 text-white rounded-3xl">Login</button>
+                        <button @click="login" class="p-3 px-5 text-center bg-emerald-700 text-white rounded-lg w-full max-w-[7em] mx-auto">Login</button>
                     </form>
-                    <div class="text-sm text-start px-3 text-slate-500 mt-12">
-                        <p class="mb-2">Developed by IT Service Management for its internal use.</p>
-                        <div class="flex items-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2m-6 9c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1c1.71 0 3.1 1.39 3.1 3.1z"/></svg>
-                            <span>Every bit of data transmitted is encrypted and officially signed.</span>
-                        </div>
-                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block md:col-span-6">
+                <div class="relative">
+                    <NuxtImg src="/image/bg-login.png" width="520" height="720" class="w-full object-cover h-screen" />
                 </div>
             </div>
         </div>
@@ -72,6 +59,10 @@ const roles = [
     {
         key : 3,
         value : 'Project Manager',
+    },
+    {
+        key : 4,
+        value : 'Sourcing',
     },
 ]
 const selectedRole = ref('');

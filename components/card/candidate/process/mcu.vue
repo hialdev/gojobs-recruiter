@@ -9,13 +9,12 @@
                 <div class="mb-3">
                     <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Current Status</span>
                     <div class="flex items-center gap-2">
-                        <span class="p-1 px-3 rounded-lg text-sm uppercase" :class="{'bg-yellow-100 text-yellow-400' : !addedSchedule, 'bg-blue-600 text-white' : addedSchedule}">{{ addedSchedule ? 'On Process' : 'Waiting Schedule'}}</span>
-                        <button v-if="!addedSchedule" class="flex items-center justify-center gap-2 text-sm px-2 py-1 rounded-lg bg-emerald-600 text-white" @click="showAddSchedule = true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" d="M5.75 2a.75.75 0 0 1 .75.75V4h7V2.75a.75.75 0 0 1 1.5 0V4h.25A2.75 2.75 0 0 1 18 6.75v8.5A2.75 2.75 0 0 1 15.25 18H4.75A2.75 2.75 0 0 1 2 15.25v-8.5A2.75 2.75 0 0 1 4.75 4H5V2.75A.75.75 0 0 1 5.75 2m-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25z" clip-rule="evenodd"/></svg> Add</button>
+                        <span class="p-1 px-3 rounded-lg bg-yellow-100 text-yellow-400 text-sm uppercase">Waiting Review</span>
                     </div>
                 </div>
                 <div class="mb-3">
                     <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Stage</span>
-                    <span class="font-medium text-sm whitespace-nowrap">Psikotest</span>
+                    <span class="font-medium text-sm whitespace-nowrap">Medical Checkup</span>
                 </div>
                 <div class="mb-3">
                     <span class="block text-slate-500 text-xs mb-2 whitespace-nowrap">Date</span>
@@ -44,7 +43,7 @@
         <div v-if="showUpload" class="fixed bg-black/20 top-0 end-0 start-0 bottom-0 flex items-center justify-center">
             <div class="p-4 rounded-lg bg-white w-[40em]">
                 <div class="flex items-center justify-between">
-                    <div class="font-medium">Psikotest Upload</div>
+                    <div class="font-medium">Medical Checkup Upload</div>
                     <div @click="showUpload = false" class="cursor-pointer flex items-center text-slate-500 hover:text-rose-500 justify-center w-[30px] h-[30px]"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94z" clip-rule="evenodd"/></svg></div>
                 </div>
                 <div class="mb-3">
@@ -68,17 +67,10 @@
                 </div>
             </div>
         </div>
-
-        <CardCalendarAdd v-if="showAddSchedule" :process="`psikotest`" @added="() => {addedSchedule = true; showAddSchedule = false}" @close="showAddSchedule = false" />
-
     </div>
 </template>
 
 <script setup>
-import {usePICStore} from '@/stores/pic'
-const addedSchedule = ref(false);
-const showAddSchedule = ref(false);
-const edited = ref(false);
 const showUpload = ref(false);
 const store = usePICStore();
 const file = ref(null);
@@ -97,5 +89,4 @@ const fileHandle = (event) => {
     file.value = selectedFile;
     console.log('File yang dipilih:', selectedFile);
 }
-const pics = store.filteredPICs.map(pic => ({key: pic.id, value: `${pic.name} - ${pic.perner}` }))
 </script>

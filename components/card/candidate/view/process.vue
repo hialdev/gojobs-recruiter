@@ -24,12 +24,12 @@
                     <p class="text-sm ms-3">Interview User</p>
                 </div>
             </li>
-            <li @click="status = 5" class="cursor-pointer relative box-item" :class="{'active' : status >= 6}">
+            <li @click="status = 5" class="cursor-pointer relative box-item" :class="{'active' : status >= 5}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
-                    <p class="text-sm ms-3">Reject</p>
+                    <p class="text-sm ms-3">Medical Checkup</p>
                 </div>
             </li>
-            <li @click="status = 6" class="cursor-pointer relative box-item" :class="{'active' : status >= 7}">
+            <li @click="status = 6" class="cursor-pointer relative box-item" :class="{'active' : status >= 6}">
                 <div class="absolute p-2 top-0 bottom-0 start-0 end-0 flex items-center justify-center">
                     <p class="text-sm">Hiring</p>
                 </div>
@@ -37,10 +37,14 @@
         </ul>
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-12">
-                <CardCandidateProcessScreening v-if="selectedProcess == 1" @reject="status = 6" @lolos="status = status+1" />
-                <CardCandidateProcessPsikotest v-if="selectedProcess == 2" @reject="status = 6" @lolos="status = status+1" />
-                <CardCandidateProcessInterviewhr v-if="selectedProcess == 3" @reject="status = 6" @lolos="status = status+1" />
-                <CardCandidateProcessInterviewuser v-if="selectedProcess == 4" @reject="status = 6" @lolos="status = 7" />
+                <CardCandidateProcessScreening v-if="selectedProcess == 1" @reject="status = 0" @lolos="status = status+1" />
+                <CardCandidateProcessPsikotest v-if="selectedProcess == 2" @reject="status = 0" @lolos="status = status+1" />
+                <CardCandidateProcessInterviewhr v-if="selectedProcess == 3" @reject="status = 0" @lolos="status = status+1" />
+                <CardCandidateProcessInterviewuser v-if="selectedProcess == 4" @reject="status = 0" @lolos="status = status+1" />
+                <CardCandidateProcessMcu v-if="selectedProcess == 5" @reject="status = 0" @lolos="status = 7" />
+                <div v-if="status == 0" class="bg-slate-100 p-5 rounded-lg flex text-center justify-center items-center">
+                  <div class="text-slate-500">Kandidat Rejected</div>
+                </div>
             </div>
             <div class="col-span-12">
                 <div class="p-5 bg-white rounded-lg">

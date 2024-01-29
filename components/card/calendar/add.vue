@@ -24,7 +24,7 @@
                         <PartialFormSelect :label="`Process`" :options="steps" :customClass="['border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 shadow-none z-[23]']" :modalClass="`z-[]]`"/>
                     </div>
                 </div>
-                <div class="mb-3 flex items-center gap-2">
+                <div v-if="!process" class="mb-3 flex items-center gap-2">
                     <svg class="text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2m-6 0h-4V4h4z"/></svg>
                     <div class="flex-1">
                         <PartialFormSelect :label="`no JO`" :options="steps" :customClass="['border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 shadow-none']" :modalClass="`z-[11]`"/>
@@ -42,13 +42,13 @@
                         <PartialFormMultiselect :label="`Pewawancara`" :options="rekurters" class="p-0 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full shadow-none" :modalClass="`z-[9]`"/>
                     </div>
                 </div>
-                <div class="w-full text-xs text-slate-500 mb-2 mt-4">Link Meeting Online</div>
-                <div class="mb-3 flex items-center gap-2">
+                <div v-if="process == `interview`" class="w-full text-xs text-slate-500 mb-2 mt-4">Link Meeting Online</div>
+                <div v-if="process == `interview`" class="mb-3 flex items-center gap-2">
                     <svg class="text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16"><path fill="currentColor" d="m4.768 2.922l.01-.006l.046-.027a7.091 7.091 0 0 1 .888-.424C6.31 2.23 7.12 2 8 2c.88 0 1.69.23 2.289.465a7.075 7.075 0 0 1 .887.424c.021.012.036.02.045.027l.01.006h.001a.5.5 0 0 0 .536-.844h-.001l-.002-.002l-.005-.003l-.018-.011a6.004 6.004 0 0 0-.285-.16a8.096 8.096 0 0 0-.802-.367C9.985 1.27 9.045 1 8 1c-1.046 0-1.985.27-2.655.535a8.09 8.09 0 0 0-1.026.49a3.75 3.75 0 0 0-.061.037l-.018.01l-.005.004l-.002.001a.5.5 0 0 0 .535.845M4 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm10 1.5a.5.5 0 0 0-.8-.4l-2 1.5a.5.5 0 0 0-.2.4v2a.5.5 0 0 0 .2.4l2 1.5a.5.5 0 0 0 .8-.4zm-9.231 7.579l-.001-.001a.5.5 0 0 0-.536.844h.001l.002.002l.005.003l.018.011c.014.01.035.021.061.037c.053.03.128.073.224.124c.191.1.465.233.802.366c.67.264 1.61.535 2.655.535c1.046 0 1.985-.27 2.655-.535a8.09 8.09 0 0 0 1.026-.49l.061-.037l.018-.01l.005-.004l.002-.001h.001a.5.5 0 0 0-.536-.845l-.01.007l-.046.026a7.085 7.085 0 0 1-.888.424C9.69 13.77 8.88 14 8 14c-.88 0-1.69-.23-2.289-.465a7.101 7.101 0 0 1-.887-.424a2.932 2.932 0 0 1-.045-.027z"/></svg>
                     <input type="text" class="p-2 px-4 rounded-lg border-slate-300 text-sm focus:ring-emerald-600 focus:border-emerald-600 w-full">
                 </div>
-                <div class="w-full text-xs text-slate-500 mb-2 mt-4">Psikotest</div>
-                <div class="flex mb-3 items-center gap-2">
+                <div v-if="process == `psikotest`" class="w-full text-xs text-slate-500 mb-2 mt-4">Psikotest</div>
+                <div v-if="process == `psikotest`" class="flex mb-3 items-center gap-2">
                     <div class="mb-3 flex items-center gap-2">
                         <svg class="text-emerald-600" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="m10 17.55l-1.77 1.72a2.47 2.47 0 0 1-3.5-3.5l4.54-4.55a2.46 2.46 0 0 1 3.39-.09l.12.1a1 1 0 0 0 1.4-1.43a2.75 2.75 0 0 0-.18-.21a4.46 4.46 0 0 0-6.09.22l-4.6 4.55a4.48 4.48 0 0 0 6.33 6.33L11.37 19A1 1 0 0 0 10 17.55M20.69 3.31a4.49 4.49 0 0 0-6.33 0L12.63 5A1 1 0 0 0 14 6.45l1.73-1.72a2.47 2.47 0 0 1 3.5 3.5l-4.54 4.55a2.46 2.46 0 0 1-3.39.09l-.12-.1a1 1 0 0 0-1.4 1.43a2.75 2.75 0 0 0 .23.21a4.47 4.47 0 0 0 6.09-.22l4.55-4.55a4.49 4.49 0 0 0 .04-6.33"/></svg>
                         <input type="text" placeholder="link psikotest" class="p-2 px-4 rounded-lg border-slate-300 text-sm focus:ring-emerald-600 focus:border-emerald-600 w-full">
@@ -72,7 +72,7 @@
                 <div class="sticky bottom-0 start-0 end-0 bg-slate-50/50 mb-[-1em] p-2 rounded-lg">
                     <div class="flex items-center gap-2">
                         <button @click="closeDetail" class="p-2 px-4 text-sm rounded-lg bg-slate-100 text-slate-700">Cancel</button>
-                        <button class="p-2 px-4 text-sm rounded-lg bg-emerald-600 flex-1 text-white">Schedule</button>
+                        <button @click="addedHandle" class="p-2 px-4 text-sm rounded-lg bg-emerald-600 flex-1 text-white">Schedule</button>
                     </div>
                 </div>
             </div>
@@ -82,11 +82,17 @@
 
 <script setup>
 import { useCandidatesStore } from '@/stores/candidates';
-
+const props = defineProps({
+    process : String,
+})
 const candidate = useCandidatesStore();
 const candidates = ref(candidate.data.map(cnd => ({ key: cnd.id, value: cnd.name })));
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'added']);
 const closeDetail = () => {
     emit('close');
+}
+
+const addedHandle = () => {
+    emit('added');
 }
 </script>

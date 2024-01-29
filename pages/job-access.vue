@@ -1,6 +1,9 @@
 <template>
     <div class="container mx-auto py-5">
-        <h1 class="font-medium mb-4">PIC Job Access</h1>
+        <div class="flex items-center justify-between mb-4">
+            <h1 class="font-medium">PIC Job Access</h1>
+            <button @click="action.add = true" class="text-sm p-2 px-4 bg-emerald-600 text-white rounded-lg flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M18 19H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1M12 7a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4a1 1 0 0 1 1 1a1 1 0 0 1-1 1a1 1 0 0 1-1-1a1 1 0 0 1 1-1m7 0h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2"/></svg> Assign Access</button>
+        </div>
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 rounded-lg overflow-hidden">
                 <thead class="text-xs text-gray-700 bg-white border-b-2">
@@ -12,7 +15,7 @@
                             PIC Name
                         </th>
                         <th scope="col" class="px-4 py-3">
-                            Perner
+                            Regional
                         </th>
                         <th scope="col" class="px-4 py-3">
                             Job Category
@@ -42,7 +45,7 @@
                             {{pic.name}}
                         </td>
                         <td class="px-3 py-3 text-xs">
-                            {{pic.perner}}
+                            Regional
                         </td>
                         <td class="px-3 py-3 text-xs">
                             {{pic.category}}
@@ -67,6 +70,7 @@
         <PartialTablePaginate :label="`Menampilkan 15 dari 352 data`" />
 
         <BlockActionJobAssign v-if="action.edit" @close="action.edit = false" />
+        <BlockActionJobAssign v-if="action.add" @close="action.add = false" />
     </div>
 </template>
 
@@ -75,6 +79,7 @@ import {usePICStore} from '@/stores/pic'
 const openModalIndex = ref(null);
 const action = ref({
     edit : false,
+    add : false,
 })
 const store = usePICStore();
 const dotsModal = (index) => {

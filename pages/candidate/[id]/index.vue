@@ -13,17 +13,16 @@
                 </div>
                 <ul class="m-0 max-h-[50em] overflow-auto">
                     <li v-for="candidate in candidates" :key="candidate.id" class="mb-0">
-                        <NuxtLink :to="`/candidate/${candidate.id}`" class="flex items-center py-5 border-b gap-4 px-4 hover:bg-emerald-50 cursor-pointer">
+                        <NuxtLink :to="`/candidate/${candidate.id}`" class="flex items-center py-3 border-b gap-4 px-4 hover:bg-emerald-50 cursor-pointer">
                             <NuxtImg :src="candidate.image" class="w-[50px] h-[50px] block rounded-3xl" alt="Candidate Profile Image" />
                             <div>
-                                <h6 class="font-medium">{{candidate.name}}</h6>
-                                <p v-if="candidate.status == 1" class="uppercase text-sm text-purple-600">Screening</p>
-                                <p v-if="candidate.status == 2" class="uppercase text-sm text-orange-600">Psikotest</p>
-                                <p v-if="candidate.status == 3" class="uppercase text-sm text-blue-600">Interview HR</p>
-                                <p v-if="candidate.status == 4" class="uppercase text-sm text-green-600">Interview User</p>
-                                <p v-if="candidate.status == 5" class="uppercase text-sm text-sky-600">Peralihan</p>
-                                <p v-if="candidate.status == 6" class="uppercase text-sm text-rose-600">Reject</p>
-                                <p v-if="candidate.status == 7" class="uppercase text-sm text-emerald-600">Hiring</p>
+                                <h6 class="font-medium text-sm">{{candidate.name}}</h6>
+                                <p v-if="candidate.status == 1" class="uppercase text-xs text-purple-600">Screening</p>
+                                <p v-if="candidate.status == 2" class="uppercase text-xs text-orange-600">Psikotest</p>
+                                <p v-if="candidate.status == 3" class="uppercase text-xs text-blue-600">Interview HR</p>
+                                <p v-if="candidate.status == 4" class="uppercase text-xs text-green-600">Interview User</p>
+                                <p v-if="candidate.status == 5" class="uppercase text-xs text-rose-600">Medical Checkup</p>
+                                <p v-if="candidate.sub_status != null" class="text-[10px] p-1 px-2 rounded-lg mt-1 inline-block" :class="{'bg-yellow-100 text-yellow-400':candidate?.sub_status == 'waiting','bg-blue-100 text-blue-600':candidate?.sub_status != 'waiting'}">{{ candidate?.sub_status == 'waiting' ? 'Waiting Schedule' : 'On Process'}}</p>
                             </div>
                         </NuxtLink>
                     </li>
@@ -157,8 +156,8 @@ const link = {
 }
 const showAction = ref(false);
 const action = ref({
-    move : true,
-    delete : true,
+    move : false,
+    delete : false,
 })
 const showAddTag = ref(false);
 const showAddSchedule = ref(false);
@@ -175,29 +174,33 @@ const candidates = [
     name: 'Dewi Lestari',
     status: 2,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 3,
     name: 'Anwar Setiawan',
     status: 3,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 4,
     name: 'Rini Cahyani',
     status: 4,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 5,
     name: 'Joko Susanto',
     status: 5,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 6,
     name: 'Siti Aminah',
-    status: 6,
+    status: 1,
     image: '/image/person.png',
   },
   {
@@ -211,17 +214,19 @@ const candidates = [
     name: 'Budi Luhur',
     status: 2,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 9,
     name: 'Maya Wijaya',
     status: 5,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 10,
     name: 'Ryan Ramadhan',
-    status: 6,
+    status: 1,
     image: '/image/person.png',
   },
   {
@@ -229,12 +234,14 @@ const candidates = [
     name: 'Rizki Ramadhan',
     status: 3,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 12,
     name: 'Novan Setya',
     status: 4,
     image: '/image/person.png',
+    sub_status : 'waiting'
   },
   {
     id: 13,
